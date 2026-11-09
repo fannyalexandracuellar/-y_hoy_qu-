@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel de administración de ¿Y hoy qué?">
+    <title>Panel de administración | ¿Y hoy qué?</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/icons/logo2.png">
+</head>
+
+<body>
+
+    <!-- =========================================
+         HEADER Y MENÚ DE ADMINISTRACIÓN
+    ========================================== -->
+    <header class="header_admin">
+
+        <div class="contenedor_logo">
+            <a href="index.html">
+                <img src="assets/icons/logo2.png" alt="Logo de ¿Y hoy qué?" class="logo">
+                <span>¿Y hoy qué?</span>
+            </a>
+        </div>
+
+        <nav class="menu_admin">
+
+            <ul>
+                <li><a href="index.html">Ver página web</a></li>
+                <li><a href="login.html">Cerrar sesión</a></li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         CONTENIDO PRINCIPAL DEL ADMINISTRADOR
+    ========================================== -->
+    <main class="panel_administracion">
+
+        <!-- BIENVENIDA -->
+        <section class="bienvenida_admin">
+
+            <div class="contenido_bienvenida">
+
+                <h1>Panel de administración</h1>
+
+                <p>
+                    Bienvenido al espacio de gestión de ¿Y hoy qué?
+                    Desde aquí podrás organizar y supervisar
+                    las actividades del emprendimiento.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             MENÚ LATERAL DE ADMINISTRACIÓN
+        ========================================== -->
+        <div class="contenedor_admin">
+
+            <aside class="menu_lateral_admin">
+
+                <h2>Administración</h2>
+
+                <nav>
+
+                    <ul>
+                        <li>
+                            <a href="#resumen_admin">Resumen general</a>
+                        </li>
+
+                        <li>
+                            <a href="#solicitudes_admin">Solicitudes</a>
+                        </li>
+
+                        <li>
+                            <a href="#pedidos_admin">Pedidos</a>
+                        </li>
+
+                        <li>
+                            <a href="#clientes_admin">Clientes</a>
+                        </li>
+
+                        <li>
+                            <a href="#experiencias_admin">Experiencias</a>
+                        </li>
+
+                        <li>
+                            <a href="#lugares_admin">Lugares aliados</a>
+                        </li>
+                    </ul>
+
+                </nav>
+
+            </aside>
+
+
+            <!-- =========================================
+                 ÁREA DE TRABAJO DEL ADMINISTRADOR
+            ========================================== -->
+            <div class="contenido_admin">
+
+
+                <!-- RESUMEN GENERAL -->
+                <section class="resumen_admin" id="resumen_admin">
+
+                    <div class="encabezado_admin">
+
+                        <h2>Resumen general</h2>
+
+                        <p>
+                            Aquí podrás consultar un resumen
+                            de la actividad del emprendimiento.
+                        </p>
+
+                    </div>
+
+
+                    <div class="contenedor_estadisticas">
+
+                        <!-- ESTADÍSTICA 1 -->
+                        <article class="tarjeta_estadistica">
+
+                            <h3>Clientes registrados</h3>
+
+                            <p class="numero_estadistica">--</p>
+
+                            <span>Total de usuarios</span>
+
+                        </article>
+
+
+                        <!-- ESTADÍSTICA 2 -->
+                        <article class="tarjeta_estadistica">
+
+                            <h3>Solicitudes recibidas</h3>
+
+                            <p class="numero_estadistica">--</p>
+
+                            <span>Experiencias solicitadas</span>
+
+                        </article>
+
+
+                        <!-- ESTADÍSTICA 3 -->
+                        <article class="tarjeta_estadistica">
+
+                            <h3>Pedidos realizados</h3>
+
+                            <p class="numero_estadistica">--</p>
+
+                            <span>Pedidos registrados</span>
+
+                        </article>
+
+
+                        <!-- ESTADÍSTICA 4 -->
+                        <article class="tarjeta_estadistica">
+
+                            <h3>Experiencias disponibles</h3>
+
+                            <p class="numero_estadistica">--</p>
+
+                            <span>Opciones del catálogo</span>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================================
+                     GESTIÓN DE SOLICITUDES
+                ========================================== -->
+                <section class="seccion_admin" id="solicitudes_admin">
+
+                    <div class="encabezado_admin">
+
+                        <h2>Solicitudes de experiencias</h2>
+
+                        <p>
+                            Consulta las solicitudes enviadas
+                            por los clientes.
+                        </p>
+
+                    </div>
+
+
+                    <div class="tabla_contenedor">
+
+                        <table class="tabla_admin">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Experiencia</th>
+                                    <th>Fecha</th>
+                                    <th>Presupuesto</th>
+                                    <th>Estado</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="tabla_solicitudes">
+
+                                <tr>
+                                    <td colspan="5">
+                                        Aquí aparecerán las solicitudes
+                                        registradas en el sistema.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================================
+                     GESTIÓN DE PEDIDOS
+                ========================================== -->
+                <section class="seccion_admin" id="pedidos_admin">
+
+                    <div class="encabezado_admin">
+
+                        <h2>Pedidos</h2>
+
+                        <p>
+                            Revisa los pedidos realizados
+                            por los clientes.
+                        </p>
+
+                    </div>
+
+
+                    <div class="tabla_contenedor">
+
+                        <table class="tabla_admin">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Número de pedido</th>
+                                    <th>Cliente</th>
+                                    <th>Tipo de experiencia</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="tabla_pedidos">
+
+                                <tr>
+                                    <td colspan="5">
+                                        Aquí aparecerán los pedidos
+                                        registrados en el sistema.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================================
+                     GESTIÓN DE CLIENTES
+                ========================================== -->
+                <section class="seccion_admin" id="clientes_admin">
+
+                    <div class="encabezado_admin">
+
+                        <h2>Clientes registrados</h2>
+
+                        <p>
+                            Consulta la información de los usuarios
+                            que han creado una cuenta.
+                        </p>
+
+                    </div>
+
+
+                    <div class="tabla_contenedor">
+
+                        <table class="tabla_admin">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Correo electrónico</th>
+                                    <th>Teléfono</th>
+                                    <th>Fecha de registro</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="tabla_clientes">
+
+                                <tr>
+                                    <td colspan="4">
+                                        Aquí aparecerán los clientes
+                                        registrados.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================================
+                     GESTIÓN DE EXPERIENCIAS
+                ========================================== -->
+                <section class="seccion_admin" id="experiencias_admin">
+
+                    <div class="encabezado_admin">
+
+                        <h2>Administrar experiencias</h2>
+
+                        <p>
+                            En esta sección podrás gestionar
+                            las experiencias disponibles en el catálogo.
+                        </p>
+
+                    </div>
+
+
+                    <div class="acciones_admin">
+
+                        <button type="button" class="boton_principal">
+                            Agregar experiencia
+                        </button>
+
+                    </div>
+
+
+                    <div class="tabla_contenedor">
+
+                        <table class="tabla_admin">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Categoría</th>
+                                    <th>Presupuesto</th>
+                                    <th>Disponibilidad</th>
+                                    <th>Acciones</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="tabla_experiencias">
+
+                                <tr>
+                                    <td colspan="5">
+                                        Aquí aparecerán las experiencias
+                                        del catálogo.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================================
+                     GESTIÓN DE LUGARES ALIADOS
+                ========================================== -->
+                <section class="seccion_admin" id="lugares_admin">
+
+                    <div class="encabezado_admin">
+
+                        <h2>Lugares aliados</h2>
+
+                        <p>
+                            Administra los establecimientos y espacios
+                            que participen en nuestras experiencias.
+                        </p>
+
+                    </div>
+
+
+                    <div class="acciones_admin">
+
+                        <button type="button" class="boton_principal">
+                            Agregar lugar
+                        </button>
+
+                    </div>
+
+
+                    <div class="tabla_contenedor">
+
+                        <table class="tabla_admin">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Nombre del lugar</th>
+                                    <th>Ciudad</th>
+                                    <th>Tipo de establecimiento</th>
+                                    <th>Estado</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="tabla_lugares">
+
+                                <tr>
+                                    <td colspan="4">
+                                        Aquí aparecerán los lugares
+                                        aliados registrados.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+    <footer class="footer">
+
+        <div class="contenido_footer">
+
+            <div class="informacion_footer">
+
+                <h3>¿Y hoy qué?</h3>
+
+                <p>
+                    Rompe la rutina, nosotros ponemos la sorpresa.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="derechos_footer">
+
+            <p>
+                &copy; 2026 ¿Y hoy qué? Todos los derechos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

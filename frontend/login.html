@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Inicia sesión en ¿Y hoy qué? y descubre nuevas experiencias sorpresa.">
+    <title>Iniciar sesión | ¿Y hoy qué?</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/icons/logo2.png">
+</head>
+
+<body>
+
+    <!-- =========================================
+         HEADER Y MENÚ DE NAVEGACIÓN
+    ========================================== -->
+    <header class="header">
+
+        <div class="contenedor_logo">
+            <a href="index.html">
+                <img src="assets/icons/logo2.png" alt="Logo de ¿Y hoy qué?" class="logo">
+                <span>¿Y hoy qué?</span>
+            </a>
+        </div>
+
+        <nav class="menu_navegacion">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="personalizar.html">Personalizar</a></li>
+                <li><a href="mapa.html">Mapa</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="login.html">Iniciar sesión</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         CONTENIDO PRINCIPAL
+    ========================================== -->
+    <main>
+
+        <section class="seccion_login">
+
+            <div class="contenedor_login">
+
+                <!-- PRESENTACIÓN DEL INICIO DE SESIÓN -->
+                <div class="informacion_login">
+
+                    <h1>¡Qué bueno tenerte de vuelta!</h1>
+
+                    <p>
+                        Inicia sesión para consultar tus experiencias,
+                        revisar tus solicitudes y descubrir nuevos planes.
+                    </p>
+
+                    <img src="assets/images/imagen38.jpg"
+                         alt="Caja sorpresa preparada para una experiencia especial">
+
+                </div>
+
+
+                <!-- FORMULARIO DE INICIO DE SESIÓN -->
+                <div class="formulario_login">
+
+                    <h2>Iniciar sesión</h2>
+
+                    <p>
+                        Ingresa tus datos para continuar.
+                    </p>
+
+                    <form id="formulario_login" method="POST">
+
+                        <!-- CORREO ELECTRÓNICO -->
+                        <div class="grupo_formulario">
+
+                            <label for="correo_login">
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                type="email"
+                                id="correo_login"
+                                name="correo"
+                                placeholder="ejemplo@correo.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- CONTRASEÑA -->
+                        <div class="grupo_formulario">
+
+                            <label for="contrasena_login">
+                                Contraseña
+                            </label>
+
+                            <input
+                                type="password"
+                                id="contrasena_login"
+                                name="contrasena"
+                                placeholder="Ingresa tu contraseña"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- RECORDAR SESIÓN -->
+                        <div class="opciones_login">
+
+                            <label for="recordar_sesion">
+
+                                <input
+                                    type="checkbox"
+                                    id="recordar_sesion"
+                                    name="recordar_sesion"
+                                >
+
+                                Recordar mi sesión
+
+                            </label>
+
+                            <a href="#recuperar_contrasena">
+                                ¿Olvidaste tu contraseña?
+                            </a>
+
+                        </div>
+
+
+                        <!-- BOTÓN DE INGRESO -->
+                        <button type="submit" class="boton_principal">
+                            Iniciar sesión
+                        </button>
+
+                    </form>
+
+
+                    <!-- REGISTRO DE USUARIO -->
+                    <div class="enlace_registro">
+
+                        <p>
+                            ¿Todavía no tienes una cuenta?
+                            <a href="registro.html">Regístrate aquí</a>
+                        </p>
+
+                    </div>
+
+
+                    <!-- ACCESO ADMINISTRATIVO -->
+                    <div class="acceso_administrador">
+
+                        <p>
+                            ¿Eres administrador?
+                        </p>
+
+                        <a href="admin.html">
+                            Acceder al panel administrativo
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             RECUPERACIÓN DE CONTRASEÑA
+        ========================================== -->
+        <section class="recuperar_contrasena" id="recuperar_contrasena">
+
+            <div class="contenedor_recuperacion">
+
+                <h2>¿Olvidaste tu contraseña?</h2>
+
+                <p>
+                    Más adelante podrás solicitar un enlace de
+                    recuperación para volver a ingresar a tu cuenta.
+                </p>
+
+                <a href="contacto.html" class="boton_secundario">
+                    Necesito ayuda
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER Y ENLACES
+    ========================================== -->
+    <footer class="footer">
+
+        <div class="contenido_footer">
+
+            <div class="informacion_footer">
+
+                <h3>¿Y hoy qué?</h3>
+
+                <p>
+                    Rompe la rutina, nosotros ponemos la sorpresa.
+                </p>
+
+            </div>
+
+
+            <div class="enlaces_footer">
+
+                <h4>Explora</h4>
+
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="personalizar.html">Personalizar</a></li>
+                    <li><a href="mapa.html">Mapa</a></li>
+                </ul>
+
+            </div>
+
+
+            <div class="ayuda_footer">
+
+                <h4>Ayuda</h4>
+
+                <ul>
+                    <li><a href="preguntas.html">Preguntas frecuentes</a></li>
+                    <li><a href="contacto.html">Contáctanos</a></li>
+                    <li><a href="nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="registro.html">Crear cuenta</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="derechos_footer">
+
+            <p>
+                &copy; 2026 ¿Y hoy qué? Todos los derechos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

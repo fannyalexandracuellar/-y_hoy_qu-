@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contacto | ¿Y hoy qué?</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" type="image/png" href="assets/icons/logo2.png">
+
+</head>
+<body>
+    
+    <!-- =========================================
+         HEADER Y MENÚ DE NAVEGACIÓN
+    ========================================== -->
+
+    <header class="header">
+
+        <img src="assets/icons/logo.png" alt="Logo de ¿Y hoy qué?" id="logo_header">
+
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="personalizar.html">Personalizar</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="nosotros.html">Acerca de</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================================
+             PORTADA DE CONTACTO
+        ========================================== -->
+
+        <section class="hero_contacto">
+
+            <img src="assets/images/imagen26.jpg" alt="" class="hero_fondo">
+
+            <div class="hero_contenido">
+
+                <h1>Hablemos</h1>
+
+                <p>
+                    ¿Tienes alguna pregunta, una idea o quieres saber
+                    más sobre nuestras experiencias? Estamos aquí para ayudarte.
+                </p>
+
+                <a href="#formulario_contacto">Escríbenos</a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             INTRODUCCIÓN DE CONTACTO
+        ========================================== -->
+
+        <section id="introduccion_contacto">
+
+            <h2>Estamos para ayudarte</h2>
+
+            <p>
+                Queremos conocer tus ideas y resolver cualquier duda
+                que tengas sobre nuestras cajas sorpresa, experiencias
+                y opciones de personalización.
+            </p>
+
+            <p>
+                Déjanos tu mensaje y nos pondremos en contacto contigo.
+            </p>
+
+        </section>
+
+
+        <!-- =========================================
+             INFORMACIÓN DE CONTACTO
+        ========================================== -->
+
+        <section id="informacion_contacto">
+
+            <h2>¿Cómo puedes comunicarte con nosotros?</h2>
+
+            <div class="contacto_contenido">
+
+                <article>
+
+                    <h3>Correo electrónico</h3>
+
+                    <p>
+                        Escríbenos para consultas, solicitudes
+                        o información sobre nuestros servicios.
+                    </p>
+
+                    <p>contacto@yhoyque.com</p>
+
+                </article>
+
+                <article>
+
+                    <h3>Redes sociales</h3>
+
+                    <p>
+                        Síguenos para conocer nuestras novedades,
+                        nuevas experiencias y próximas sorpresas.
+                    </p>
+
+                    <p>Instagram y Facebook</p>
+
+                </article>
+
+                <article>
+
+                    <h3>Atención personalizada</h3>
+
+                    <p>
+                        Si tienes una idea especial, podemos ayudarte
+                        a encontrar una experiencia que se adapte a ella.
+                    </p>
+
+                    <a href="personalizar.html">Personalizar mi experiencia</a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             FORMULARIO DE CONTACTO
+        ========================================== -->
+
+        <section id="formulario_contacto">
+
+            <h2>Envíanos un mensaje</h2>
+
+            <p>
+                Completa el siguiente formulario y cuéntanos
+                en qué podemos ayudarte.
+            </p>
+
+            <form id="formulario_mensaje" method="POST">
+
+
+                <!-- =========================================
+                     DATOS DEL CLIENTE
+                ========================================== -->
+
+                <fieldset>
+
+                    <legend>Información personal</legend>
+
+                    <label for="nombre_contacto">Nombre completo:</label>
+
+                    <input
+                        type="text"
+                        id="nombre_contacto"
+                        name="nombre"
+                        placeholder="Escribe tu nombre"
+                        required
+                    >
+
+                    <label for="correo_contacto">Correo electrónico:</label>
+
+                    <input
+                        type="email"
+                        id="correo_contacto"
+                        name="correo"
+                        placeholder="ejemplo@correo.com"
+                        required
+                    >
+
+                    <label for="telefono_contacto">Número de contacto:</label>
+
+                    <input
+                        type="tel"
+                        id="telefono_contacto"
+                        name="telefono"
+                        placeholder="Tu número de teléfono"
+                    >
+
+                </fieldset>
+
+
+                <!-- =========================================
+                     MOTIVO DEL MENSAJE
+                ========================================== -->
+
+                <fieldset>
+
+                    <legend>Motivo de contacto</legend>
+
+                    <label for="motivo">¿Sobre qué deseas consultar?</label>
+
+                    <select id="motivo" name="motivo" required>
+
+                        <option value="">Selecciona una opción</option>
+                        <option value="catalogo">Información del catálogo</option>
+                        <option value="cajas">Cajas sorpresa</option>
+                        <option value="suscripcion">Planes de suscripción</option>
+                        <option value="personalizacion">Experiencia personalizada</option>
+                        <option value="pedido">Consulta sobre un pedido</option>
+                        <option value="alianza">Propuesta de alianza comercial</option>
+                        <option value="otro">Otro motivo</option>
+
+                    </select>
+
+                </fieldset>
+
+
+                <!-- =========================================
+                     MENSAJE DEL CLIENTE
+                ========================================== -->
+
+                <fieldset>
+
+                    <legend>Tu mensaje</legend>
+
+                    <label for="mensaje">Cuéntanos cómo podemos ayudarte:</label>
+
+                    <textarea
+                        id="mensaje"
+                        name="mensaje"
+                        rows="6"
+                        placeholder="Escribe tu mensaje aquí..."
+                        required
+                    ></textarea>
+
+                </fieldset>
+
+
+                <!-- =========================================
+                     ENVÍO DEL FORMULARIO
+                ========================================== -->
+
+                <div class="formulario_botones">
+
+                    <button type="submit">Enviar mensaje</button>
+
+                    <button type="reset">Limpiar formulario</button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- =========================================
+             PREGUNTAS FRECUENTES
+        ========================================== -->
+
+        <section id="ayuda_contacto">
+
+            <h2>¿Tienes una duda rápida?</h2>
+
+            <p>
+                Tal vez encuentres la respuesta que buscas
+                en nuestra sección de preguntas frecuentes.
+            </p>
+
+            <a href="preguntas.html">Consultar preguntas frecuentes</a>
+
+        </section>
+
+
+        <!-- =========================================
+             LLAMADO A LA ACCIÓN
+        ========================================== -->
+
+        <section id="llamada_accion">
+
+            <h2>Tu próxima sorpresa puede comenzar aquí</h2>
+
+            <p>
+                Explora nuestras opciones y encuentra
+                una experiencia diferente.
+            </p>
+
+            <a href="catalogo.html">Ver catálogo</a>
+
+            <a href="personalizar.html">Crear mi sorpresa</a>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="footer">
+
+        <div>
+            <h3>¿Y hoy qué?</h3>
+
+            <p>
+                Cajas sorpresa y experiencias para salir de la rutina.
+            </p>
+        </div>
+
+        <div>
+            <h3>Enlaces</h3>
+
+            <a href="index.html">Inicio</a>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="personalizar.html">Personalizar</a>
+            <a href="nosotros.html">Acerca de</a>
+            <a href="preguntas.html">Preguntas frecuentes</a>
+        </div>
+
+        <div>
+            <h3>Cuenta</h3>
+
+            <a href="login.html">Iniciar sesión</a>
+            <a href="registro.html">Registrarme</a>
+        </div>
+
+        <div>
+            <h3>Contacto</h3>
+
+            <p>Correo: contacto@yhoyque.com</p>
+
+            <p>Redes sociales</p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>

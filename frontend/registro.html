@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Crea tu cuenta en ¿Y hoy qué? y comienza a descubrir experiencias sorpresa.">
+    <title>Crear cuenta | ¿Y hoy qué?</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/icons/logo2.png">
+</head>
+
+<body>
+
+    <!-- =========================================
+         HEADER Y MENÚ DE NAVEGACIÓN
+    ========================================== -->
+    <header class="header">
+
+        <div class="contenedor_logo">
+            <a href="index.html">
+                <img src="assets/icons/logo2.png" alt="Logo de ¿Y hoy qué?" class="logo">
+                <span>¿Y hoy qué?</span>
+            </a>
+        </div>
+
+        <nav class="menu_navegacion">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="personalizar.html">Personalizar</a></li>
+                <li><a href="mapa.html">Mapa</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="login.html">Iniciar sesión</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         CONTENIDO PRINCIPAL
+    ========================================== -->
+    <main>
+
+        <section class="seccion_registro">
+
+            <div class="contenedor_registro">
+
+                <!-- PRESENTACIÓN DEL REGISTRO -->
+                <div class="informacion_registro">
+
+                    <h1>¡Comienza algo diferente!</h1>
+
+                    <p>
+                        Crea tu cuenta y prepárate para descubrir
+                        experiencias que pueden convertir cualquier
+                        día en un momento especial.
+                    </p>
+
+                    <img src="assets/images/imagen39.jpg"
+                         alt="Experiencia sorpresa preparada para compartir">
+
+                </div>
+
+
+                <!-- FORMULARIO DE REGISTRO -->
+                <div class="formulario_registro">
+
+                    <h2>Crear una cuenta</h2>
+
+                    <p>
+                        Completa tus datos para registrarte.
+                    </p>
+
+                    <form id="formulario_registro" method="POST">
+
+                        <!-- NOMBRE COMPLETO -->
+                        <div class="grupo_formulario">
+
+                            <label for="nombre_registro">
+                                Nombre completo
+                            </label>
+
+                            <input
+                                type="text"
+                                id="nombre_registro"
+                                name="nombre"
+                                placeholder="Escribe tu nombre"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- CORREO ELECTRÓNICO -->
+                        <div class="grupo_formulario">
+
+                            <label for="correo_registro">
+                                Correo electrónico
+                            </label>
+
+                            <input
+                                type="email"
+                                id="correo_registro"
+                                name="correo"
+                                placeholder="ejemplo@correo.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- TELÉFONO -->
+                        <div class="grupo_formulario">
+
+                            <label for="telefono_registro">
+                                Número de teléfono
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="telefono_registro"
+                                name="telefono"
+                                placeholder="Ejemplo: 3001234567"
+                                autocomplete="tel"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- CONTRASEÑA -->
+                        <div class="grupo_formulario">
+
+                            <label for="contrasena_registro">
+                                Contraseña
+                            </label>
+
+                            <input
+                                type="password"
+                                id="contrasena_registro"
+                                name="contrasena"
+                                placeholder="Crea una contraseña"
+                                autocomplete="new-password"
+                                minlength="8"
+                                required
+                            >
+
+                            <small>
+                                La contraseña debe tener al menos 8 caracteres.
+                            </small>
+
+                        </div>
+
+
+                        <!-- CONFIRMAR CONTRASEÑA -->
+                        <div class="grupo_formulario">
+
+                            <label for="confirmar_contrasena">
+                                Confirmar contraseña
+                            </label>
+
+                            <input
+                                type="password"
+                                id="confirmar_contrasena"
+                                name="confirmar_contrasena"
+                                placeholder="Escribe nuevamente tu contraseña"
+                                autocomplete="new-password"
+                                minlength="8"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- ACEPTAR CONDICIONES -->
+                        <div class="grupo_terminos">
+
+                            <label for="aceptar_terminos">
+
+                                <input
+                                    type="checkbox"
+                                    id="aceptar_terminos"
+                                    name="aceptar_terminos"
+                                    required
+                                >
+
+                                Acepto las condiciones de uso y el
+                                tratamiento de mis datos personales.
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- BOTÓN DE REGISTRO -->
+                        <button type="submit" class="boton_principal">
+                            Crear mi cuenta
+                        </button>
+
+                    </form>
+
+
+                    <!-- ENLACE AL LOGIN -->
+                    <div class="enlace_login">
+
+                        <p>
+                            ¿Ya tienes una cuenta?
+                            <a href="login.html">Inicia sesión</a>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             BENEFICIOS DE TENER UNA CUENTA
+        ========================================== -->
+        <section class="beneficios_registro">
+
+            <div class="encabezado_seccion">
+
+                <h2>¿Qué podrás hacer con tu cuenta?</h2>
+
+                <p>
+                    Queremos que organizar tus experiencias sea
+                    sencillo desde el primer momento.
+                </p>
+
+            </div>
+
+
+            <div class="contenedor_beneficios">
+
+                <!-- BENEFICIO 1 -->
+                <article class="tarjeta_beneficio">
+
+                    <h3>Consultar tus solicitudes</h3>
+
+                    <p>
+                        Podrás revisar las experiencias que has
+                        solicitado y su estado.
+                    </p>
+
+                </article>
+
+
+                <!-- BENEFICIO 2 -->
+                <article class="tarjeta_beneficio">
+
+                    <h3>Guardar tus preferencias</h3>
+
+                    <p>
+                        Tendremos en cuenta tus gustos para ayudarte
+                        a encontrar planes que se adapten a ti.
+                    </p>
+
+                </article>
+
+
+                <!-- BENEFICIO 3 -->
+                <article class="tarjeta_beneficio">
+
+                    <h3>Descubrir nuevas experiencias</h3>
+
+                    <p>
+                        Podrás explorar diferentes opciones y
+                        personalizar tus próximos planes.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER Y ENLACES
+    ========================================== -->
+    <footer class="footer">
+
+        <div class="contenido_footer">
+
+            <div class="informacion_footer">
+
+                <h3>¿Y hoy qué?</h3>
+
+                <p>
+                    Rompe la rutina, nosotros ponemos la sorpresa.
+                </p>
+
+            </div>
+
+
+            <div class="enlaces_footer">
+
+                <h4>Explora</h4>
+
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="personalizar.html">Personalizar</a></li>
+                    <li><a href="mapa.html">Mapa</a></li>
+                </ul>
+
+            </div>
+
+
+            <div class="ayuda_footer">
+
+                <h4>Ayuda</h4>
+
+                <ul>
+                    <li><a href="preguntas.html">Preguntas frecuentes</a></li>
+                    <li><a href="contacto.html">Contáctanos</a></li>
+                    <li><a href="nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="login.html">Iniciar sesión</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="derechos_footer">
+
+            <p>
+                &copy; 2026 ¿Y hoy qué? Todos los derechos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
