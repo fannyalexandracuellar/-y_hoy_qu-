@@ -860,3 +860,167 @@ form input[type="submit"] {
     }
 }
 
+
+
+/* =========================================
+   20. ESTILO GENERAL DE TODOS LOS ENLACES
+   PROYECTO: ¿Y HOY QUÉ?
+========================================== */
+
+/* 1. CONFIGURACIÓN GENERAL */
+
+a[href] {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 2. MENÚ DE NAVEGACIÓN */
+
+.menu a {
+    display: inline-block;
+    padding: 11px 17px;
+
+    background-color: var(--amarillo);
+    color: var(--marron);
+
+    border: 2px solid var(--amarillo);
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* 3. ENLACES QUE FUNCIONAN COMO BOTONES */
+
+main a[href]:not(p a):not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(.texto_enlace),
+.hero a[href],
+.hero_inicio a[href],
+.hero_catalogo a[href],
+.hero_personalizar a[href],
+.hero_contacto a[href],
+.hero_nosotros a[href],
+.hero_preguntas a[href],
+.hero_mapa a[href],
+.hero_login a[href],
+.hero_registro a[href] {
+
+    display: inline-block;
+
+    padding: 12px 25px;
+    margin-top: 10px;
+
+    background-color: var(--amarillo);
+    color: var(--marron);
+
+    border: 2px solid var(--amarillo);
+    border-radius: 25px;
+
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+
+    text-align: center;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.10);
+}
+
+/* 4. ENLACES DENTRO DE LAS TARJETAS */
+
+.tarjeta a,
+.tarjeta_experiencia a,
+.tarjeta_categoria a,
+.card a,
+.tarjeta_contenido a,
+.tarjeta_experiencia .contenido a,
+.tarjeta_categoria .contenido a,
+.card .contenido a {
+
+    display: inline-block;
+
+    padding: 10px 20px;
+    margin-top: 12px;
+
+    background-color: var(--amarillo);
+    color: var(--marron);
+
+    border: 2px solid var(--amarillo);
+    border-radius: 25px;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 5. ENLACES DE SECCIONES DESTACADAS */
+
+.seccion_destacada a,
+.bloque_destacado a,
+.seccion_promocional a {
+
+    display: inline-block;
+
+    padding: 12px 25px;
+
+    background-color: var(--azul);
+    color: var(--blanco);
+
+    border: 2px solid var(--azul);
+    border-radius: 25px;
+
+    font-weight: bold;
+}
+
+/* 6. ENLACES DE TEXTO */
+
+main p a,
+.texto_enlace {
+
+    color: var(--marron);
+    font-weight: bold;
+
+    text-decoration: underline;
+    text-decoration-color: var(--amarillo);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+/* 7. ENLACES DEL PIE DE PÁGINA */
+
+.footer a {
+
+    display: inline-block;
+
+    color: var(--blanco);
+    text-decoration: none;
+}
+
+/* 8. INDICADOR DE NAVEGACIÓN CON TECLADO */
+
+a[href]:focus-visible {
+
+    outline: 3px solid var(--amarillo);
+    outline-offset: 4px;
+
+    border-radius: 5px;
+}
+
+/* 9. AJUSTES PARA CELULARES */
+
+@media (max-width: 600px) {
+
+    .menu a {
+        padding: 9px 12px;
+        font-size: 12px;
+    }
+
+    main a[href]:not(p a):not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(.texto_enlace),
+    .tarjeta a,
+    .tarjeta_experiencia a,
+    .tarjeta_categoria a,
+    .card a {
+        padding: 10px 18px;
+        font-size: 13px;
+    }
+}
