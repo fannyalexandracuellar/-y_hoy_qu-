@@ -6,9 +6,9 @@ const jwt = require("jsonwebtoken");
 // Registrar un usuario
 const registrarUsuario = async (req, res) => {
     try {
-        const { nombre, correo, contrasena } = req.body;
+        const { nombre, correo, telefono, contrasena } = req.body;
 
-        if (!nombre || !correo || !contrasena) {
+        if (!nombre || !correo || !telefono || !contrasena) {
             return res.status(400).json({
                 mensaje: "Todos los campos son obligatorios."
             });
@@ -35,6 +35,7 @@ const registrarUsuario = async (req, res) => {
         const nuevoUsuario = await Usuario.create({
             nombre,
             correo,
+            telefono,
             contrasena: contrasenaEncriptada,
             rol: "cliente"
         });
@@ -45,12 +46,25 @@ const registrarUsuario = async (req, res) => {
                 id: nuevoUsuario._id,
                 nombre: nuevoUsuario.nombre,
                 correo: nuevoUsuario.correo,
+                telefono: nuevoUsuario.telefono,
                 rol: nuevoUsuario.rol
             }
         });
 
     } catch (error) {
         console.error("Error al registrar usuario:", error.message);
+
+        if (error.code === 11000) {
+            return res.status(409).json({
+                mensaje: "Este correo ya está registrado."
+            });
+        }
+
+        if (error.name === "ValidationError") {
+            return res.status(400).json({
+                mensaje: "Los datos enviados no son válidos."
+            });
+        }
 
         res.status(500).json({
             mensaje: "Error interno al registrar el usuario."
@@ -108,6 +122,7 @@ const iniciarSesion = async (req, res) => {
                 id: usuario._id,
                 nombre: usuario.nombre,
                 correo: usuario.correo,
+                telefono: usuario.telefono,
                 rol: usuario.rol
             }
         });

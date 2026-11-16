@@ -1,4 +1,5 @@
 
+
 const mongoose = require("mongoose");
 
 const solicitudSchema = new mongoose.Schema({
@@ -45,13 +46,14 @@ const solicitudSchema = new mongoose.Schema({
     },
 
     tipo_experiencia: {
-    type: String,
-    enum: [
-        "interior_casa",
-        "interior_establecimiento",
-        "exterior",
-        "indiferente"
-    ]},
+        type: String,
+        enum: [
+            "interior_casa",
+            "interior_establecimiento",
+            "exterior",
+            "indiferente"
+        ]
+    },
 
     intereses: [{
         type: String
@@ -80,6 +82,13 @@ const solicitudSchema = new mongoose.Schema({
 
     detalles: {
         type: String
+    },
+
+    // Usuario propietario de la solicitud
+    usuario: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Usuario",
+        required: true
     },
 
     // Estado de la solicitud

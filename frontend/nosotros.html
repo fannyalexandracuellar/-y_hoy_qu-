@@ -29,7 +29,31 @@
                 <li><a href="personalizar.html">Personalizar</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
                 <li><a href="nosotros.html">Acerca de</a></li>
-                <li><a href="login.html">Login</a></li>
+               <li id="enlace_login">
+    <a href="login.html">Iniciar sesión</a>
+</li>
+
+<li id="menu_usuario" class="menu_usuario" style="display: none;">
+
+    <button type="button" id="boton_perfil">
+        <span id="icono_usuario">👤</span>
+        <span id="nombre_usuario">Mi cuenta</span>
+        <span>⌄</span>
+    </button>
+
+    <div id="opciones_perfil" class="opciones_perfil">
+
+        <a href="perfil.html">Mi perfil</a>
+
+        <a href="mis-solicitudes.html">Mis solicitudes</a>
+
+        <button type="button" id="cerrar_sesion">
+            Cerrar sesión
+        </button>
+
+    </div>
+
+</li>
             </ul>
         </nav>
 
@@ -385,6 +409,7 @@
         </div>
 
     </footer>
+    <script src="js/usuario.js" defer></script>
 
 </body>
 </html>

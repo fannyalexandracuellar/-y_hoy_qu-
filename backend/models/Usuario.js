@@ -1,4 +1,5 @@
 
+
 const mongoose = require("mongoose");
 
 const usuarioSchema = new mongoose.Schema({
@@ -15,6 +16,12 @@ const usuarioSchema = new mongoose.Schema({
         lowercase: true,
         trim: true,
         unique: true
+    },
+
+    telefono: {
+        type: String,
+        required: true,
+        trim: true
     },
 
     contrasena: {
