@@ -136,7 +136,34 @@ const iniciarSesion = async (req, res) => {
     }
 };
 
+// Consultar el perfil del usuario autenticado
+const obtenerPerfil = async (req, res) => {
+    try {
+        const usuario = await Usuario.findById(req.usuario.id)
+            .select("-contrasena");
+
+        if (!usuario) {
+            return res.status(404).json({
+                mensaje: "No se encontró el usuario."
+            });
+        }
+
+        res.status(200).json({
+            mensaje: "Perfil obtenido correctamente.",
+            usuario
+        });
+
+    } catch (error) {
+        console.error("Error al consultar el perfil:", error.message);
+
+        res.status(500).json({
+            mensaje: "Error al consultar el perfil."
+        });
+    }
+};
+
 module.exports = {
     registrarUsuario,
-    iniciarSesion
+    iniciarSesion,
+    obtenerPerfil
 };

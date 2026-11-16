@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Consulta el historial de tus solicitudes en ¿Y hoy qué?.">
+    <title>Mis solicitudes | ¿Y hoy qué?</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/icons/logo2.png">
+</head>
+
+<body>
+
+    <!-- HEADER Y MENÚ DE NAVEGACIÓN -->
+    <header class="header">
+
+        <div class="contenedor_logo">
+            <a href="index.html">
+                <img src="assets/icons/logo2.png" alt="Logo de ¿Y hoy qué?" class="logo">
+                <span>¿Y hoy qué?</span>
+            </a>
+        </div>
+
+        <nav class="menu_navegacion">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="personalizar.html">Personalizar</a></li>
+                <li><a href="mapa.html">Mapa</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+
+                <li id="enlace_login">
+                    <a href="login.html">Iniciar sesión</a>
+                </li>
+
+                <li id="menu_usuario" class="menu_usuario" style="display: none;">
+
+                    <button type="button" id="boton_perfil">
+                        <span id="icono_usuario">👤</span>
+                        <span id="nombre_usuario">Mi cuenta</span>
+                        <span>⌄</span>
+                    </button>
+
+                    <div id="opciones_perfil" class="opciones_perfil">
+
+                        <a href="perfil.html">Mi perfil</a>
+
+                        <a href="mis-solicitudes.html">Mis solicitudes</a>
+
+                        <button type="button" id="cerrar_sesion">
+                            Cerrar sesión
+                        </button>
+
+                    </div>
+
+                </li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+
+        <section class="seccion_mis_solicitudes">
+
+            <!-- ENCABEZADO -->
+            <div class="encabezado_solicitudes">
+
+                <p class="etiqueta_solicitudes">MI CUENTA</p>
+
+                <h1>Mis solicitudes</h1>
+
+                <p>
+                    Consulta el historial de tus experiencias personalizadas
+                    y revisa en qué estado se encuentra cada solicitud.
+                </p>
+
+            </div>
+
+
+            <!-- RESUMEN DE SOLICITUDES -->
+            <div class="resumen_solicitudes">
+
+                <div class="resumen_tarjeta">
+
+                    <span class="icono_resumen">📋</span>
+
+                    <div>
+                        <p>Total de solicitudes</p>
+                        <h2 id="total_solicitudes">0</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="resumen_tarjeta">
+
+                    <span class="icono_resumen">⏳</span>
+
+                    <div>
+                        <p>En revisión</p>
+                        <h2 id="solicitudes_revision">0</h2>
+                    </div>
+
+                </div>
+
+
+                <div class="resumen_tarjeta">
+
+                    <span class="icono_resumen">✓</span>
+
+                    <div>
+                        <p>Aprobadas</p>
+                        <h2 id="solicitudes_aprobadas">0</h2>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- HISTORIAL -->
+            <div class="contenedor_historial">
+
+                <div class="encabezado_historial">
+
+                    <div>
+                        <h2>Historial de experiencias</h2>
+
+                        <p>
+                            Aquí aparecerán las solicitudes que has enviado.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- MENSAJE DE CARGA, ERROR O LISTA VACÍA -->
+                <div id="mensaje_solicitudes" aria-live="polite">
+                    Cargando tus solicitudes...
+                </div>
+
+
+                <!-- AQUÍ SE MOSTRARÁN LAS SOLICITUDES -->
+                <div id="lista_solicitudes">
+
+                </div>
+
+            </div>
+
+
+            <!-- BOTONES INFERIORES -->
+            <div class="acciones_solicitudes">
+
+                <a href="personalizar.html" class="boton_principal">
+                    Crear nueva experiencia
+                </a>
+
+                <a href="perfil.html" class="boton_secundario">
+                    Volver a mi perfil
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="contenido_footer">
+
+            <div class="informacion_footer">
+
+                <h3>¿Y hoy qué?</h3>
+
+                <p>
+                    Rompe la rutina, nosotros ponemos la sorpresa.
+                </p>
+
+            </div>
+
+
+            <div class="enlaces_footer">
+
+                <h4>Explora</h4>
+
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="personalizar.html">Personalizar</a></li>
+                    <li><a href="mapa.html">Mapa</a></li>
+                </ul>
+
+            </div>
+
+
+            <div class="ayuda_footer">
+
+                <h4>Ayuda</h4>
+
+                <ul>
+                    <li><a href="preguntas.html">Preguntas frecuentes</a></li>
+                    <li><a href="contacto.html">Contáctanos</a></li>
+                    <li><a href="nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="registro.html">Crear cuenta</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="derechos_footer">
+
+            <p>
+                &copy; 2026 ¿Y hoy qué? Todos los derechos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ARCHIVOS JAVASCRIPT -->
+    <script src="js/usuario.js" defer></script>
+    <script src="js/mis-solicitudes.js" defer></script>
+
+</body>
+
+</html>

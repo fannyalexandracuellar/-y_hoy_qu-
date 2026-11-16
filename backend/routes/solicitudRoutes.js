@@ -1,10 +1,28 @@
+
 const express = require("express");
 const router = express.Router();
 
-const { crearSolicitud } = require("../controllers/SolicitudController");
-const upload = require("../middleware/upload");
+const {
+    crearSolicitud,
+    obtenerMisSolicitudes
+} = require("../controllers/SolicitudController");
 
-// Ruta para recibir el formulario y su fotografía
-router.post("/", upload.single("fotografia"), crearSolicitud);
+const upload = require("../middleware/upload");
+const { verificarToken } = require("../middleware/authMiddleware");
+
+// Consultar las solicitudes del usuario autenticado
+router.get(
+    "/mis-solicitudes",
+    verificarToken,
+    obtenerMisSolicitudes
+);
+
+// Crear una nueva solicitud
+router.post(
+    "/",
+    verificarToken,
+    upload.single("fotografia"),
+    crearSolicitud
+);
 
 module.exports = router;

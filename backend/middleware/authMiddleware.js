@@ -32,7 +32,7 @@ const verificarToken = (req, res, next) => {
 
 // Verificar que el usuario sea administrador
 const verificarAdmin = (req, res, next) => {
-    if (!req.usuario || req.usuario.rol !== "admin") {
+    if (!req.usuario || req.usuario.rol !== "administrador") {
         return res.status(403).json({
             mensaje: "No tienes permisos para realizar esta acción."
         });

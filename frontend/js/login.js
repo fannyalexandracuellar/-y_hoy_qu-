@@ -1,55 +1,82 @@
 
-const formulario = document.getElementById("formulario_login");
+document.addEventListener("DOMContentLoaded", () => {
 
-formulario.addEventListener("submit", async (evento) => {
-    evento.preventDefault();
+    const formulario = document.getElementById("formulario_login");
 
-    const datosFormulario = new FormData(formulario);
-
-    const correo = datosFormulario.get("correo")?.trim();
-    const contrasena = datosFormulario.get("contrasena");
-
-    if (!correo || !contrasena) {
-        alert("Debes ingresar tu correo y contraseña.");
+    if (!formulario) {
+        console.error("No se encontró el formulario de inicio de sesión.");
         return;
     }
 
-    const boton = formulario.querySelector("button[type='submit']");
+    formulario.addEventListener("submit", async (evento) => {
 
-    boton.disabled = true;
-    boton.textContent = "Ingresando...";
+        evento.preventDefault();
 
-    try {
-        const respuesta = await fetch("http://localhost:3000/api/auth/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                correo,
-                contrasena
-            })
-        });
+        const datosFormulario = new FormData(formulario);
 
-        const datos = await respuesta.json();
+        const correo = datosFormulario.get("correo")?.trim();
+        const contrasena = datosFormulario.get("contrasena");
 
-        if (!respuesta.ok) {
-            alert(datos.mensaje || "No se pudo iniciar sesión.");
+        if (!correo || !contrasena) {
+            alert("Debes ingresar tu correo y contraseña.");
             return;
         }
 
-        sessionStorage.setItem("token", datos.token);
-        sessionStorage.setItem("usuario", JSON.stringify(datos.usuario));
+        const boton = formulario.querySelector("button[type='submit']");
 
-        alert(`¡Bienvenido/a, ${datos.usuario.nombre}!`);
+        if (boton) {
+            boton.disabled = true;
+            boton.textContent = "Ingresando...";
+        }
 
-        window.location.href = "index.html";
+        try {
 
-    } catch (error) {
-        console.error("Error al iniciar sesión:", error);
-        alert("No se pudo conectar con el servidor.");
-    } finally {
-        boton.disabled = false;
-        boton.textContent = "Iniciar sesión";
-    }
+            const respuesta = await fetch(
+                "http://localhost:3001/api/auth/login",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        correo,
+                        contrasena
+                    })
+                }
+            );
+
+            const datos = await respuesta.json();
+
+            if (!respuesta.ok) {
+                alert(datos.mensaje || "No se pudo iniciar sesión.");
+                return;
+            }
+
+            sessionStorage.setItem("token", datos.token);
+            sessionStorage.setItem(
+                "usuario",
+                JSON.stringify(datos.usuario)
+            );
+
+            alert(`¡Bienvenido/a, ${datos.usuario.nombre}!`);
+
+            window.location.href = "index.html";
+
+        } catch (error) {
+
+            console.error("Error al iniciar sesión:", error);
+
+            alert("No se pudo conectar con el servidor.");
+
+        } finally {
+
+            if (boton) {
+                boton.disabled = false;
+                boton.textContent = "Iniciar sesión";
+            }
+
+        }
+
+    });
+
 });

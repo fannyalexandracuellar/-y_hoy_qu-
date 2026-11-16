@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Consulta y revisa los datos de tu cuenta en ¿Y hoy qué?.">
+    <title>Mi perfil | ¿Y hoy qué?</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/icons/logo2.png">
+</head>
+
+<body>
+
+    <!-- HEADER Y MENÚ DE NAVEGACIÓN -->
+    <header class="header">
+
+        <div class="contenedor_logo">
+            <a href="index.html">
+                <img src="assets/icons/logo2.png" alt="Logo de ¿Y hoy qué?" class="logo">
+                <span>¿Y hoy qué?</span>
+            </a>
+        </div>
+
+        <nav class="menu_navegacion">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="personalizar.html">Personalizar</a></li>
+                <li><a href="mapa.html">Mapa</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+
+                <li id="enlace_login">
+                    <a href="login.html">Iniciar sesión</a>
+                </li>
+
+                <li id="menu_usuario" class="menu_usuario" style="display: none;">
+
+                    <button type="button" id="boton_perfil">
+                        <span id="icono_usuario">👤</span>
+                        <span id="nombre_usuario">Mi cuenta</span>
+                        <span>⌄</span>
+                    </button>
+
+                    <div id="opciones_perfil" class="opciones_perfil">
+
+                        <a href="perfil.html">Mi perfil</a>
+
+                        <a href="mis-solicitudes.html">Mis solicitudes</a>
+
+                        <button type="button" id="cerrar_sesion">
+                            Cerrar sesión
+                        </button>
+
+                    </div>
+
+                </li>
+            </ul>
+        </nav>
+
+    </header>
+
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+
+        <section class="seccion_perfil">
+
+            <div class="encabezado_perfil">
+
+                <p class="etiqueta_perfil">MI CUENTA</p>
+
+                <h1>Mi perfil</h1>
+
+                <p>
+                    Aquí puedes consultar la información de tu cuenta
+                    y mantener tus datos a la vista.
+                </p>
+
+            </div>
+
+
+            <!-- TARJETA DE INFORMACIÓN DEL USUARIO -->
+            <div class="contenedor_perfil">
+
+                <div class="cabecera_tarjeta_perfil">
+
+                    <div class="avatar_perfil">
+                        👤
+                    </div>
+
+                    <div>
+                        <h2 id="perfil_nombre">Cargando nombre...</h2>
+                        <p>Cliente de ¿Y hoy qué?</p>
+                    </div>
+
+                </div>
+
+
+                <div class="datos_perfil">
+
+                    <div class="dato_perfil">
+                        <span>Nombre completo</span>
+                        <p id="dato_nombre">Cargando...</p>
+                    </div>
+
+                    <div class="dato_perfil">
+                        <span>Correo electrónico</span>
+                        <p id="dato_correo">Cargando...</p>
+                    </div>
+
+                    <div class="dato_perfil">
+                        <span>Teléfono</span>
+                        <p id="dato_telefono">Cargando...</p>
+                    </div>
+
+                    <div class="dato_perfil">
+                        <span>Tipo de cuenta</span>
+                        <p id="dato_rol">Cargando...</p>
+                    </div>
+
+                </div>
+
+
+                <div id="mensaje_perfil" aria-live="polite"></div>
+
+
+                <div class="acciones_perfil">
+
+                    <a href="mis-solicitudes.html" class="boton_principal">
+                        Consultar mis solicitudes
+                    </a>
+
+                    <a href="index.html" class="boton_secundario">
+                        Volver al inicio
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="contenido_footer">
+
+            <div class="informacion_footer">
+
+                <h3>¿Y hoy qué?</h3>
+
+                <p>
+                    Rompe la rutina, nosotros ponemos la sorpresa.
+                </p>
+
+            </div>
+
+
+            <div class="enlaces_footer">
+
+                <h4>Explora</h4>
+
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="personalizar.html">Personalizar</a></li>
+                    <li><a href="mapa.html">Mapa</a></li>
+                </ul>
+
+            </div>
+
+
+            <div class="ayuda_footer">
+
+                <h4>Ayuda</h4>
+
+                <ul>
+                    <li><a href="preguntas.html">Preguntas frecuentes</a></li>
+                    <li><a href="contacto.html">Contáctanos</a></li>
+                    <li><a href="nosotros.html">Sobre nosotros</a></li>
+                    <li><a href="registro.html">Crear cuenta</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+
+        <div class="derechos_footer">
+
+            <p>
+                &copy; 2026 ¿Y hoy qué? Todos los derechos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ARCHIVOS JAVASCRIPT -->
+    <script src="js/usuario.js" defer></script>
+    <script src="js/perfil.js" defer></script>
+
+</body>
+
+</html>

@@ -1,6 +1,10 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    // =========================================
+    // ELEMENTOS DEL FORMULARIO
+    // =========================================
+
     const formulario = document.getElementById("formulario_experiencia");
 
     if (!formulario) {
@@ -8,20 +12,215 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // Crear espacio para mostrar mensajes
+    const campoDestinatario = document.getElementById("destinatario");
+    const campoOcasion = document.getElementById("ocasion");
+    const campoPresupuesto = document.getElementById("presupuesto");
+    const campoDetalles = document.getElementById("detalles");
+
+    // =========================================
+    // ESPACIO PARA MOSTRAR MENSAJES
+    // =========================================
+
     const mensaje = document.createElement("p");
+
     mensaje.id = "mensaje_formulario";
     mensaje.setAttribute("aria-live", "polite");
 
     formulario.appendChild(mensaje);
 
+    // =========================================
+    // LEER RESPUESTAS DEL CHATBOT
+    // =========================================
+
+    const parametros = new URLSearchParams(window.location.search);
+
+    const destinatarioChat = parametros.get("destinatario");
+    const tipoChat = parametros.get("tipo");
+    const ocasionChat = parametros.get("ocasion");
+    const presupuestoChat = parametros.get("presupuesto");
+    const experienciaChat = parametros.get("experiencia");
+
+    let respuestasRecibidas = false;
+
+    // =========================================
+    // CONVERTIR DESTINATARIO
+    // =========================================
+
+    const equivalenciasDestinatario = {
+        mi: "personal",
+        pareja: "pareja",
+        amigo: "amigos",
+        familia: "familia",
+        especial: "otra_persona"
+    };
+
+    if (destinatarioChat && campoDestinatario) {
+
+        const valor = equivalenciasDestinatario[destinatarioChat];
+
+        if (valor) {
+            campoDestinatario.value = valor;
+            respuestasRecibidas = true;
+        }
+
+    }
+
+    // =========================================
+    // CONVERTIR TIPO DE EXPERIENCIA
+    // =========================================
+
+    const equivalenciasTipo = {
+        interiores: "interior_casa",
+        exteriores: "exterior",
+        cajas: "indiferente",
+        diversion: "indiferente",
+        cualquiera: "indiferente"
+    };
+
+    if (tipoChat) {
+
+        const valor = equivalenciasTipo[tipoChat];
+
+        if (valor) {
+
+            const opcion = formulario.querySelector(
+                `input[name="tipo_experiencia"][value="${valor}"]`
+            );
+
+            if (opcion) {
+                opcion.checked = true;
+                respuestasRecibidas = true;
+            }
+
+        }
+
+    }
+
+    // =========================================
+    // CONVERTIR OCASIÓN
+    // =========================================
+
+    const equivalenciasOcasion = {
+        cumpleanos: "cumpleanos",
+        aniversario: "aniversario",
+        celebracion: "celebracion",
+        sin_motivo: "sin_motivo"
+    };
+
+    if (ocasionChat && campoOcasion) {
+
+        const valor = equivalenciasOcasion[ocasionChat];
+
+        if (valor) {
+            campoOcasion.value = valor;
+            respuestasRecibidas = true;
+        }
+
+    }
+
+    // =========================================
+    // CONVERTIR PRESUPUESTO
+    // =========================================
+
+    const equivalenciasPresupuesto = {
+        bajo: "esencial",
+        medio: "especial",
+        alto: "premium",
+        sin_definir: "por_definir"
+    };
+
+    if (presupuestoChat && campoPresupuesto) {
+
+        const valor = equivalenciasPresupuesto[presupuestoChat];
+
+        if (valor) {
+            campoPresupuesto.value = valor;
+            respuestasRecibidas = true;
+        }
+
+    }
+
+    // =========================================
+    // AGREGAR EXPERIENCIA RECOMENDADA
+    // =========================================
+
+    if (experienciaChat && campoDetalles) {
+
+        const textoRecomendacion =
+            "Experiencia recomendada por el chatbot: " +
+            experienciaChat;
+
+        campoDetalles.value = campoDetalles.value
+            ? textoRecomendacion + "\n\n" + campoDetalles.value
+            : textoRecomendacion;
+
+        respuestasRecibidas = true;
+
+    }
+
+    // =========================================
+    // AVISAR QUE SE RECUPERARON LAS RESPUESTAS
+    // =========================================
+
+    if (respuestasRecibidas) {
+
+        const aviso = document.createElement("div");
+
+        aviso.id = "aviso_chatbot";
+
+        aviso.textContent =
+            "¡Listo! Hemos completado algunos campos con tus respuestas del asistente. Puedes revisarlos y modificar lo que necesites.";
+
+        aviso.setAttribute("role", "status");
+
+        formulario.insertBefore(aviso, formulario.firstChild);
+
+    }
+
+    // =========================================
+    // ENVIAR SOLICITUD AL BACKEND
+    // =========================================
+
     formulario.addEventListener("submit", async (evento) => {
+
         evento.preventDefault();
 
-        // Recoger todos los campos, incluidos intereses y fotografía
+        // Comprobar sesión
+        const token = sessionStorage.getItem("token");
+
+        if (!token) {
+
+            mensaje.textContent =
+                "Debes iniciar sesión para enviar una solicitud.";
+
+            mensaje.style.color = "red";
+
+            return;
+
+        }
+
+        // Comprobar tamaño de fotografía
+        const campoFotografia = document.getElementById("fotografia");
+
+        if (
+            campoFotografia &&
+            campoFotografia.files.length > 0 &&
+            campoFotografia.files[0].size > 5 * 1024 * 1024
+        ) {
+
+            mensaje.textContent =
+                "La fotografía no puede superar los 5 MB.";
+
+            mensaje.style.color = "red";
+
+            return;
+
+        }
+
+        // Recoger los datos del formulario
         const datosFormulario = new FormData(formulario);
 
-        // Evitar envíos repetidos mientras se procesa la solicitud
+        // Evitar envíos repetidos
         const botonEnviar = formulario.querySelector(
             'button[type="submit"], input[type="submit"]'
         );
@@ -36,9 +235,14 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
 
             const respuesta = await fetch(
-                "http://localhost:3000/api/solicitudes",
+                "http://localhost:3001/api/solicitudes",
                 {
                     method: "POST",
+
+                    headers: {
+                        "Authorization": `Bearer ${token}`
+                    },
+
                     body: datosFormulario
                 }
             );
@@ -46,11 +250,16 @@ document.addEventListener("DOMContentLoaded", () => {
             const resultado = await respuesta.json();
 
             if (!respuesta.ok) {
+
+                const errorServidor =
+                    resultado.errores || resultado.mensaje;
+
                 throw new Error(
-                    resultado.errores ||
-                    resultado.mensaje ||
-                    "No fue posible enviar la solicitud."
+                    typeof errorServidor === "string"
+                        ? errorServidor
+                        : "No fue posible enviar la solicitud."
                 );
+
             }
 
             mensaje.textContent =
@@ -58,12 +267,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
             mensaje.style.color = "green";
 
-            // Limpiar el formulario después de guardar
+            // Limpiar el formulario
             formulario.reset();
+
+            // Eliminar el aviso del chatbot
+            const aviso = document.getElementById("aviso_chatbot");
+
+            if (aviso) {
+                aviso.remove();
+            }
+
+            // Limpiar los parámetros de la URL
+            window.history.replaceState(
+                {},
+                document.title,
+                window.location.pathname
+            );
 
         } catch (error) {
 
-            console.error("Error al enviar el formulario:", error);
+            console.error(
+                "Error al enviar el formulario:",
+                error
+            );
 
             mensaje.textContent =
                 "No pudimos enviar tu solicitud. " + error.message;
@@ -77,6 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
         }
+
     });
 
 });

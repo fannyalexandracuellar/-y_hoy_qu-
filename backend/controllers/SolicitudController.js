@@ -1,3 +1,4 @@
+
 const Solicitud = require("../models/Solicitud");
 
 // Crear una nueva solicitud
@@ -45,7 +46,10 @@ const crearSolicitud = async (req, res) => {
             ciudad,
             ubicacion,
             fotografia,
-            detalles
+            detalles,
+
+            // Asociar la solicitud al usuario autenticado
+            usuario: req.usuario.id
         });
 
         res.status(201).json({
@@ -70,4 +74,32 @@ const crearSolicitud = async (req, res) => {
     }
 };
 
-module.exports = { crearSolicitud };
+// Consultar las solicitudes del usuario autenticado
+const obtenerMisSolicitudes = async (req, res) => {
+    try {
+
+        const solicitudes = await Solicitud.find({
+            usuario: req.usuario.id
+        }).sort({
+            createdAt: -1
+        });
+
+        res.status(200).json({
+            mensaje: "Solicitudes consultadas correctamente",
+            solicitudes
+        });
+
+    } catch (error) {
+
+        console.error("Error al consultar solicitudes:", error.message);
+
+        res.status(500).json({
+            mensaje: "Error al consultar tus solicitudes"
+        });
+    }
+};
+
+module.exports = {
+    crearSolicitud,
+    obtenerMisSolicitudes
+};
