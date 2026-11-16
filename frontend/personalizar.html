@@ -1,6 +1,8 @@
 
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,19 +10,21 @@
     <title>Personaliza tu sorpresa | ¿Y hoy qué?</title>
 
     <link rel="stylesheet" href="style.css">
-
     <link rel="icon" type="image/png" href="assets/icons/logo2.png">
 
 </head>
+
 <body>
-    
+
     <!-- =========================================
          HEADER Y MENÚ DE NAVEGACIÓN
     ========================================== -->
 
     <header class="header">
 
-        <img src="assets/icons/logo.png" alt="Logo de ¿Y hoy qué?" id="logo_header">
+        <img src="assets/icons/logo.png"
+             alt="Logo de ¿Y hoy qué?"
+             id="logo_header">
 
         <nav class="menu">
             <ul>
@@ -44,7 +48,9 @@
 
         <section class="hero_personalizar">
 
-            <img src="assets/images/imagen24.jpg" alt="" class="hero_fondo">
+            <img src="assets/images/imagen24.jpg"
+                 alt="Experiencia sorpresa"
+                 class="hero_fondo">
 
             <div class="hero_contenido">
 
@@ -92,34 +98,64 @@
 
             <h2>Cuéntanos qué estás buscando</h2>
 
-            <form id="formulario_experiencia" method="POST" enctype="multipart/form-data">
+            <p>
+                Completa los siguientes apartados para que podamos
+                preparar una experiencia pensada según tus preferencias.
+            </p>
+
+            <form id="formulario_experiencia"
+                  method="POST"
+                  enctype="multipart/form-data">
 
 
                 <!-- =========================================
-                     DATOS DEL CLIENTE
+                     1. DATOS DEL CLIENTE
                 ========================================== -->
 
-                <fieldset>
+                <fieldset class="seccion_formulario">
 
                     <legend>1. Tus datos</legend>
 
                     <label for="nombre">Nombre completo:</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre" required>
+
+                    <input
+                        type="text"
+                        id="nombre"
+                        name="nombre"
+                        placeholder="Escribe tu nombre completo"
+                        autocomplete="name"
+                        required
+                    >
 
                     <label for="correo">Correo electrónico:</label>
-                    <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+
+                    <input
+                        type="email"
+                        id="correo"
+                        name="correo"
+                        placeholder="ejemplo@correo.com"
+                        autocomplete="email"
+                        required
+                    >
 
                     <label for="telefono">Número de contacto:</label>
-                    <input type="tel" id="telefono" name="telefono" placeholder="Tu número de teléfono">
+
+                    <input
+                        type="tel"
+                        id="telefono"
+                        name="telefono"
+                        placeholder="Tu número de teléfono"
+                        autocomplete="tel"
+                    >
 
                 </fieldset>
 
 
                 <!-- =========================================
-                     OCASIÓN DE LA EXPERIENCIA
+                     2. OCASIÓN DE LA EXPERIENCIA
                 ========================================== -->
 
-                <fieldset>
+                <fieldset class="seccion_formulario">
 
                     <legend>2. ¿Para qué ocasión buscas la sorpresa?</legend>
 
@@ -139,17 +175,25 @@
 
                     </select>
 
-                    <label for="ocasion_detalle">Si elegiste otra ocasión, cuéntanos cuál:</label>
-                    <input type="text" id="ocasion_detalle" name="ocasion_detalle" placeholder="Escribe aquí">
+                    <label for="ocasion_detalle">
+                        Si elegiste otra ocasión, cuéntanos cuál:
+                    </label>
+
+                    <input
+                        type="text"
+                        id="ocasion_detalle"
+                        name="ocasion_detalle"
+                        placeholder="Escribe aquí"
+                    >
 
                 </fieldset>
 
 
                 <!-- =========================================
-                     PERSONAS QUE PARTICIPARÁN
+                     3. PERSONAS QUE PARTICIPARÁN
                 ========================================== -->
 
-                <fieldset>
+                <fieldset class="seccion_formulario">
 
                     <legend>3. ¿Para quién es la experiencia?</legend>
 
@@ -166,93 +210,165 @@
 
                     </select>
 
-                    <label for="cantidad_personas">¿Cuántas personas participarán?</label>
+                    <label for="cantidad_personas">
+                        ¿Cuántas personas participarán?
+                    </label>
 
-                    <input type="number" id="cantidad_personas" name="cantidad_personas" min="1" max="50" placeholder="Cantidad de personas" required>
+                    <input
+                        type="number"
+                        id="cantidad_personas"
+                        name="cantidad_personas"
+                        min="1"
+                        max="50"
+                        placeholder="Cantidad de personas"
+                        required
+                    >
 
                 </fieldset>
 
 
                 <!-- =========================================
-                     TIPO DE EXPERIENCIA
+                     4. TIPO DE EXPERIENCIA
                 ========================================== -->
 
-                <fieldset>
+                <fieldset class="seccion_formulario">
 
-                    <legend>4. ¿Qué tipo de experiencia prefieres?</legend>
+                    <legend>4. ¿Dónde te gustaría disfrutar tu experiencia?</legend>
 
-                    <p>Selecciona el ambiente que más te gustaría:</p>
+                    <p>
+                        Elige el ambiente que prefieres:
+                    </p>
 
                     <label>
-                        <input type="radio" name="tipo_experiencia" value="interior" required>
-                        En interiores: casa, restaurantes, espacios cerrados, etc.
+                        <input
+                            type="radio"
+                            name="tipo_experiencia"
+                            value="interior_casa"
+                            required
+                        >
+                        En casa: una experiencia para disfrutar sin salir.
                     </label>
 
                     <label>
-                        <input type="radio" name="tipo_experiencia" value="exterior">
-                        Al aire libre: parques, picnics, recorridos, etc.
+                        <input
+                            type="radio"
+                            name="tipo_experiencia"
+                            value="interior_establecimiento"
+                        >
+                        En un establecimiento: restaurantes, cafés u otros espacios.
                     </label>
 
                     <label>
-                        <input type="radio" name="tipo_experiencia" value="indiferente">
-                        No tengo preferencia.
+                        <input
+                            type="radio"
+                            name="tipo_experiencia"
+                            value="exterior"
+                        >
+                        Al aire libre: parques, picnics y actividades exteriores.
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="tipo_experiencia"
+                            value="indiferente"
+                        >
+                        No tengo preferencia, pueden sorprenderme.
                     </label>
 
                 </fieldset>
 
 
                 <!-- =========================================
-                     GUSTOS E INTERESES
+                     5. GUSTOS E INTERESES
                 ========================================== -->
 
-                <fieldset>
+                <fieldset class="seccion_formulario">
 
                     <legend>5. ¿Qué actividades te gustan?</legend>
 
-                    <p>Puedes seleccionar varias opciones:</p>
+                    <p>
+                        Puedes seleccionar varias opciones:
+                    </p>
 
                     <label>
-                        <input type="checkbox" name="intereses[]" value="comida">
+                        <input
+                            type="checkbox"
+                            name="intereses[]"
+                            value="comida"
+                        >
                         Comida y gastronomía.
                     </label>
 
                     <label>
-                        <input type="checkbox" name="intereses[]" value="peliculas">
+                        <input
+                            type="checkbox"
+                            name="intereses[]"
+                            value="peliculas"
+                        >
                         Películas y series.
                     </label>
 
                     <label>
-                        <input type="checkbox" name="intereses[]" value="juegos">
+                        <input
+                            type="checkbox"
+                            name="intereses[]"
+                            value="juegos"
+                        >
                         Juegos y actividades recreativas.
                     </label>
 
                     <label>
-                        <input type="checkbox" name="intereses[]" value="naturaleza">
+                        <input
+                            type="checkbox"
+                            name="intereses[]"
+                            value="naturaleza"
+                        >
                         Naturaleza y aire libre.
                     </label>
 
                     <label>
-                        <input type="checkbox" name="intereses[]" value="aventura">
+                        <input
+                            type="checkbox"
+                            name="intereses[]"
+                            value="aventura"
+                        >
                         Aventura y nuevas experiencias.
                     </label>
 
                     <label>
-                        <input type="checkbox" name="intereses[]" value="arte">
+                        <input
+                            type="checkbox"
+                            name="intereses[]"
+                            value="arte"
+                        >
                         Arte, manualidades y creatividad.
                     </label>
 
                     <label>
-                        <input type="checkbox" name="intereses[]" value="relajacion">
+                        <input
+                            type="checkbox"
+                            name="intereses[]"
+                            value="relajacion"
+                        >
                         Relajación y descanso.
                     </label>
 
                     <label>
-                        <input type="checkbox" name="intereses[]" value="musica">
+                        <input
+                            type="checkbox"
+                            name="intereses[]"
+                            value="musica"
+                        >
                         Música y entretenimiento.
                     </label>
 
                     <label>
-                        <input type="checkbox" name="intereses[]" value="sorpresa">
+                        <input
+                            type="checkbox"
+                            name="intereses[]"
+                            value="sorpresa"
+                        >
                         Me gustan las sorpresas, ¡elijan ustedes!
                     </label>
 
@@ -260,14 +376,16 @@
 
 
                 <!-- =========================================
-                     PRESUPUESTO
+                     6. PRESUPUESTO
                 ========================================== -->
 
-                <fieldset>
+                <fieldset class="seccion_formulario">
 
                     <legend>6. ¿Cuánto tienes pensado invertir?</legend>
 
-                    <label for="presupuesto">Selecciona tu presupuesto:</label>
+                    <label for="presupuesto">
+                        Selecciona tu presupuesto:
+                    </label>
 
                     <select id="presupuesto" name="presupuesto" required>
 
@@ -283,29 +401,61 @@
 
 
                 <!-- =========================================
-                     UBICACIÓN
+                     7. UBICACIÓN
                 ========================================== -->
 
-                <fieldset>
+                <fieldset class="seccion_formulario">
 
                     <legend>7. ¿Dónde te gustaría vivir la experiencia?</legend>
 
-                    <label for="ciudad">Ciudad o municipio:</label>
+                    <label for="ciudad">Ciudad:</label>
 
-                    <input type="text" id="ciudad" name="ciudad" placeholder="Ejemplo: Bogotá" required>
+                    <input
+                        type="text"
+                        id="ciudad"
+                        name="ciudad"
+                        value="Bogotá"
+                        readonly
+                        required
+                    >
 
-                    <label for="ubicacion">Barrio o zona:</label>
+                    <label for="ubicacion">Selecciona tu localidad:</label>
 
-                    <input type="text" id="ubicacion" name="ubicacion" placeholder="Escribe el barrio o sector">
+                    <select id="ubicacion" name="ubicacion" required>
+
+                        <option value="">Selecciona tu localidad</option>
+
+                        <option value="Usaquén">Usaquén</option>
+                        <option value="Chapinero">Chapinero</option>
+                        <option value="Santa Fe">Santa Fe</option>
+                        <option value="San Cristóbal">San Cristóbal</option>
+                        <option value="Usme">Usme</option>
+                        <option value="Tunjuelito">Tunjuelito</option>
+                        <option value="Bosa">Bosa</option>
+                        <option value="Kennedy">Kennedy</option>
+                        <option value="Fontibón">Fontibón</option>
+                        <option value="Engativá">Engativá</option>
+                        <option value="Suba">Suba</option>
+                        <option value="Barrios Unidos">Barrios Unidos</option>
+                        <option value="Teusaquillo">Teusaquillo</option>
+                        <option value="Los Mártires">Los Mártires</option>
+                        <option value="Antonio Nariño">Antonio Nariño</option>
+                        <option value="Puente Aranda">Puente Aranda</option>
+                        <option value="La Candelaria">La Candelaria</option>
+                        <option value="Rafael Uribe Uribe">Rafael Uribe Uribe</option>
+                        <option value="Ciudad Bolívar">Ciudad Bolívar</option>
+                        <option value="Sumapaz">Sumapaz</option>
+
+                    </select>
 
                 </fieldset>
 
 
                 <!-- =========================================
-                     FOTOGRAFÍA DE REFERENCIA
+                     8. FOTOGRAFÍA DE REFERENCIA
                 ========================================== -->
 
-                <fieldset>
+                <fieldset class="seccion_formulario">
 
                     <legend>8. ¿Tienes alguna idea en mente?</legend>
 
@@ -316,27 +466,40 @@
 
                     <label for="fotografia">Subir fotografía:</label>
 
-                    <input type="file" id="fotografia" name="fotografia" accept="image/*">
+                    <input
+                        type="file"
+                        id="fotografia"
+                        name="fotografia"
+                        accept="image/*"
+                    >
 
                     <p>
                         Puedes adjuntar una imagen de inspiración,
                         decoración, ambiente o tipo de experiencia.
+                        El archivo es opcional y debe pesar máximo 5 MB.
                     </p>
 
                 </fieldset>
 
 
                 <!-- =========================================
-                     INFORMACIÓN ADICIONAL
+                     9. INFORMACIÓN ADICIONAL
                 ========================================== -->
 
-                <fieldset>
+                <fieldset class="seccion_formulario">
 
                     <legend>9. Cuéntanos algo más</legend>
 
-                    <label for="detalles">¿Hay algo que debamos tener en cuenta?</label>
+                    <label for="detalles">
+                        ¿Hay algo que debamos tener en cuenta?
+                    </label>
 
-                    <textarea id="detalles" name="detalles" rows="5" placeholder="Describe tu idea, preferencias o algún detalle especial..."></textarea>
+                    <textarea
+                        id="detalles"
+                        name="detalles"
+                        rows="5"
+                        placeholder="Describe tu idea, preferencias o algún detalle especial..."
+                    ></textarea>
 
                 </fieldset>
 
@@ -347,9 +510,13 @@
 
                 <div class="formulario_botones">
 
-                    <button type="submit">Enviar mi solicitud</button>
+                    <button type="submit">
+                        Enviar mi solicitud
+                    </button>
 
-                    <button type="reset">Limpiar formulario</button>
+                    <button type="reset">
+                        Limpiar formulario
+                    </button>
 
                 </div>
 
@@ -374,13 +541,18 @@
                     La idea es que disfrutes algo diferente.
                 </p>
 
-                <a href="contacto.html">¿Tienes preguntas? Contáctanos</a>
+                <a href="contacto.html">
+                    ¿Tienes preguntas? Contáctanos
+                </a>
 
             </div>
 
             <div class="informacion_imagen">
 
-                <img src="assets/images/imagen25.jpg" alt="Preparación de una caja sorpresa personalizada">
+                <img
+                    src="assets/images/imagen25.jpg"
+                    alt="Preparación de una caja sorpresa personalizada"
+                >
 
             </div>
 
@@ -414,14 +586,17 @@
     <footer class="footer">
 
         <div>
+
             <h3>¿Y hoy qué?</h3>
 
             <p>
                 Cajas sorpresa y experiencias para salir de la rutina.
             </p>
+
         </div>
 
         <div>
+
             <h3>Enlaces</h3>
 
             <a href="index.html">Inicio</a>
@@ -429,16 +604,20 @@
             <a href="personalizar.html">Personalizar</a>
             <a href="nosotros.html">Acerca de</a>
             <a href="preguntas.html">Preguntas frecuentes</a>
+
         </div>
 
         <div>
+
             <h3>Cuenta</h3>
 
             <a href="login.html">Iniciar sesión</a>
             <a href="registro.html">Registrarme</a>
+
         </div>
 
         <div>
+
             <h3>Contacto</h3>
 
             <a href="contacto.html">Contáctanos</a>
@@ -446,9 +625,18 @@
             <p>Correo: contacto@yhoyque.com</p>
 
             <p>Redes sociales</p>
+
         </div>
 
     </footer>
 
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="js/personalizar.js"></script>
+
 </body>
+
 </html>

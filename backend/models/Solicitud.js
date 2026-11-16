@@ -45,10 +45,13 @@ const solicitudSchema = new mongoose.Schema({
     },
 
     tipo_experiencia: {
-        type: String,
-        enum: ["interior", "exterior", "indiferente"],
-        required: true
-    },
+    type: String,
+    enum: [
+        "interior_casa",
+        "interior_establecimiento",
+        "exterior",
+        "indiferente"
+    ]},
 
     intereses: [{
         type: String
