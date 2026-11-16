@@ -8,8 +8,9 @@ require("dotenv").config();
 const app = express();
 
 // Importar rutas
+// Importar rutas
 const solicitudRoutes = require("./routes/solicitudRoutes");
-
+const authRoutes = require("./routes/authRoutes");
 // Configuración general
 app.use(cors());
 app.use(express.json());
@@ -21,6 +22,9 @@ app.get("/", (req, res) => {
 
 // Rutas de solicitudes
 app.use("/api/solicitudes", solicitudRoutes);
+
+// Rutas de autenticación
+app.use("/api/auth", authRoutes);
 
 // Conexión con MongoDB
 mongoose.connect(process.env.MONGODB_URI)

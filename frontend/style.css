@@ -1786,3 +1786,121 @@ main section > p {
         padding: 42px 7% 22px;
     }
 }
+
+/* =========================================
+   CORRECCIÓN DEL HEADER DE LOGIN
+========================================== */
+
+/* Encabezado */
+
+.header:has(.menu_navegacion) {
+    min-height: 85px;
+    height: auto;
+    padding: 10px 4%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+
+/* Logo */
+
+.header .contenedor_logo {
+    flex-shrink: 0;
+}
+
+.header .contenedor_logo a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--blanco);
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.header .contenedor_logo .logo {
+    display: block;
+    width: 48px;
+    height: 48px;
+    max-width: 48px;
+    object-fit: contain;
+}
+
+/* Navegación */
+
+.header .menu_navegacion {
+    flex: 1;
+    min-width: 0;
+    margin-left: auto;
+}
+
+.header .menu_navegacion ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+}
+
+/* Todos los botones amarillos */
+
+.header .menu_navegacion ul li a {
+    display: block;
+    padding: 9px 13px;
+    background-color: var(--amarillo);
+    color: var(--marron);
+    border: 2px solid var(--amarillo);
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: none;
+    transition: 0.25s ease;
+}
+
+/* Efecto al pasar el cursor */
+
+.header .menu_navegacion ul li a:hover {
+    background-color: var(--blanco);
+    color: var(--azul);
+    border-color: var(--blanco);
+    transform: translateY(-2px);
+}
+
+/* Celulares */
+
+@media (max-width: 950px) {
+    .header:has(.menu_navegacion) {
+        flex-direction: column;
+        padding: 15px 5%;
+    }
+
+    .header .menu_navegacion {
+        width: 100%;
+        margin: 0;
+    }
+
+    .header .menu_navegacion ul {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .header .contenedor_logo .logo {
+        width: 45px;
+        height: 45px;
+    }
+
+    .header .menu_navegacion ul {
+        gap: 7px;
+    }
+
+    .header .menu_navegacion ul li a {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+}
