@@ -1,7 +1,5 @@
 
-/* =========================================
-   1. VARIABLES Y COLORES PRINCIPALES
-========================================== */
+
 
 :root {
     --azul: #0E1F31;
@@ -1022,5 +1020,769 @@ a[href]:focus-visible {
     .card a {
         padding: 10px 18px;
         font-size: 13px;
+    }
+}
+
+/* =========================================
+   21. REDISEÑO DEL FORMULARIO
+   PROYECTO: ¿Y HOY QUÉ?
+========================================== */
+
+/* Fondo de la zona de personalización */
+
+#introduccion_personalizar {
+    background-color: #FFFFFF;
+    text-align: center;
+    padding: 75px 8% 45px;
+}
+
+#introduccion_personalizar h2,
+#formulario_personalizar > h2 {
+    color: var(--azul);
+    font-size: clamp(27px, 4vw, 38px);
+    letter-spacing: 0.5px;
+    text-transform: none;
+    margin-bottom: 16px;
+}
+
+#introduccion_personalizar p,
+#formulario_personalizar > p {
+    max-width: 720px;
+    margin: 0 auto 12px;
+    color: #777777;
+    font-size: 16px;
+}
+
+/* Fondo general del formulario */
+
+#formulario_personalizar {
+    background-color: #F4F4F2;
+    padding: 65px 7%;
+}
+
+#formulario_personalizar > h2,
+#formulario_personalizar > p {
+    text-align: center;
+}
+
+/* Contenedor principal */
+
+#formulario_experiencia {
+    max-width: 900px;
+    margin: 45px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Cada apartado */
+
+#formulario_experiencia .seccion_formulario {
+    min-width: 0;
+    padding: 32px 38px;
+    background-color: #FFFFFF;
+    border: 1px solid #E8E7E2;
+    border-top: 3px solid var(--amarillo);
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(14, 31, 49, 0.045);
+}
+
+/* Títulos de los apartados */
+
+#formulario_experiencia legend {
+    padding: 0 12px;
+    color: var(--azul);
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+#formulario_experiencia .seccion_formulario > p {
+    margin: 8px 0 20px;
+    color: var(--gris);
+    font-size: 14px;
+}
+
+/* Etiquetas */
+
+#formulario_experiencia .seccion_formulario > label {
+    display: block;
+    margin: 20px 0 8px;
+    color: var(--azul);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Campos de texto y listas */
+
+#formulario_experiencia input[type="text"],
+#formulario_experiencia input[type="email"],
+#formulario_experiencia input[type="tel"],
+#formulario_experiencia input[type="number"],
+#formulario_experiencia select,
+#formulario_experiencia textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 15px;
+    background-color: #FAFAF8;
+    color: var(--texto);
+    border: 1px solid #DDDDD7;
+    border-radius: 7px;
+    font-size: 14px;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+/* Campo de ciudad */
+
+#formulario_experiencia input[readonly] {
+    background-color: #EEEEEC;
+    color: var(--azul);
+    font-weight: 600;
+    cursor: default;
+}
+
+/* Enfoque de los campos */
+
+#formulario_experiencia input:focus,
+#formulario_experiencia select:focus,
+#formulario_experiencia textarea:focus {
+    outline: none;
+    border-color: var(--marron);
+    background-color: #FFFFFF;
+    box-shadow: 0 0 0 3px rgba(143, 102, 20, 0.08);
+}
+
+/* Área de texto */
+
+#formulario_experiencia textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+/* Opciones de experiencia */
+
+#formulario_experiencia input[type="radio"] {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    margin: 0 12px 0 0;
+    accent-color: var(--marron);
+}
+
+#formulario_experiencia input[type="radio"] + * {
+    color: var(--texto);
+}
+
+/* Etiquetas que contienen opciones */
+
+#formulario_experiencia .seccion_formulario label:has(input[type="radio"]),
+#formulario_experiencia .seccion_formulario label:has(input[type="checkbox"]) {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 13px 15px;
+    margin: 9px 0;
+    background-color: #FAFAF8;
+    border: 1px solid #EEEEEC;
+    border-radius: 7px;
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+/* Casillas de intereses */
+
+#formulario_experiencia input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    margin: 0 12px 0 0;
+    accent-color: var(--marron);
+}
+
+/* Archivo de fotografía */
+
+#formulario_experiencia input[type="file"] {
+    width: 100%;
+    padding: 14px;
+    margin-top: 8px;
+    background-color: #FAFAF8;
+    border: 1px dashed #C9C9C1;
+    border-radius: 7px;
+    font-size: 13px;
+}
+
+/* Botones */
+
+#formulario_experiencia .formulario_botones {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding: 15px 0 5px;
+}
+
+#formulario_experiencia .formulario_botones button {
+    min-width: 190px;
+    padding: 14px 25px;
+    border: 2px solid var(--amarillo);
+    border-radius: 30px;
+    background-color: var(--amarillo);
+    color: var(--azul);
+    font-size: 14px;
+    font-weight: 700;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#formulario_experiencia .formulario_botones button[type="reset"] {
+    background-color: transparent;
+    border-color: #C9C9C1;
+    color: #555555;
+}
+
+#formulario_experiencia .formulario_botones button:hover {
+    background-color: var(--azul);
+    border-color: var(--azul);
+    color: #FFFFFF;
+}
+
+#formulario_experiencia .formulario_botones button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Mensaje de respuesta del formulario */
+
+#mensaje_formulario {
+    max-width: 700px;
+    margin: 10px auto;
+    padding: 14px 18px;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Información complementaria */
+
+#informacion_personalizar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 45px;
+    background-color: #FFFFFF;
+}
+
+#informacion_personalizar h2 {
+    color: var(--azul);
+    font-size: 30px;
+    margin-bottom: 18px;
+}
+
+#informacion_personalizar p {
+    color: var(--gris);
+    margin-bottom: 20px;
+}
+
+#informacion_personalizar img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Última sección */
+
+#llamada_accion {
+    background-color: var(--azul);
+    text-align: center;
+    color: #FFFFFF;
+}
+
+#llamada_accion h2 {
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+
+#llamada_accion p {
+    max-width: 650px;
+    margin: 0 auto 20px;
+    color: #E5E8EB;
+}
+
+/* Adaptación para tabletas */
+
+@media (max-width: 800px) {
+
+    #informacion_personalizar {
+        grid-template-columns: 1fr;
+    }
+
+    #formulario_experiencia .seccion_formulario {
+        padding: 28px;
+    }
+}
+
+/* Adaptación para celulares */
+
+@media (max-width: 600px) {
+
+    #formulario_personalizar {
+        padding: 45px 5%;
+    }
+
+    #formulario_experiencia {
+        gap: 17px;
+        margin-top: 30px;
+    }
+
+    #formulario_experiencia .seccion_formulario {
+        padding: 24px 18px;
+    }
+
+    #formulario_experiencia legend {
+        font-size: 16px;
+    }
+
+    #formulario_experiencia .formulario_botones {
+        flex-direction: column;
+    }
+
+    #formulario_experiencia .formulario_botones button {
+        width: 100%;
+    }
+
+    #informacion_personalizar img {
+        height: 250px;
+    }
+}
+
+
+
+/* =========================================
+   22. ORGANIZACIÓN GENERAL Y DISTRIBUCIÓN
+   PROYECTO: ¿Y HOY QUÉ?
+========================================== */
+
+/* 1. FONDOS Y ESPACIADO DE LAS SECCIONES */
+
+main section:nth-of-type(even) {
+    background-color: var(--blanco);
+}
+
+#categorias,
+#interiores,
+#exteriores,
+#cajas,
+#suscripciones,
+#presentacion,
+#personalizar,
+#quienes_somos,
+#funcionamiento {
+    background-color: var(--blanco);
+}
+
+#idea_negocio,
+#diferencias,
+#experiencias,
+#destacadas,
+#como_funciona {
+    background-color: var(--fondo);
+}
+
+/* Ancho y separación del contenido */
+
+main section {
+    padding: 75px 7%;
+}
+
+main section > h2 {
+    color: var(--azul);
+    text-align: center;
+    font-size: clamp(25px, 3.5vw, 36px);
+    margin-bottom: 30px;
+}
+
+main section > p {
+    max-width: 850px;
+    margin: 0 auto 25px;
+}
+
+
+/* =========================================
+   2. TARJETAS: DISTRIBUCIÓN EN FILAS
+========================================== */
+
+/* Tres tarjetas por fila */
+
+.categorias,
+.experiencias,
+.idea_contenido,
+.proposito_contenido {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 28px;
+}
+
+/* Cuatro tarjetas por fila */
+
+.beneficios {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 22px;
+}
+
+/* Dos tarjetas por fila */
+
+.cajas_contenido,
+.suscripciones_contenido {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 30px;
+}
+
+/* Apariencia uniforme de las tarjetas */
+
+.categorias > article,
+.experiencias > article,
+.idea_contenido > article,
+.proposito_contenido > article,
+.beneficios > article,
+.cajas_contenido > article,
+.suscripciones_contenido > article,
+.pasos > article {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    padding: 0 0 25px;
+    overflow: hidden;
+
+    background-color: var(--blanco);
+    border: 1px solid rgba(14, 31, 49, 0.07);
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Movimiento discreto al pasar el cursor */
+
+.categorias > article:hover,
+.experiencias > article:hover,
+.idea_contenido > article:hover,
+.proposito_contenido > article:hover,
+.beneficios > article:hover,
+.cajas_contenido > article:hover,
+.suscripciones_contenido > article:hover,
+.pasos > article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.13);
+}
+
+/* Imágenes del mismo tamaño */
+
+.categorias > article img,
+.experiencias > article img,
+.idea_contenido > article img,
+.proposito_contenido > article img,
+.beneficios > article img,
+.cajas_contenido > article img,
+.suscripciones_contenido > article img,
+.pasos > article img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+/* Textos de las tarjetas */
+
+.categorias > article h3,
+.experiencias > article h3,
+.idea_contenido > article h3,
+.proposito_contenido > article h3,
+.beneficios > article h3,
+.cajas_contenido > article h3,
+.suscripciones_contenido > article h3,
+.pasos > article h3 {
+    padding: 0 22px;
+    margin-bottom: 12px;
+    color: var(--azul);
+    font-size: 20px;
+}
+
+.categorias > article p,
+.experiencias > article p,
+.idea_contenido > article p,
+.proposito_contenido > article p,
+.beneficios > article p,
+.cajas_contenido > article p,
+.suscripciones_contenido > article p,
+.pasos > article p {
+    padding: 0 22px;
+    margin-bottom: 15px;
+    color: var(--gris);
+    font-size: 15px;
+}
+
+/* Botones alineados en la parte inferior */
+
+.categorias > article > a:last-child,
+.experiencias > article > a:last-child,
+.idea_contenido > article > a:last-child,
+.proposito_contenido > article > a:last-child,
+.beneficios > article > a:last-child,
+.cajas_contenido > article > a:last-child,
+.suscripciones_contenido > article > a:last-child,
+.pasos > article > a:last-child {
+    align-self: flex-start;
+    margin: auto 22px 0;
+}
+
+
+/* =========================================
+   3. SECCIONES CON IMAGEN Y TEXTO
+========================================== */
+
+/* Presentación de la página principal */
+
+#presentacion,
+#personalizar,
+#quienes_somos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 45px;
+}
+
+/* Los títulos principales ocupan todo el ancho */
+
+#presentacion > h2,
+#personalizar > h2,
+#quienes_somos > h2 {
+    grid-column: 1 / -1;
+}
+
+/* Contenedores de texto */
+
+.presentacion_contenido,
+.personalizar_contenido,
+.nosotros_contenido {
+    min-width: 0;
+}
+
+.presentacion_contenido h2,
+.personalizar_contenido h2,
+.nosotros_contenido h2 {
+    color: var(--azul);
+    font-size: clamp(25px, 3vw, 34px);
+    margin-bottom: 18px;
+}
+
+.presentacion_contenido p,
+.personalizar_contenido p,
+.nosotros_contenido p {
+    color: var(--gris);
+    margin-bottom: 16px;
+}
+
+/* Imágenes de estas secciones */
+
+.presentacion_imagen,
+.personalizar_imagen,
+.nosotros_imagen {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+
+/* Funcionamiento: imagen y texto */
+
+.funcionamiento_contenido {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 45px;
+}
+
+.funcionamiento_contenido img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+
+.funcionamiento_contenido h2 {
+    color: var(--azul);
+    margin-bottom: 18px;
+}
+
+
+/* =========================================
+   4. PASOS DE CÓMO FUNCIONA
+========================================== */
+
+.pasos {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.pasos > article {
+    padding: 28px 18px;
+    text-align: center;
+}
+
+.pasos > article img {
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+    margin: 0 auto 15px;
+}
+
+
+/* =========================================
+   5. PIE DE PÁGINA
+========================================== */
+
+/* El HTML tiene cuatro bloques directamente dentro
+   de .footer, por eso se organiza desde el propio footer. */
+
+.footer {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 35px;
+    padding: 55px 7% 25px;
+}
+
+.footer > div {
+    min-width: 0;
+}
+
+.footer h3,
+.footer h4 {
+    margin-bottom: 16px;
+}
+
+.footer p {
+    margin-bottom: 10px;
+}
+
+.footer ul {
+    padding: 0;
+}
+
+.footer li {
+    margin-bottom: 9px;
+}
+
+.footer a {
+    transition: color 0.2s ease;
+}
+
+/* Evita que los enlaces del footer parezcan botones */
+
+.footer a[href] {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    font-weight: normal;
+}
+
+
+/* =========================================
+   6. AJUSTES PARA TABLET
+========================================== */
+
+@media (max-width: 1000px) {
+
+    .beneficios {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .categorias,
+    .experiencias,
+    .idea_contenido,
+    .proposito_contenido {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pasos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .footer {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* =========================================
+   7. AJUSTES PARA CELULAR
+========================================== */
+
+@media (max-width: 650px) {
+
+    main section {
+        padding: 48px 6%;
+    }
+
+    .categorias,
+    .experiencias,
+    .idea_contenido,
+    .proposito_contenido,
+    .beneficios,
+    .cajas_contenido,
+    .suscripciones_contenido,
+    .pasos {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    #presentacion,
+    #personalizar,
+    #quienes_somos,
+    .funcionamiento_contenido {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    #presentacion > h2,
+    #personalizar > h2,
+    #quienes_somos > h2 {
+        grid-column: auto;
+    }
+
+    .presentacion_imagen,
+    .personalizar_imagen,
+    .nosotros_imagen,
+    .funcionamiento_contenido img {
+        height: 260px;
+    }
+
+    .categorias > article img,
+    .experiencias > article img,
+    .idea_contenido > article img,
+    .proposito_contenido > article img,
+    .beneficios > article img,
+    .cajas_contenido > article img,
+    .suscripciones_contenido > article img {
+        height: 220px;
+    }
+
+    .footer {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 42px 7% 22px;
     }
 }
