@@ -1,5 +1,5 @@
 
-const API_URL = "http://localhost:3001/api";
+const API_URL = "https://y-hoy-qu.onrender.com/api";
 
 const ESTADOS = {
     pendiente: "Pendiente",

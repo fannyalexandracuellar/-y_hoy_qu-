@@ -18,7 +18,7 @@ formulario.addEventListener("submit", async (event) => {
         mensaje: document.getElementById("mensaje").value.trim()
     };
 
-    // Evitar mensajes vacíos
+    
     if (
         !datos.nombre ||
         !datos.correo ||
@@ -35,7 +35,7 @@ formulario.addEventListener("submit", async (event) => {
         botonEnviar.textContent = "Enviando...";
 
         const respuesta = await fetch(
-            "http://localhost:3001/api/contacto",
+            "https://y-hoy-qu.onrender.com/api/contacto",
             {
                 method: "POST",
                 headers: {

@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
 
             const respuesta = await fetch(
-                "http://localhost:3001/api/solicitudes",
+                "https://y-hoy-qu.onrender.com/api/solicitudes/personalizar",
                 {
                     method: "POST",
 

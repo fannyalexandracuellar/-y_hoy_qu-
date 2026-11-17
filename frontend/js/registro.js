@@ -32,7 +32,7 @@ formulario.addEventListener("submit", async (evento) => {
     mensaje.textContent = "Creando tu cuenta...";
 
     try {
-        const respuesta = await fetch("http://localhost:3001/api/auth/registro", {
+        const respuesta = await fetch("https://y-hoy-qu.onrender.com/api/auth/registro", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         mensaje.textContent = "Cargando información del perfil...";
 
         const respuesta = await fetch(
-            "http://localhost:3001/api/auth/perfil",
+           "https://y-hoy-qu.onrender.com/api/auth/perfil",
             {
                 method: "GET",
                 headers: {

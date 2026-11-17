@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         mensaje.textContent = "Cargando tus solicitudes...";
 
         const respuesta = await fetch(
-            "http://localhost:3001/api/solicitudes/mis-solicitudes",
+            "https://y-hoy-qu.onrender.com/api/solicitudes/mis-solicitudes",
             {
                 method: "GET",
                 headers: {

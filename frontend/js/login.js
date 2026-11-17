@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
 
             const respuesta = await fetch(
-                "http://localhost:3001/api/auth/login",
+                "https://y-hoy-qu.onrender.com/api/auth/login",
                 {
                     method: "POST",
                     headers: {
