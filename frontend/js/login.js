@@ -1,4 +1,5 @@
 
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const formulario = document.getElementById("formulario_login");
@@ -52,7 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
+            // Guardar los datos de la sesión
             sessionStorage.setItem("token", datos.token);
+
             sessionStorage.setItem(
                 "usuario",
                 JSON.stringify(datos.usuario)
@@ -60,7 +63,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             alert(`¡Bienvenido/a, ${datos.usuario.nombre}!`);
 
-            window.location.href = "index.html";
+            // Redirigir según el rol
+            if (datos.usuario.rol === "administrador") {
+                window.location.href = "admin.html";
+            } else {
+                window.location.href = "index.html";
+            }
 
         } catch (error) {
 

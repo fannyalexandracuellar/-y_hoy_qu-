@@ -1,5 +1,13 @@
+/* =====================================================
+   ¿Y HOY QUÉ?
+   HOJA DE ESTILOS GENERAL
+   Versión organizada
+===================================================== */
 
 
+/* =====================================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL
+===================================================== */
 
 :root {
     --azul: #0E1F31;
@@ -15,11 +23,6 @@
     --sombra: 0 5px 18px rgba(0, 0, 0, 0.10);
     --radio: 8px;
 }
-
-
-/* =========================================
-   2. CONFIGURACIÓN GENERAL
-========================================== */
 
 * {
     margin: 0;
@@ -39,13 +42,14 @@ body {
 }
 
 img {
-    max-width: 100%;
     display: block;
+    max-width: 100%;
 }
 
 a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 button,
@@ -61,14 +65,17 @@ section {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
     line-height: 1.2;
 }
 
 
-/* =========================================
-   3. ENCABEZADO Y MENÚ
-========================================== */
+/* =====================================================
+   2. ENCABEZADOS Y MENÚ DE NAVEGACIÓN
+===================================================== */
+
+/* Encabezado principal de las páginas */
 
 .header {
     width: 100%;
@@ -78,52 +85,243 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 25px;
 
     background-color: var(--azul);
     position: relative;
-    z-index: 10;
+    z-index: 100;
 }
+
+/* Logo del encabezado tradicional */
 
 #logo_header {
     width: 70px;
     height: auto;
     object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* Menú tradicional */
+
+.menu {
+    min-width: 0;
 }
 
 .menu ul {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
 
     list-style: none;
-    gap: 20px;
 }
 
-.menu a {
+/* Enlaces del menú */
+
+.menu ul > li > a {
     display: block;
     padding: 10px 15px;
 
     background-color: var(--amarillo);
     color: var(--marron);
 
-    border-radius: 5px;
+    border: 2px solid var(--amarillo);
+    border-radius: 8px;
+
     font-size: 14px;
     font-weight: bold;
+    letter-spacing: 0.3px;
 
-    transition: 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    transition: 0.25s ease;
 }
 
-.menu a:hover {
+.menu ul > li > a:hover {
     background-color: var(--blanco);
     color: var(--azul);
+    border-color: var(--blanco);
+    transform: translateY(-2px);
+}
+
+/* Encabezado alternativo utilizado en login o registro */
+
+.header:has(.menu_navegacion) {
+    min-height: 85px;
+    height: auto;
+    padding: 10px 4%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+
+.header .contenedor_logo {
+    flex-shrink: 0;
+}
+
+.header .contenedor_logo a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    color: var(--blanco);
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.header .contenedor_logo .logo {
+    display: block;
+    width: 48px;
+    height: 48px;
+    max-width: 48px;
+    object-fit: contain;
+}
+
+.header .menu_navegacion {
+    flex: 1;
+    min-width: 0;
+    margin-left: auto;
+}
+
+.header .menu_navegacion ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    list-style: none;
+}
+
+.header .menu_navegacion ul li a {
+    display: block;
+    padding: 9px 13px;
+
+    background-color: var(--amarillo);
+    color: var(--marron);
+
+    border: 2px solid var(--amarillo);
+    border-radius: 7px;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    box-shadow: none;
+    transition: 0.25s ease;
+}
+
+.header .menu_navegacion ul li a:hover {
+    background-color: var(--blanco);
+    color: var(--azul);
+    border-color: var(--blanco);
     transform: translateY(-2px);
 }
 
 
-/* =========================================
+/* =====================================================
+   3. MENÚ DE PERFIL DEL USUARIO
+===================================================== */
+
+.menu_usuario {
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* Botón de Mi cuenta */
+
+#boton_perfil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 9px 14px;
+
+    background-color: var(--azul);
+    color: var(--amarillo);
+
+    border: 1px solid var(--amarillo);
+    border-radius: 25px;
+
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+#boton_perfil:hover {
+    background-color: var(--amarillo);
+    color: var(--azul);
+    transform: translateY(-2px);
+}
+
+#icono_usuario {
+    font-size: 18px;
+}
+
+/* Desplegable */
+
+.opciones_perfil {
+    display: none;
+
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+
+    min-width: 190px;
+    padding: 8px;
+
+    background-color: var(--blanco);
+    border: 1px solid #E5E5E5;
+    border-radius: 10px;
+
+    box-shadow: var(--sombra);
+    z-index: 1000;
+}
+
+.opciones_perfil.activo {
+    display: flex;
+    flex-direction: column;
+}
+
+.opciones_perfil a,
+.opciones_perfil button {
+    display: block;
+    width: 100%;
+
+    padding: 11px 12px;
+
+    background: none;
+    color: var(--azul);
+
+    border: none;
+    border-radius: 6px;
+
+    text-align: left;
+    font-size: 14px;
+    font-weight: normal;
+
+    cursor: pointer;
+    box-shadow: none;
+    transition: 0.2s ease;
+}
+
+.opciones_perfil a:hover,
+.opciones_perfil button:hover {
+    background-color: var(--amarillo);
+    color: var(--azul);
+    transform: none;
+}
+
+
+/* =====================================================
    4. PORTADAS Y SECCIONES HERO
-========================================== */
+===================================================== */
 
 .hero,
 .hero_inicio,
@@ -135,17 +333,18 @@ h3 {
 .hero_mapa,
 .hero_login,
 .hero_registro {
-    min-height: 580px;
-    height: 85vh;
-    max-height: 850px;
-
     position: relative;
-    overflow: hidden;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
+    width: 100%;
+    min-height: 580px;
+    height: 85vh;
+    max-height: 850px;
+
+    overflow: hidden;
     background-color: var(--azul);
 }
 
@@ -162,7 +361,7 @@ h3 {
     z-index: 0;
 }
 
-/* Capa para mejorar la lectura del texto */
+/* Capa oscura para facilitar la lectura */
 
 .hero::after,
 .hero_inicio::after,
@@ -173,13 +372,14 @@ h3 {
 .hero_preguntas::after,
 .hero_mapa::after {
     content: "";
+
     position: absolute;
     inset: 0;
 
     background: linear-gradient(
         to bottom,
         rgba(14, 31, 49, 0.15),
-        rgba(14, 31, 49, 0.65)
+        rgba(14, 31, 49, 0.70)
     );
 
     z-index: 1;
@@ -211,9 +411,10 @@ h3 {
 .hero_nosotros h1,
 .hero_preguntas h1,
 .hero_mapa h1 {
+    margin-bottom: 20px;
+
     font-size: clamp(38px, 6vw, 75px);
     letter-spacing: 4px;
-    margin-bottom: 20px;
     text-transform: uppercase;
 }
 
@@ -223,13 +424,16 @@ h3 {
 .hero_personalizar p {
     max-width: 700px;
     margin: 0 auto 25px;
+
     font-size: 18px;
 }
 
 
-/* =========================================
-   5. BOTONES GENERALES
-========================================== */
+/* =====================================================
+   5. BOTONES GENERALES Y ENLACES
+===================================================== */
+
+/* Botones */
 
 .boton,
 .btn,
@@ -239,16 +443,16 @@ input[type="submit"] {
 
     padding: 12px 25px;
 
-    border: none;
-    border-radius: 4px;
-
     background-color: var(--amarillo);
     color: var(--marron);
+
+    border: none;
+    border-radius: 5px;
 
     font-weight: bold;
     cursor: pointer;
 
-    transition: 0.3s ease;
+    transition: 0.25s ease;
 }
 
 .boton:hover,
@@ -266,37 +470,135 @@ input[type="submit"]:hover {
     color: var(--blanco);
 }
 
+/* Enlaces que funcionan como botones dentro del contenido */
 
-/* =========================================
+main a[href]:not(p a):not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(.texto_enlace),
+.hero a[href],
+.hero_inicio a[href],
+.hero_catalogo a[href],
+.hero_personalizar a[href],
+.hero_contacto a[href],
+.hero_nosotros a[href],
+.hero_preguntas a[href],
+.hero_mapa a[href],
+.hero_login a[href],
+.hero_registro a[href] {
+    display: inline-block;
+
+    padding: 12px 25px;
+    margin-top: 10px;
+
+    background-color: var(--amarillo);
+    color: var(--marron);
+
+    border: 2px solid var(--amarillo);
+    border-radius: 25px;
+
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+
+    text-align: center;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.10);
+    transition: 0.25s ease;
+}
+
+/* Enlaces de las tarjetas */
+
+.tarjeta a,
+.tarjeta_experiencia a,
+.tarjeta_categoria a,
+.card a,
+.tarjeta_contenido a,
+.tarjeta_experiencia .contenido a,
+.tarjeta_categoria .contenido a,
+.card .contenido a {
+    display: inline-block;
+
+    padding: 10px 20px;
+    margin-top: 12px;
+
+    background-color: var(--amarillo);
+    color: var(--marron);
+
+    border: 2px solid var(--amarillo);
+    border-radius: 25px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    transition: 0.25s ease;
+}
+
+/* Enlaces de secciones destacadas */
+
+.seccion_destacada a,
+.bloque_destacado a,
+.seccion_promocional a {
+    display: inline-block;
+
+    padding: 12px 25px;
+
+    background-color: var(--azul);
+    color: var(--blanco);
+
+    border: 2px solid var(--azul);
+    border-radius: 25px;
+
+    font-weight: bold;
+    transition: 0.25s ease;
+}
+
+/* Enlaces de texto */
+
+main p a,
+.texto_enlace {
+    color: var(--marron);
+    font-weight: bold;
+
+    text-decoration: underline;
+    text-decoration-color: var(--amarillo);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+/* Efecto de navegación con teclado */
+
+a[href]:focus-visible {
+    outline: 3px solid var(--amarillo);
+    outline-offset: 4px;
+    border-radius: 5px;
+}
+
+
+/* =====================================================
    6. TÍTULOS Y PRESENTACIÓN DE SECCIONES
-========================================== */
+===================================================== */
 
 .titulo_seccion,
 .encabezado_seccion {
-    text-align: center;
     margin-bottom: 40px;
+    text-align: center;
 }
 
 .titulo_seccion h2,
 .encabezado_seccion h2 {
+    margin-bottom: 12px;
+
     color: var(--azul);
     font-size: clamp(25px, 4vw, 38px);
+
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin-bottom: 12px;
 }
 
 .titulo_seccion p,
 .encabezado_seccion p {
-    color: var(--gris);
     max-width: 750px;
     margin: auto;
+    color: var(--gris);
 }
-
-
-/* =========================================
-   7. SECCIONES DE CONTENIDO
-========================================== */
 
 main {
     width: 100%;
@@ -304,9 +606,45 @@ main {
 
 main section {
     width: 100%;
+    padding: 75px 7%;
 }
 
+main section > h2 {
+    margin-bottom: 30px;
+
+    color: var(--azul);
+    text-align: center;
+    font-size: clamp(25px, 3.5vw, 36px);
+}
+
+main section > p {
+    max-width: 850px;
+    margin: 0 auto 25px;
+}
+
+/* Fondos de las secciones */
+
 main section:nth-of-type(even) {
+    background-color: var(--fondo);
+}
+
+#categorias,
+#interiores,
+#exteriores,
+#cajas,
+#suscripciones,
+#presentacion,
+#personalizar,
+#quienes_somos,
+#funcionamiento {
+    background-color: var(--blanco);
+}
+
+#idea_negocio,
+#diferencias,
+#experiencias,
+#destacadas,
+#como_funciona {
     background-color: var(--fondo);
 }
 
@@ -321,15 +659,15 @@ main section:nth-of-type(even) {
 }
 
 
-/* =========================================
-   8. IMÁGENES DE PRESENTACIÓN
-========================================== */
+/* =====================================================
+   7. SECCIONES CON IMAGEN Y TEXTO
+===================================================== */
 
 .contenido_dos_columnas,
 .presentacion_contenido,
 .contenedor_presentacion {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: center;
     gap: 45px;
 }
@@ -339,21 +677,127 @@ main section:nth-of-type(even) {
 .contenedor_presentacion img {
     width: 100%;
     height: 380px;
+
     object-fit: cover;
     border-radius: var(--radio);
 }
 
 .contenido_dos_columnas h2,
 .presentacion_contenido h2 {
+    margin-bottom: 20px;
     color: var(--azul);
     font-size: 32px;
+}
+
+/* Secciones de presentación */
+
+#presentacion,
+#personalizar,
+#quienes_somos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 45px;
+}
+
+#presentacion > h2,
+#personalizar > h2,
+#quienes_somos > h2 {
+    grid-column: 1 / -1;
+}
+
+.presentacion_contenido,
+.personalizar_contenido,
+.nosotros_contenido {
+    min-width: 0;
+}
+
+.presentacion_contenido h2,
+.personalizar_contenido h2,
+.nosotros_contenido h2 {
+    margin-bottom: 18px;
+
+    color: var(--azul);
+    font-size: clamp(25px, 3vw, 34px);
+}
+
+.presentacion_contenido p,
+.personalizar_contenido p,
+.nosotros_contenido p {
+    margin-bottom: 16px;
+    color: var(--gris);
+}
+
+.presentacion_imagen,
+.personalizar_imagen,
+.nosotros_imagen {
+    width: 100%;
+    height: 380px;
+
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+
+/* Funcionamiento */
+
+.funcionamiento_contenido {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 45px;
+}
+
+.funcionamiento_contenido img {
+    width: 100%;
+    height: 360px;
+
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+
+.funcionamiento_contenido h2 {
+    margin-bottom: 18px;
+    color: var(--azul);
+}
+
+/* Información complementaria de personalización */
+
+#informacion_personalizar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 45px;
+
+    background-color: var(--blanco);
+}
+
+#informacion_personalizar h2 {
+    margin-bottom: 18px;
+    color: var(--azul);
+    font-size: 30px;
+}
+
+#informacion_personalizar p {
     margin-bottom: 20px;
+    color: var(--gris);
+}
+
+#informacion_personalizar img {
+    width: 100%;
+    height: 350px;
+
+    object-fit: cover;
+    border-radius: 12px;
 }
 
 
-/* =========================================
-   9. TARJETAS Y CATÁLOGO
-========================================== */
+/* =====================================================
+   8. TARJETAS, CATEGORÍAS Y EXPERIENCIAS
+===================================================== */
+
+/* Cuadrículas generales */
 
 .contenedor_tarjetas,
 .contenedor_categorias,
@@ -364,13 +808,16 @@ main section:nth-of-type(even) {
     gap: 25px;
 }
 
+/* Apariencia general */
+
 .tarjeta,
 .tarjeta_experiencia,
 .tarjeta_categoria,
 .card {
+    overflow: hidden;
+
     background-color: var(--blanco);
     border-radius: var(--radio);
-    overflow: hidden;
     box-shadow: var(--sombra);
 
     transition: 0.3s ease;
@@ -384,6 +831,8 @@ main section:nth-of-type(even) {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
+/* Imágenes */
+
 .tarjeta img,
 .tarjeta_experiencia img,
 .tarjeta_categoria img,
@@ -392,6 +841,8 @@ main section:nth-of-type(even) {
     height: 230px;
     object-fit: cover;
 }
+
+/* Contenido */
 
 .tarjeta_contenido,
 .tarjeta_experiencia .contenido,
@@ -404,8 +855,8 @@ main section:nth-of-type(even) {
 .tarjeta_experiencia h3,
 .tarjeta_categoria h3,
 .card h3 {
-    color: var(--azul);
     margin-bottom: 10px;
+    color: var(--azul);
     font-size: 20px;
 }
 
@@ -413,29 +864,159 @@ main section:nth-of-type(even) {
 .tarjeta_experiencia p,
 .tarjeta_categoria p,
 .card p {
-    color: var(--gris);
     margin-bottom: 15px;
+    color: var(--gris);
+}
+
+/* Cuadrículas específicas */
+
+.categorias,
+.experiencias,
+.idea_contenido,
+.proposito_contenido {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 28px;
+}
+
+.beneficios {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 22px;
+}
+
+.cajas_contenido,
+.suscripciones_contenido {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 30px;
+}
+
+/* Tarjetas de las cuadrículas */
+
+.categorias > article,
+.experiencias > article,
+.idea_contenido > article,
+.proposito_contenido > article,
+.beneficios > article,
+.cajas_contenido > article,
+.suscripciones_contenido > article,
+.pasos > article {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    padding: 0 0 25px;
+    overflow: hidden;
+
+    background-color: var(--blanco);
+    border: 1px solid rgba(14, 31, 49, 0.07);
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.categorias > article:hover,
+.experiencias > article:hover,
+.idea_contenido > article:hover,
+.proposito_contenido > article:hover,
+.beneficios > article:hover,
+.cajas_contenido > article:hover,
+.suscripciones_contenido > article:hover,
+.pasos > article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.13);
+}
+
+/* Imágenes de las tarjetas */
+
+.categorias > article img,
+.experiencias > article img,
+.idea_contenido > article img,
+.proposito_contenido > article img,
+.beneficios > article img,
+.cajas_contenido > article img,
+.suscripciones_contenido > article img,
+.pasos > article img {
+    width: 100%;
+    height: 220px;
+
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+/* Textos */
+
+.categorias > article h3,
+.experiencias > article h3,
+.idea_contenido > article h3,
+.proposito_contenido > article h3,
+.beneficios > article h3,
+.cajas_contenido > article h3,
+.suscripciones_contenido > article h3,
+.pasos > article h3 {
+    padding: 0 22px;
+    margin-bottom: 12px;
+
+    color: var(--azul);
+    font-size: 20px;
+}
+
+.categorias > article p,
+.experiencias > article p,
+.idea_contenido > article p,
+.proposito_contenido > article p,
+.beneficios > article p,
+.cajas_contenido > article p,
+.suscripciones_contenido > article p,
+.pasos > article p {
+    padding: 0 22px;
+    margin-bottom: 15px;
+
+    color: var(--gris);
+    font-size: 15px;
+}
+
+/* Botones alineados en la parte inferior */
+
+.categorias > article > a:last-child,
+.experiencias > article > a:last-child,
+.idea_contenido > article > a:last-child,
+.proposito_contenido > article > a:last-child,
+.beneficios > article > a:last-child,
+.cajas_contenido > article > a:last-child,
+.suscripciones_contenido > article > a:last-child,
+.pasos > article > a:last-child {
+    align-self: flex-start;
+    margin: auto 22px 0;
 }
 
 
-/* =========================================
-   10. BLOQUES DESTACADOS
-========================================== */
+/* =====================================================
+   9. BLOQUES DESTACADOS Y LLAMADAS A LA ACCIÓN
+===================================================== */
 
 .seccion_destacada,
 .bloque_destacado,
 .seccion_promocional {
+    padding: 65px 7%;
+
     background-color: var(--amarillo);
     color: var(--azul);
     text-align: center;
-    padding: 65px 7%;
 }
 
 .seccion_destacada h2,
 .bloque_destacado h2,
 .seccion_promocional h2 {
-    font-size: 35px;
     margin-bottom: 15px;
+    font-size: 35px;
 }
 
 .seccion_destacada p,
@@ -445,15 +1026,32 @@ main section:nth-of-type(even) {
     margin: 0 auto 25px;
 }
 
+#llamada_accion {
+    background-color: var(--azul);
+    color: var(--blanco);
+    text-align: center;
+}
 
-/* =========================================
-   11. CÓMO FUNCIONA
-========================================== */
+#llamada_accion h2 {
+    margin-bottom: 15px;
+    font-size: 30px;
+}
+
+#llamada_accion p {
+    max-width: 650px;
+    margin: 0 auto 20px;
+    color: #E5E8EB;
+}
+
+
+/* =====================================================
+   10. SECCIÓN CÓMO FUNCIONA
+===================================================== */
 
 .pasos,
 .contenedor_pasos {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 25px;
     text-align: center;
 }
@@ -461,6 +1059,7 @@ main section:nth-of-type(even) {
 .paso,
 .tarjeta_paso {
     padding: 30px 20px;
+
     background-color: var(--blanco);
     border-radius: var(--radio);
     box-shadow: var(--sombra);
@@ -468,8 +1067,8 @@ main section:nth-of-type(even) {
 
 .paso h3,
 .tarjeta_paso h3 {
-    color: var(--azul);
     margin: 15px 0;
+    color: var(--azul);
 }
 
 .numero_paso {
@@ -487,10 +1086,28 @@ main section:nth-of-type(even) {
     font-weight: bold;
 }
 
+/* Cuatro pasos cuando se utiliza la cuadrícula de artículos */
 
-/* =========================================
-   12. FORMULARIOS
-========================================== */
+.pasos {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.pasos > article {
+    padding: 28px 18px;
+    text-align: center;
+}
+
+.pasos > article img {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 15px;
+    object-fit: contain;
+}
+
+
+/* =====================================================
+   11. FORMULARIOS GENERALES
+===================================================== */
 
 form {
     width: 100%;
@@ -517,9 +1134,9 @@ form {
 .grupo_formulario label,
 .form_grupo label,
 form label {
+    margin-bottom: 8px;
     color: var(--azul);
     font-weight: bold;
-    margin-bottom: 8px;
 }
 
 input,
@@ -528,11 +1145,11 @@ textarea {
     width: 100%;
     padding: 12px 14px;
 
-    border: 1px solid #CCCCCC;
-    border-radius: 4px;
-
     background-color: var(--blanco);
     color: var(--texto);
+
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
 }
 
 input:focus,
@@ -560,9 +1177,505 @@ form input[type="submit"] {
 }
 
 
-/* =========================================
-   13. PREGUNTAS FRECUENTES
-========================================== */
+/* =====================================================
+   12. FORMULARIO DE PERSONALIZACIÓN
+===================================================== */
+
+/* Introducción */
+
+#introduccion_personalizar {
+    padding: 75px 8% 45px;
+    background-color: var(--blanco);
+    text-align: center;
+}
+
+#introduccion_personalizar h2,
+#formulario_personalizar > h2 {
+    margin-bottom: 16px;
+
+    color: var(--azul);
+    font-size: clamp(27px, 4vw, 38px);
+    letter-spacing: 0.5px;
+    text-transform: none;
+}
+
+#introduccion_personalizar p,
+#formulario_personalizar > p {
+    max-width: 720px;
+    margin: 0 auto 12px;
+
+    color: var(--gris);
+    font-size: 16px;
+}
+
+/* Fondo y encabezado del formulario */
+
+#formulario_personalizar {
+    padding: 65px 7%;
+    background-color: var(--fondo);
+}
+
+#formulario_personalizar > h2,
+#formulario_personalizar > p {
+    text-align: center;
+}
+
+/* Formulario principal */
+
+#formulario_experiencia {
+    max-width: 900px;
+    margin: 45px auto 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Apartados */
+
+#formulario_experiencia .seccion_formulario {
+    min-width: 0;
+    padding: 32px 38px;
+
+    background-color: var(--blanco);
+    border: 1px solid #E8E7E2;
+    border-top: 3px solid var(--amarillo);
+    border-radius: 12px;
+
+    box-shadow: 0 5px 20px rgba(14, 31, 49, 0.045);
+}
+
+#formulario_experiencia legend {
+    padding: 0 12px;
+
+    color: var(--azul);
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+#formulario_experiencia .seccion_formulario > p {
+    margin: 8px 0 20px;
+    color: var(--gris);
+    font-size: 14px;
+}
+
+/* Etiquetas */
+
+#formulario_experiencia .seccion_formulario > label {
+    display: block;
+    margin: 20px 0 8px;
+
+    color: var(--azul);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Campos */
+
+#formulario_experiencia input[type="text"],
+#formulario_experiencia input[type="email"],
+#formulario_experiencia input[type="tel"],
+#formulario_experiencia input[type="number"],
+#formulario_experiencia select,
+#formulario_experiencia textarea {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 15px;
+
+    background-color: #FAFAF8;
+    color: var(--texto);
+
+    border: 1px solid #DDDDD7;
+    border-radius: 7px;
+
+    font-size: 14px;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+/* Ciudad */
+
+#formulario_experiencia input[readonly] {
+    background-color: var(--gris-claro);
+    color: var(--azul);
+    font-weight: 600;
+    cursor: default;
+}
+
+/* Enfoque */
+
+#formulario_experiencia input:focus,
+#formulario_experiencia select:focus,
+#formulario_experiencia textarea:focus {
+    outline: none;
+    border-color: var(--marron);
+    background-color: var(--blanco);
+    box-shadow: 0 0 0 3px rgba(143, 102, 20, 0.08);
+}
+
+/* Área de texto */
+
+#formulario_experiencia textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+/* Opciones */
+
+#formulario_experiencia input[type="radio"],
+#formulario_experiencia input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+
+    margin: 0 12px 0 0;
+    accent-color: var(--marron);
+}
+
+#formulario_experiencia .seccion_formulario label:has(input[type="radio"]),
+#formulario_experiencia .seccion_formulario label:has(input[type="checkbox"]) {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    padding: 13px 15px;
+    margin: 9px 0;
+
+    background-color: #FAFAF8;
+    border: 1px solid var(--gris-claro);
+    border-radius: 7px;
+
+    color: var(--texto);
+    font-size: 14px;
+    font-weight: 400;
+
+    cursor: pointer;
+}
+
+/* Fotografía */
+
+#formulario_experiencia input[type="file"] {
+    width: 100%;
+    padding: 14px;
+    margin-top: 8px;
+
+    background-color: #FAFAF8;
+    border: 1px dashed #C9C9C1;
+    border-radius: 7px;
+
+    font-size: 13px;
+}
+
+/* Botones del formulario */
+
+#formulario_experiencia .formulario_botones {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    padding: 15px 0 5px;
+}
+
+#formulario_experiencia .formulario_botones button {
+    min-width: 190px;
+    padding: 14px 25px;
+
+    background-color: var(--amarillo);
+    color: var(--azul);
+
+    border: 2px solid var(--amarillo);
+    border-radius: 30px;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#formulario_experiencia .formulario_botones button[type="reset"] {
+    background-color: transparent;
+    border-color: #C9C9C1;
+    color: #555555;
+}
+
+#formulario_experiencia .formulario_botones button:hover {
+    background-color: var(--azul);
+    border-color: var(--azul);
+    color: var(--blanco);
+}
+
+#formulario_experiencia .formulario_botones button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Mensajes */
+
+#mensaje_formulario {
+    max-width: 700px;
+    margin: 10px auto;
+    padding: 14px 18px;
+
+    border-radius: 7px;
+    text-align: center;
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   13. LOGIN Y REGISTRO
+===================================================== */
+
+.contenedor_login,
+.contenedor_registro {
+    width: 90%;
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 35px;
+
+    background-color: var(--blanco);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+}
+
+.contenedor_login h2,
+.contenedor_registro h2 {
+    margin-bottom: 25px;
+    color: var(--azul);
+    text-align: center;
+}
+
+
+/* =====================================================
+   14. PERFIL DEL USUARIO
+===================================================== */
+
+.seccion_perfil,
+.seccion_mis_solicitudes {
+    width: 90%;
+    max-width: 1100px;
+    min-height: 450px;
+    margin: 60px auto;
+}
+
+.encabezado_perfil,
+.encabezado_solicitudes {
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.encabezado_perfil h1,
+.encabezado_solicitudes h1 {
+    margin-bottom: 10px;
+    color: var(--azul);
+    font-size: 2.2rem;
+}
+
+.encabezado_perfil p,
+.encabezado_solicitudes p {
+    color: #666666;
+}
+
+.contenedor_perfil {
+    max-width: 750px;
+    margin: auto;
+    padding: 35px;
+
+    background-color: var(--blanco);
+    border-radius: 12px;
+    box-shadow: var(--sombra);
+}
+
+.contenedor_perfil h2 {
+    margin-bottom: 25px;
+    color: var(--azul);
+}
+
+.contenedor_perfil p {
+    padding: 13px 0;
+
+    border-bottom: 1px solid #EEEEEE;
+    color: #444444;
+}
+
+.contenedor_perfil p strong {
+    color: var(--azul);
+}
+
+#mensaje_perfil {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.botones_perfil {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+
+/* =====================================================
+   15. MIS SOLICITUDES
+===================================================== */
+
+.resumen_solicitudes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.tarjeta_resumen {
+    padding: 25px 15px;
+
+    background-color: var(--azul);
+    color: var(--blanco);
+
+    border-radius: 10px;
+    text-align: center;
+}
+
+.tarjeta_resumen h3 {
+    margin-bottom: 12px;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.tarjeta_resumen span {
+    color: var(--amarillo);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+#mensaje_solicitudes {
+    margin: 25px 0;
+    color: #555555;
+    text-align: center;
+}
+
+#lista_solicitudes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.tarjeta_solicitud {
+    padding: 25px;
+
+    background-color: var(--blanco);
+    border-left: 5px solid var(--amarillo);
+    border-radius: 12px;
+
+    box-shadow: var(--sombra);
+}
+
+.cabecera_solicitud {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.cabecera_solicitud h3 {
+    margin-top: 8px;
+    color: var(--azul);
+}
+
+.fecha_solicitud {
+    color: var(--gris);
+    font-size: 0.85rem;
+}
+
+.estado_solicitud {
+    padding: 7px 12px;
+
+    background-color: #F1F1F1;
+    color: #444444;
+
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.estado_pendiente {
+    background-color: #FFF4CC;
+}
+
+.estado_en_revision {
+    background-color: #E4EFFF;
+}
+
+.estado_aprobada {
+    background-color: #E1F5E5;
+}
+
+.estado_rechazada {
+    background-color: #FFE5E5;
+}
+
+.detalles_solicitud p {
+    margin: 10px 0;
+    color: #555555;
+    line-height: 1.5;
+}
+
+.detalles_solicitud strong {
+    color: var(--azul);
+}
+
+
+/* =====================================================
+   16. PANEL DE ADMINISTRACIÓN
+===================================================== */
+
+.panel_admin {
+    padding: 40px 5%;
+    background-color: var(--fondo);
+}
+
+.resumen_admin {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.tarjeta_admin {
+    padding: 25px;
+
+    background-color: var(--blanco);
+    border-top: 5px solid var(--amarillo);
+    border-radius: var(--radio);
+
+    box-shadow: var(--sombra);
+}
+
+.tabla_admin {
+    width: 100%;
+    margin-bottom: 35px;
+
+    background-color: var(--blanco);
+    border-collapse: collapse;
+}
+
+.tabla_admin th {
+    background-color: var(--azul);
+    color: var(--blanco);
+}
+
+.tabla_admin th,
+.tabla_admin td {
+    padding: 14px;
+    border-bottom: 1px solid #DDDDDD;
+    text-align: left;
+}
+
+
+/* =====================================================
+   17. PREGUNTAS FRECUENTES Y MAPA
+===================================================== */
 
 .preguntas,
 .contenedor_preguntas {
@@ -577,19 +1690,15 @@ form input[type="submit"] {
 
     background-color: var(--blanco);
     border-left: 5px solid var(--amarillo);
+
     box-shadow: var(--sombra);
 }
 
 .pregunta h3,
 .pregunta_item h3 {
-    color: var(--azul);
     margin-bottom: 10px;
+    color: var(--azul);
 }
-
-
-/* =========================================
-   14. MAPA DE EXPERIENCIAS
-========================================== */
 
 #contenedor_mapa,
 #mapa_experiencias {
@@ -609,95 +1718,353 @@ form input[type="submit"] {
 }
 
 
-/* =========================================
-   15. LOGIN Y REGISTRO
-========================================== */
+/* =====================================================
+   18. ASISTENTE DE RECOMENDACIONES
+===================================================== */
 
-.contenedor_login,
-.contenedor_registro {
-    width: 90%;
-    max-width: 500px;
-    margin: 60px auto;
-    padding: 35px;
+/* Sección del asistente */
 
-    background-color: var(--blanco);
-    border-radius: var(--radio);
-    box-shadow: var(--sombra);
-}
+#asistente_recomendaciones {
+    margin: 60px 0;
+    padding: 75px 30px;
 
-.contenedor_login h2,
-.contenedor_registro h2 {
+    background-color: var(--azul);
+    color: var(--blanco);
+
     text-align: center;
+}
+
+.contenido_asistente {
+    max-width: 750px;
+    margin: auto;
+}
+
+.etiqueta_asistente {
+    color: var(--amarillo);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.contenido_asistente h2 {
+    margin: 18px 0;
+    font-size: 34px;
+}
+
+.contenido_asistente p {
+    margin-bottom: 28px;
+
+    color: #E0E5EA;
+    line-height: 1.7;
+}
+
+#abrir_asistente_seccion {
+    padding: 14px 28px;
+
+    background-color: var(--amarillo);
     color: var(--azul);
-    margin-bottom: 25px;
+
+    border: none;
+    border-radius: 6px;
+
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
-
-/* =========================================
-   16. PANEL DE ADMINISTRACIÓN
-========================================== */
-
-.panel_admin {
-    padding: 40px 5%;
-    background-color: var(--fondo);
-}
-
-.resumen_admin {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    margin-bottom: 35px;
-}
-
-.tarjeta_admin {
-    padding: 25px;
+#abrir_asistente_seccion:hover {
     background-color: var(--blanco);
-    border-top: 5px solid var(--amarillo);
-    border-radius: var(--radio);
-    box-shadow: var(--sombra);
+    transform: translateY(-3px);
 }
 
-.tabla_admin {
-    width: 100%;
-    border-collapse: collapse;
+/* Botón flotante */
+
+#boton_asistente {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 14px 20px;
+
+    background-color: var(--azul);
+    color: var(--blanco);
+
+    border: 2px solid var(--amarillo);
+    border-radius: 35px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.25);
+    transition: 0.3s ease;
+}
+
+#boton_asistente span:first-child {
+    color: var(--amarillo);
+    font-size: 21px;
+}
+
+#boton_asistente:hover {
+    background-color: #18334D;
+    transform: translateY(-4px);
+}
+
+/* Ventana del chatbot */
+
+.ventana_asistente {
+    position: fixed;
+    right: 25px;
+    bottom: 95px;
+    z-index: 1001;
+
+    display: flex;
+    flex-direction: column;
+
+    width: 360px;
+    max-width: calc(100vw - 30px);
+    height: 500px;
+    max-height: calc(100vh - 120px);
+
     background-color: var(--blanco);
-    margin-bottom: 35px;
+    border-radius: 14px;
+    overflow: hidden;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
 }
 
-.tabla_admin th {
+.ventana_asistente[hidden] {
+    display: none;
+}
+
+/* Encabezado del chatbot */
+
+.encabezado_asistente {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px;
+
     background-color: var(--azul);
     color: var(--blanco);
 }
 
-.tabla_admin th,
-.tabla_admin td {
+.encabezado_asistente h3 {
+    margin: 0 0 5px;
+    color: var(--amarillo);
+}
+
+.encabezado_asistente p {
+    margin: 0;
+    color: #E0E5EA;
+    font-size: 12px;
+}
+
+#cerrar_asistente {
+    padding: 4px 8px;
+
+    background: transparent;
+    color: var(--blanco);
+
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Área de mensajes */
+
+.mensajes_asistente {
+    flex: 1;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    padding: 18px;
+    background-color: #F5F6F7;
+}
+
+.mensaje_asistente {
+    max-width: 85%;
+    padding: 12px 14px;
+
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+.mensaje_bot {
+    align-self: flex-start;
+
+    background-color: var(--blanco);
+    color: var(--azul);
+
+    border: 1px solid #E1E5E9;
+}
+
+.mensaje_usuario {
+    align-self: flex-end;
+
+    background-color: var(--azul);
+    color: var(--blanco);
+}
+
+/* Opciones de respuesta */
+
+.opciones_asistente {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
     padding: 14px;
-    text-align: left;
-    border-bottom: 1px solid #DDDDDD;
+
+    background-color: var(--blanco);
+    border-top: 1px solid #E5E5E5;
+}
+
+.opciones_asistente button {
+    padding: 9px 13px;
+
+    background-color: var(--blanco);
+    color: var(--azul);
+
+    border: 1px solid var(--marron);
+    border-radius: 20px;
+
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.opciones_asistente button:hover {
+    background-color: var(--amarillo);
+    border-color: var(--amarillo);
+    color: var(--azul);
+}
+
+/* Tarjetas de recomendaciones */
+
+.tarjeta_recomendacion {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    padding: 18px;
+    margin: 8px 0;
+
+    background-color: var(--blanco);
+    color: var(--azul);
+
+    border: 1px solid #E1E5E9;
+    border-left: 4px solid var(--amarillo);
+    border-radius: 10px;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+}
+
+/* Imágenes de las recomendaciones: se mantienen visibles */
+
+.tarjeta_recomendacion img {
+    display: block;
+    width: 100%;
+    height: 160px;
+
+    margin-bottom: 12px;
+
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+/* Contenido de cada recomendación */
+
+.contenido_recomendacion {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+}
+
+.categoria_recomendacion {
+    display: inline-block;
+
+    color: var(--marron);
+    font-size: 11px;
+    font-weight: bold;
+
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.contenido_recomendacion h4 {
+    margin: 0;
+    color: var(--azul);
+    font-size: 16px;
+}
+
+.contenido_recomendacion p {
+    margin: 0;
+
+    color: #5D6670;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.contenido_recomendacion a {
+    display: inline-block;
+    align-self: flex-start;
+
+    margin-top: 8px;
+    padding: 9px 15px;
+
+    background-color: var(--amarillo);
+    color: var(--azul);
+
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+
+    transition: 0.3s ease;
+}
+
+.contenido_recomendacion a:hover {
+    background-color: var(--azul);
+    color: var(--blanco);
 }
 
 
-/* =========================================
-   17. PIE DE PÁGINA
-========================================== */
+/* =====================================================
+   19. PIE DE PÁGINA
+===================================================== */
 
 .footer {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 35px;
+
+    padding: 55px 7% 25px;
+
     background-color: var(--azul);
     color: var(--blanco);
-    padding: 50px 7% 20px;
 }
 
-.footer_contenido,
-.contenedor_footer {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 35px;
+.footer > div {
+    min-width: 0;
 }
 
 .footer h3,
 .footer h4 {
+    margin-bottom: 16px;
+
     color: var(--amarillo);
-    margin-bottom: 18px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -708,74 +2075,148 @@ form input[type="submit"] {
     font-size: 14px;
 }
 
-.footer a:hover {
-    color: var(--amarillo);
+.footer p {
+    margin-bottom: 10px;
 }
 
 .footer ul {
+    padding: 0;
     list-style: none;
 }
 
 .footer li {
-    margin-bottom: 8px;
+    margin-bottom: 9px;
+}
+
+/* Enlaces del pie: no deben parecer botones */
+
+.footer a {
+    display: inline;
+    padding: 0;
+    margin: 0;
+
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+
+    font-weight: normal;
+    transition: color 0.2s ease;
+}
+
+.footer a:hover {
+    color: var(--amarillo);
 }
 
 .footer_inferior {
-    margin-top: 35px;
+    grid-column: 1 / -1;
+
+    margin-top: 20px;
     padding-top: 18px;
 
     border-top: 1px solid rgba(255, 255, 255, 0.25);
+
     text-align: center;
     font-size: 13px;
 }
 
 
-/* =========================================
-   18. DISEÑO RESPONSIVE - TABLET
-========================================== */
+/* =====================================================
+   20. RESPONSIVE: TABLETAS
+===================================================== */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
+
+    /* Encabezado */
+
+    .header:has(.menu_navegacion) {
+        flex-direction: column;
+        padding: 15px 5%;
+    }
+
+    .header .menu_navegacion {
+        width: 100%;
+        margin: 0;
+    }
+
+    .header .menu_navegacion ul {
+        justify-content: center;
+    }
 
     .menu ul {
         gap: 8px;
     }
 
-    .menu a {
-        padding: 9px 10px;
-        font-size: 12px;
+    .menu ul > li > a {
+        padding: 9px 11px;
+        font-size: 13px;
     }
+
+    /* Cuadrículas */
 
     .contenedor_tarjetas,
     .contenedor_categorias,
     .contenedor_experiencias,
     .grid_experiencias {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .categorias,
+    .experiencias,
+    .idea_contenido,
+    .proposito_contenido {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .beneficios {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .pasos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Panel y pie */
 
     .resumen_admin {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .footer_contenido,
-    .contenedor_footer {
-        grid-template-columns: repeat(2, 1fr);
+    .footer {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* Personalización */
+
+    #informacion_personalizar {
+        grid-template-columns: 1fr;
     }
 }
 
 
-/* =========================================
-   19. DISEÑO RESPONSIVE - CELULAR
-========================================== */
+/* =====================================================
+   21. RESPONSIVE: CELULARES
+===================================================== */
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
 
-    section {
-        padding: 45px 6%;
+    /* Espaciado general */
+
+    section,
+    main section {
+        padding: 48px 6%;
     }
+
+    /* Encabezado tradicional */
 
     .header {
         flex-direction: column;
         gap: 15px;
+        padding: 15px 5%;
+    }
+
+    #logo_header {
+        width: 62px;
     }
 
     .menu {
@@ -783,17 +2224,46 @@ form input[type="submit"] {
     }
 
     .menu ul {
-        flex-wrap: wrap;
         justify-content: center;
+        flex-wrap: wrap;
         gap: 8px;
-        margin: 0;
-        border: none;
     }
 
-    .menu a {
-        padding: 8px 10px;
-        font-size: 11px;
+    .menu ul > li > a {
+        padding: 8px 11px;
+        font-size: 12px;
     }
+
+    /* Encabezado alternativo */
+
+    .header .contenedor_logo .logo {
+        width: 45px;
+        height: 45px;
+    }
+
+    .header .menu_navegacion ul {
+        justify-content: center;
+        gap: 7px;
+    }
+
+    .header .menu_navegacion ul li a {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    /* Menú de usuario */
+
+    #boton_perfil {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .opciones_perfil {
+        right: 50%;
+        transform: translateX(50%);
+    }
+
+    /* Portadas */
 
     .hero,
     .hero_inicio,
@@ -802,27 +2272,41 @@ form input[type="submit"] {
     .hero_contacto,
     .hero_nosotros,
     .hero_preguntas,
-    .hero_mapa {
+    .hero_mapa,
+    .hero_login,
+    .hero_registro {
         min-height: 500px;
         height: 70vh;
     }
 
     .hero h1,
     .hero_inicio h1,
-    .hero_catalogo h1 {
+    .hero_catalogo h1,
+    .hero_personalizar h1 {
         font-size: 36px;
         letter-spacing: 2px;
     }
 
     .hero p,
-    .hero_inicio p {
+    .hero_inicio p,
+    .hero_catalogo p,
+    .hero_personalizar p {
         font-size: 15px;
     }
+
+    /* Cuadrículas de una columna */
 
     .contenedor_tarjetas,
     .contenedor_categorias,
     .contenedor_experiencias,
     .grid_experiencias,
+    .categorias,
+    .experiencias,
+    .idea_contenido,
+    .proposito_contenido,
+    .beneficios,
+    .cajas_contenido,
+    .suscripciones_contenido,
     .pasos,
     .contenedor_pasos,
     .contenido_dos_columnas,
@@ -831,501 +2315,51 @@ form input[type="submit"] {
         grid-template-columns: 1fr;
     }
 
-    .contenido_dos_columnas img,
-    .presentacion_contenido img,
-    .contenedor_presentacion img {
-        height: 260px;
-    }
+    /* Secciones con imagen */
 
-    .footer_contenido,
-    .contenedor_footer {
+    #presentacion,
+    #personalizar,
+    #quienes_somos,
+    .funcionamiento_contenido {
         grid-template-columns: 1fr;
         gap: 25px;
     }
+
+    #presentacion > h2,
+    #personalizar > h2,
+    #quienes_somos > h2 {
+        grid-column: auto;
+    }
+
+    .contenido_dos_columnas img,
+    .presentacion_contenido img,
+    .contenedor_presentacion img,
+    .presentacion_imagen,
+    .personalizar_imagen,
+    .nosotros_imagen,
+    .funcionamiento_contenido img {
+        height: 260px;
+    }
+
+    /* Pie de página */
+
+    .footer {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 42px 7% 22px;
+    }
+
+    /* Formularios */
 
     .formulario,
     .contenedor_formulario {
         padding: 22px;
     }
 
-    .resumen_admin {
-        grid-template-columns: 1fr;
+    .contenedor_login,
+    .contenedor_registro {
+        padding: 25px;
     }
-
-    .tabla_admin {
-        display: block;
-        overflow-x: auto;
-    }
-}
-
-
-
-/* =========================================
-   20. ESTILO GENERAL DE TODOS LOS ENLACES
-   PROYECTO: ¿Y HOY QUÉ?
-========================================== */
-
-/* 1. CONFIGURACIÓN GENERAL */
-
-a[href] {
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* 2. MENÚ DE NAVEGACIÓN */
-
-.menu a {
-    display: inline-block;
-    padding: 11px 17px;
-
-    background-color: var(--amarillo);
-    color: var(--marron);
-
-    border: 2px solid var(--amarillo);
-    border-radius: 8px;
-
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 0.3px;
-
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-}
-
-/* 3. ENLACES QUE FUNCIONAN COMO BOTONES */
-
-main a[href]:not(p a):not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(.texto_enlace),
-.hero a[href],
-.hero_inicio a[href],
-.hero_catalogo a[href],
-.hero_personalizar a[href],
-.hero_contacto a[href],
-.hero_nosotros a[href],
-.hero_preguntas a[href],
-.hero_mapa a[href],
-.hero_login a[href],
-.hero_registro a[href] {
-
-    display: inline-block;
-
-    padding: 12px 25px;
-    margin-top: 10px;
-
-    background-color: var(--amarillo);
-    color: var(--marron);
-
-    border: 2px solid var(--amarillo);
-    border-radius: 25px;
-
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 0.4px;
-
-    text-align: center;
-
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.10);
-}
-
-/* 4. ENLACES DENTRO DE LAS TARJETAS */
-
-.tarjeta a,
-.tarjeta_experiencia a,
-.tarjeta_categoria a,
-.card a,
-.tarjeta_contenido a,
-.tarjeta_experiencia .contenido a,
-.tarjeta_categoria .contenido a,
-.card .contenido a {
-
-    display: inline-block;
-
-    padding: 10px 20px;
-    margin-top: 12px;
-
-    background-color: var(--amarillo);
-    color: var(--marron);
-
-    border: 2px solid var(--amarillo);
-    border-radius: 25px;
-
-    font-size: 14px;
-    font-weight: bold;
-}
-
-/* 5. ENLACES DE SECCIONES DESTACADAS */
-
-.seccion_destacada a,
-.bloque_destacado a,
-.seccion_promocional a {
-
-    display: inline-block;
-
-    padding: 12px 25px;
-
-    background-color: var(--azul);
-    color: var(--blanco);
-
-    border: 2px solid var(--azul);
-    border-radius: 25px;
-
-    font-weight: bold;
-}
-
-/* 6. ENLACES DE TEXTO */
-
-main p a,
-.texto_enlace {
-
-    color: var(--marron);
-    font-weight: bold;
-
-    text-decoration: underline;
-    text-decoration-color: var(--amarillo);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
-}
-
-/* 7. ENLACES DEL PIE DE PÁGINA */
-
-.footer a {
-
-    display: inline-block;
-
-    color: var(--blanco);
-    text-decoration: none;
-}
-
-/* 8. INDICADOR DE NAVEGACIÓN CON TECLADO */
-
-a[href]:focus-visible {
-
-    outline: 3px solid var(--amarillo);
-    outline-offset: 4px;
-
-    border-radius: 5px;
-}
-
-/* 9. AJUSTES PARA CELULARES */
-
-@media (max-width: 600px) {
-
-    .menu a {
-        padding: 9px 12px;
-        font-size: 12px;
-    }
-
-    main a[href]:not(p a):not(h1 a):not(h2 a):not(h3 a):not(h4 a):not(.texto_enlace),
-    .tarjeta a,
-    .tarjeta_experiencia a,
-    .tarjeta_categoria a,
-    .card a {
-        padding: 10px 18px;
-        font-size: 13px;
-    }
-}
-
-/* =========================================
-   21. REDISEÑO DEL FORMULARIO
-   PROYECTO: ¿Y HOY QUÉ?
-========================================== */
-
-/* Fondo de la zona de personalización */
-
-#introduccion_personalizar {
-    background-color: #FFFFFF;
-    text-align: center;
-    padding: 75px 8% 45px;
-}
-
-#introduccion_personalizar h2,
-#formulario_personalizar > h2 {
-    color: var(--azul);
-    font-size: clamp(27px, 4vw, 38px);
-    letter-spacing: 0.5px;
-    text-transform: none;
-    margin-bottom: 16px;
-}
-
-#introduccion_personalizar p,
-#formulario_personalizar > p {
-    max-width: 720px;
-    margin: 0 auto 12px;
-    color: #777777;
-    font-size: 16px;
-}
-
-/* Fondo general del formulario */
-
-#formulario_personalizar {
-    background-color: #F4F4F2;
-    padding: 65px 7%;
-}
-
-#formulario_personalizar > h2,
-#formulario_personalizar > p {
-    text-align: center;
-}
-
-/* Contenedor principal */
-
-#formulario_experiencia {
-    max-width: 900px;
-    margin: 45px auto 0;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-/* Cada apartado */
-
-#formulario_experiencia .seccion_formulario {
-    min-width: 0;
-    padding: 32px 38px;
-    background-color: #FFFFFF;
-    border: 1px solid #E8E7E2;
-    border-top: 3px solid var(--amarillo);
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(14, 31, 49, 0.045);
-}
-
-/* Títulos de los apartados */
-
-#formulario_experiencia legend {
-    padding: 0 12px;
-    color: var(--azul);
-    font-size: 19px;
-    font-weight: 700;
-    letter-spacing: 0.2px;
-}
-
-#formulario_experiencia .seccion_formulario > p {
-    margin: 8px 0 20px;
-    color: var(--gris);
-    font-size: 14px;
-}
-
-/* Etiquetas */
-
-#formulario_experiencia .seccion_formulario > label {
-    display: block;
-    margin: 20px 0 8px;
-    color: var(--azul);
-    font-size: 14px;
-    font-weight: 600;
-}
-
-/* Campos de texto y listas */
-
-#formulario_experiencia input[type="text"],
-#formulario_experiencia input[type="email"],
-#formulario_experiencia input[type="tel"],
-#formulario_experiencia input[type="number"],
-#formulario_experiencia select,
-#formulario_experiencia textarea {
-    width: 100%;
-    min-height: 48px;
-    padding: 12px 15px;
-    background-color: #FAFAF8;
-    color: var(--texto);
-    border: 1px solid #DDDDD7;
-    border-radius: 7px;
-    font-size: 14px;
-    transition: border-color 0.2s ease, background-color 0.2s ease;
-}
-
-/* Campo de ciudad */
-
-#formulario_experiencia input[readonly] {
-    background-color: #EEEEEC;
-    color: var(--azul);
-    font-weight: 600;
-    cursor: default;
-}
-
-/* Enfoque de los campos */
-
-#formulario_experiencia input:focus,
-#formulario_experiencia select:focus,
-#formulario_experiencia textarea:focus {
-    outline: none;
-    border-color: var(--marron);
-    background-color: #FFFFFF;
-    box-shadow: 0 0 0 3px rgba(143, 102, 20, 0.08);
-}
-
-/* Área de texto */
-
-#formulario_experiencia textarea {
-    min-height: 140px;
-    resize: vertical;
-}
-
-/* Opciones de experiencia */
-
-#formulario_experiencia input[type="radio"] {
-    width: 17px;
-    height: 17px;
-    flex-shrink: 0;
-    margin: 0 12px 0 0;
-    accent-color: var(--marron);
-}
-
-#formulario_experiencia input[type="radio"] + * {
-    color: var(--texto);
-}
-
-/* Etiquetas que contienen opciones */
-
-#formulario_experiencia .seccion_formulario label:has(input[type="radio"]),
-#formulario_experiencia .seccion_formulario label:has(input[type="checkbox"]) {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 13px 15px;
-    margin: 9px 0;
-    background-color: #FAFAF8;
-    border: 1px solid #EEEEEC;
-    border-radius: 7px;
-    color: var(--texto);
-    font-size: 14px;
-    font-weight: 400;
-    cursor: pointer;
-}
-
-/* Casillas de intereses */
-
-#formulario_experiencia input[type="checkbox"] {
-    width: 17px;
-    height: 17px;
-    flex-shrink: 0;
-    margin: 0 12px 0 0;
-    accent-color: var(--marron);
-}
-
-/* Archivo de fotografía */
-
-#formulario_experiencia input[type="file"] {
-    width: 100%;
-    padding: 14px;
-    margin-top: 8px;
-    background-color: #FAFAF8;
-    border: 1px dashed #C9C9C1;
-    border-radius: 7px;
-    font-size: 13px;
-}
-
-/* Botones */
-
-#formulario_experiencia .formulario_botones {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    padding: 15px 0 5px;
-}
-
-#formulario_experiencia .formulario_botones button {
-    min-width: 190px;
-    padding: 14px 25px;
-    border: 2px solid var(--amarillo);
-    border-radius: 30px;
-    background-color: var(--amarillo);
-    color: var(--azul);
-    font-size: 14px;
-    font-weight: 700;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-#formulario_experiencia .formulario_botones button[type="reset"] {
-    background-color: transparent;
-    border-color: #C9C9C1;
-    color: #555555;
-}
-
-#formulario_experiencia .formulario_botones button:hover {
-    background-color: var(--azul);
-    border-color: var(--azul);
-    color: #FFFFFF;
-}
-
-#formulario_experiencia .formulario_botones button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
-/* Mensaje de respuesta del formulario */
-
-#mensaje_formulario {
-    max-width: 700px;
-    margin: 10px auto;
-    padding: 14px 18px;
-    border-radius: 7px;
-    text-align: center;
-    font-size: 14px;
-}
-
-/* Información complementaria */
-
-#informacion_personalizar {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 45px;
-    background-color: #FFFFFF;
-}
-
-#informacion_personalizar h2 {
-    color: var(--azul);
-    font-size: 30px;
-    margin-bottom: 18px;
-}
-
-#informacion_personalizar p {
-    color: var(--gris);
-    margin-bottom: 20px;
-}
-
-#informacion_personalizar img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 12px;
-}
-
-/* Última sección */
-
-#llamada_accion {
-    background-color: var(--azul);
-    text-align: center;
-    color: #FFFFFF;
-}
-
-#llamada_accion h2 {
-    margin-bottom: 15px;
-    font-size: 30px;
-}
-
-#llamada_accion p {
-    max-width: 650px;
-    margin: 0 auto 20px;
-    color: #E5E8EB;
-}
-
-/* Adaptación para tabletas */
-
-@media (max-width: 800px) {
-
-    #informacion_personalizar {
-        grid-template-columns: 1fr;
-    }
-
-    #formulario_experiencia .seccion_formulario {
-        padding: 28px;
-    }
-}
-
-/* Adaptación para celulares */
-
-@media (max-width: 600px) {
 
     #formulario_personalizar {
         padding: 45px 5%;
@@ -1355,808 +2389,11 @@ a[href]:focus-visible {
     #informacion_personalizar img {
         height: 250px;
     }
-}
 
+    /* Panel y solicitudes */
 
-
-/* =========================================
-   22. ORGANIZACIÓN GENERAL Y DISTRIBUCIÓN
-   PROYECTO: ¿Y HOY QUÉ?
-========================================== */
-
-/* 1. FONDOS Y ESPACIADO DE LAS SECCIONES */
-
-main section:nth-of-type(even) {
-    background-color: var(--blanco);
-}
-
-#categorias,
-#interiores,
-#exteriores,
-#cajas,
-#suscripciones,
-#presentacion,
-#personalizar,
-#quienes_somos,
-#funcionamiento {
-    background-color: var(--blanco);
-}
-
-#idea_negocio,
-#diferencias,
-#experiencias,
-#destacadas,
-#como_funciona {
-    background-color: var(--fondo);
-}
-
-/* Ancho y separación del contenido */
-
-main section {
-    padding: 75px 7%;
-}
-
-main section > h2 {
-    color: var(--azul);
-    text-align: center;
-    font-size: clamp(25px, 3.5vw, 36px);
-    margin-bottom: 30px;
-}
-
-main section > p {
-    max-width: 850px;
-    margin: 0 auto 25px;
-}
-
-
-/* =========================================
-   2. TARJETAS: DISTRIBUCIÓN EN FILAS
-========================================== */
-
-/* Tres tarjetas por fila */
-
-.categorias,
-.experiencias,
-.idea_contenido,
-.proposito_contenido {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    align-items: stretch;
-    gap: 28px;
-}
-
-/* Cuatro tarjetas por fila */
-
-.beneficios {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    align-items: stretch;
-    gap: 22px;
-}
-
-/* Dos tarjetas por fila */
-
-.cajas_contenido,
-.suscripciones_contenido {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: stretch;
-    gap: 30px;
-}
-
-/* Apariencia uniforme de las tarjetas */
-
-.categorias > article,
-.experiencias > article,
-.idea_contenido > article,
-.proposito_contenido > article,
-.beneficios > article,
-.cajas_contenido > article,
-.suscripciones_contenido > article,
-.pasos > article {
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-
-    padding: 0 0 25px;
-    overflow: hidden;
-
-    background-color: var(--blanco);
-    border: 1px solid rgba(14, 31, 49, 0.07);
-    border-radius: 12px;
-    box-shadow: var(--sombra);
-
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-/* Movimiento discreto al pasar el cursor */
-
-.categorias > article:hover,
-.experiencias > article:hover,
-.idea_contenido > article:hover,
-.proposito_contenido > article:hover,
-.beneficios > article:hover,
-.cajas_contenido > article:hover,
-.suscripciones_contenido > article:hover,
-.pasos > article:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.13);
-}
-
-/* Imágenes del mismo tamaño */
-
-.categorias > article img,
-.experiencias > article img,
-.idea_contenido > article img,
-.proposito_contenido > article img,
-.beneficios > article img,
-.cajas_contenido > article img,
-.suscripciones_contenido > article img,
-.pasos > article img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    margin-bottom: 20px;
-}
-
-/* Textos de las tarjetas */
-
-.categorias > article h3,
-.experiencias > article h3,
-.idea_contenido > article h3,
-.proposito_contenido > article h3,
-.beneficios > article h3,
-.cajas_contenido > article h3,
-.suscripciones_contenido > article h3,
-.pasos > article h3 {
-    padding: 0 22px;
-    margin-bottom: 12px;
-    color: var(--azul);
-    font-size: 20px;
-}
-
-.categorias > article p,
-.experiencias > article p,
-.idea_contenido > article p,
-.proposito_contenido > article p,
-.beneficios > article p,
-.cajas_contenido > article p,
-.suscripciones_contenido > article p,
-.pasos > article p {
-    padding: 0 22px;
-    margin-bottom: 15px;
-    color: var(--gris);
-    font-size: 15px;
-}
-
-/* Botones alineados en la parte inferior */
-
-.categorias > article > a:last-child,
-.experiencias > article > a:last-child,
-.idea_contenido > article > a:last-child,
-.proposito_contenido > article > a:last-child,
-.beneficios > article > a:last-child,
-.cajas_contenido > article > a:last-child,
-.suscripciones_contenido > article > a:last-child,
-.pasos > article > a:last-child {
-    align-self: flex-start;
-    margin: auto 22px 0;
-}
-
-
-/* =========================================
-   3. SECCIONES CON IMAGEN Y TEXTO
-========================================== */
-
-/* Presentación de la página principal */
-
-#presentacion,
-#personalizar,
-#quienes_somos {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: center;
-    gap: 45px;
-}
-
-/* Los títulos principales ocupan todo el ancho */
-
-#presentacion > h2,
-#personalizar > h2,
-#quienes_somos > h2 {
-    grid-column: 1 / -1;
-}
-
-/* Contenedores de texto */
-
-.presentacion_contenido,
-.personalizar_contenido,
-.nosotros_contenido {
-    min-width: 0;
-}
-
-.presentacion_contenido h2,
-.personalizar_contenido h2,
-.nosotros_contenido h2 {
-    color: var(--azul);
-    font-size: clamp(25px, 3vw, 34px);
-    margin-bottom: 18px;
-}
-
-.presentacion_contenido p,
-.personalizar_contenido p,
-.nosotros_contenido p {
-    color: var(--gris);
-    margin-bottom: 16px;
-}
-
-/* Imágenes de estas secciones */
-
-.presentacion_imagen,
-.personalizar_imagen,
-.nosotros_imagen {
-    width: 100%;
-    height: 380px;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: var(--sombra);
-}
-
-/* Funcionamiento: imagen y texto */
-
-.funcionamiento_contenido {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: center;
-    gap: 45px;
-}
-
-.funcionamiento_contenido img {
-    width: 100%;
-    height: 360px;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: var(--sombra);
-}
-
-.funcionamiento_contenido h2 {
-    color: var(--azul);
-    margin-bottom: 18px;
-}
-
-
-/* =========================================
-   4. PASOS DE CÓMO FUNCIONA
-========================================== */
-
-.pasos {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.pasos > article {
-    padding: 28px 18px;
-    text-align: center;
-}
-
-.pasos > article img {
-    width: 75px;
-    height: 75px;
-    object-fit: contain;
-    margin: 0 auto 15px;
-}
-
-
-/* =========================================
-   5. PIE DE PÁGINA
-========================================== */
-
-/* El HTML tiene cuatro bloques directamente dentro
-   de .footer, por eso se organiza desde el propio footer. */
-
-.footer {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 35px;
-    padding: 55px 7% 25px;
-}
-
-.footer > div {
-    min-width: 0;
-}
-
-.footer h3,
-.footer h4 {
-    margin-bottom: 16px;
-}
-
-.footer p {
-    margin-bottom: 10px;
-}
-
-.footer ul {
-    padding: 0;
-}
-
-.footer li {
-    margin-bottom: 9px;
-}
-
-.footer a {
-    transition: color 0.2s ease;
-}
-
-/* Evita que los enlaces del footer parezcan botones */
-
-.footer a[href] {
-    display: inline;
-    padding: 0;
-    margin: 0;
-    background: none;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    font-weight: normal;
-}
-
-
-/* =========================================
-   6. AJUSTES PARA TABLET
-========================================== */
-
-@media (max-width: 1000px) {
-
-    .beneficios {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .categorias,
-    .experiencias,
-    .idea_contenido,
-    .proposito_contenido {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .pasos {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .footer {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-
-/* =========================================
-   7. AJUSTES PARA CELULAR
-========================================== */
-
-@media (max-width: 650px) {
-
-    main section {
-        padding: 48px 6%;
-    }
-
-    .categorias,
-    .experiencias,
-    .idea_contenido,
-    .proposito_contenido,
-    .beneficios,
-    .cajas_contenido,
-    .suscripciones_contenido,
-    .pasos {
-        grid-template-columns: 1fr;
-        gap: 22px;
-    }
-
-    #presentacion,
-    #personalizar,
-    #quienes_somos,
-    .funcionamiento_contenido {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    #presentacion > h2,
-    #personalizar > h2,
-    #quienes_somos > h2 {
-        grid-column: auto;
-    }
-
-    .presentacion_imagen,
-    .personalizar_imagen,
-    .nosotros_imagen,
-    .funcionamiento_contenido img {
-        height: 260px;
-    }
-
-    .categorias > article img,
-    .experiencias > article img,
-    .idea_contenido > article img,
-    .proposito_contenido > article img,
-    .beneficios > article img,
-    .cajas_contenido > article img,
-    .suscripciones_contenido > article img {
-        height: 220px;
-    }
-
-    .footer {
-        grid-template-columns: 1fr;
-        gap: 28px;
-        padding: 42px 7% 22px;
-    }
-}
-
-/* =========================================
-   CORRECCIÓN DEL HEADER DE LOGIN
-========================================== */
-
-/* Encabezado */
-
-.header:has(.menu_navegacion) {
-    min-height: 85px;
-    height: auto;
-    padding: 10px 4%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    gap: 20px;
-}
-
-/* Logo */
-
-.header .contenedor_logo {
-    flex-shrink: 0;
-}
-
-.header .contenedor_logo a {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--blanco);
-    font-size: 19px;
-    font-weight: bold;
-}
-
-.header .contenedor_logo .logo {
-    display: block;
-    width: 48px;
-    height: 48px;
-    max-width: 48px;
-    object-fit: contain;
-}
-
-/* Navegación */
-
-.header .menu_navegacion {
-    flex: 1;
-    min-width: 0;
-    margin-left: auto;
-}
-
-.header .menu_navegacion ul {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    gap: 10px;
-    list-style: none;
-}
-
-/* Todos los botones amarillos */
-
-.header .menu_navegacion ul li a {
-    display: block;
-    padding: 9px 13px;
-    background-color: var(--amarillo);
-    color: var(--marron);
-    border: 2px solid var(--amarillo);
-    border-radius: 7px;
-    font-size: 13px;
-    font-weight: bold;
-    text-decoration: none;
-    box-shadow: none;
-    transition: 0.25s ease;
-}
-
-/* Efecto al pasar el cursor */
-
-.header .menu_navegacion ul li a:hover {
-    background-color: var(--blanco);
-    color: var(--azul);
-    border-color: var(--blanco);
-    transform: translateY(-2px);
-}
-
-/* Celulares */
-
-@media (max-width: 950px) {
-    .header:has(.menu_navegacion) {
-        flex-direction: column;
-        padding: 15px 5%;
-    }
-
-    .header .menu_navegacion {
-        width: 100%;
-        margin: 0;
-    }
-
-    .header .menu_navegacion ul {
-        justify-content: center;
-    }
-}
-
-@media (max-width: 600px) {
-    .header .contenedor_logo .logo {
-        width: 45px;
-        height: 45px;
-    }
-
-    .header .menu_navegacion ul {
-        gap: 7px;
-    }
-
-    .header .menu_navegacion ul li a {
-        padding: 8px 10px;
-        font-size: 12px;
-    }
-}
-
-/* =========================================
-   MENÚ DE PERFIL DEL USUARIO
-========================================= */
-
-.menu_usuario {
-    position: relative;
-}
-
-#boton_perfil {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 14px;
-    background-color: #0E1F31;
-    color: #F5DA4F;
-    border: 1px solid #F5DA4F;
-    border-radius: 25px;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-#boton_perfil:hover {
-    background-color: #F5DA4F;
-    color: #0E1F31;
-}
-
-#icono_usuario {
-    font-size: 18px;
-}
-
-.opciones_perfil {
-    display: none;
-    position: absolute;
-    top: calc(100% + 10px);
-    right: 0;
-    min-width: 180px;
-    padding: 8px;
-    background-color: #FFFFFF;
-    border: 1px solid #E5E5E5;
-    border-radius: 10px;
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-}
-
-.opciones_perfil.activo {
-    display: flex;
-    flex-direction: column;
-}
-
-.opciones_perfil a,
-.opciones_perfil button {
-    display: block;
-    padding: 11px 12px;
-    color: #0E1F31;
-    background: none;
-    border: none;
-    border-radius: 6px;
-    text-align: left;
-    text-decoration: none;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.opciones_perfil a:hover,
-.opciones_perfil button:hover {
-    background-color: #F5DA4F;
-    color: #0E1F31;
-}
-
-/* =====================================
-   PERFIL DEL USUARIO
-===================================== */
-
-.seccion_perfil,
-.seccion_mis_solicitudes {
-    width: 90%;
-    max-width: 1100px;
-    margin: 60px auto;
-    min-height: 450px;
-}
-
-.encabezado_perfil,
-.encabezado_solicitudes {
-    text-align: center;
-    margin-bottom: 35px;
-}
-
-.encabezado_perfil h1,
-.encabezado_solicitudes h1 {
-    color: #0E1F31;
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-}
-
-.encabezado_perfil p,
-.encabezado_solicitudes p {
-    color: #666;
-}
-
-.contenedor_perfil {
-    max-width: 750px;
-    margin: auto;
-    padding: 35px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.09);
-}
-
-.contenedor_perfil h2 {
-    color: #0E1F31;
-    margin-bottom: 25px;
-}
-
-.contenedor_perfil p {
-    padding: 13px 0;
-    border-bottom: 1px solid #eee;
-    color: #444;
-}
-
-.contenedor_perfil p strong {
-    color: #0E1F31;
-}
-
-#mensaje_perfil {
-    margin-top: 15px;
-    text-align: center;
-}
-
-.botones_perfil {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 25px;
-}
-
-
-/* =====================================
-   MIS SOLICITUDES
-===================================== */
-
-.resumen_solicitudes {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-bottom: 35px;
-}
-
-.tarjeta_resumen {
-    background-color: #0E1F31;
-    color: #fff;
-    text-align: center;
-    padding: 25px 15px;
-    border-radius: 10px;
-}
-
-.tarjeta_resumen h3 {
-    font-size: 1rem;
-    font-weight: normal;
-    margin-bottom: 12px;
-}
-
-.tarjeta_resumen span {
-    color: #F5DA4F;
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-#mensaje_solicitudes {
-    text-align: center;
-    margin: 25px 0;
-    color: #555;
-}
-
-#lista_solicitudes {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 22px;
-}
-
-.tarjeta_solicitud {
-    background-color: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    border-left: 5px solid #F5DA4F;
-}
-
-.cabecera_solicitud {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 20px;
-}
-
-.cabecera_solicitud h3 {
-    color: #0E1F31;
-    margin-top: 8px;
-}
-
-.fecha_solicitud {
-    color: #777;
-    font-size: 0.85rem;
-}
-
-.estado_solicitud {
-    padding: 7px 12px;
-    border-radius: 20px;
-    background-color: #f1f1f1;
-    color: #444;
-    font-size: 0.85rem;
-}
-
-.estado_pendiente {
-    background-color: #fff4cc;
-}
-
-.estado_en_revision {
-    background-color: #e4efff;
-}
-
-.estado_aprobada {
-    background-color: #e1f5e5;
-}
-
-.estado_rechazada {
-    background-color: #ffe5e5;
-}
-
-.detalles_solicitud p {
-    margin: 10px 0;
-    color: #555;
-    line-height: 1.5;
-}
-
-.detalles_solicitud strong {
-    color: #0E1F31;
-}
-
-
-/* =====================================
-   DISEÑO RESPONSIVE
-===================================== */
-
-@media (max-width: 700px) {
-
-    .resumen_solicitudes {
-        grid-template-columns: 1fr;
-    }
-
+    .resumen_admin,
+    .resumen_solicitudes,
     #lista_solicitudes {
         grid-template-columns: 1fr;
     }
@@ -2170,245 +2407,12 @@ main section > p {
         font-size: 1.7rem;
     }
 
-}
+    .tabla_admin {
+        display: block;
+        overflow-x: auto;
+    }
 
-/* =========================================
-   ASISTENTE DE RECOMENDACIONES
-========================================= */
-
-#asistente_recomendaciones {
-    background: #0E1F31;
-    color: #FFFFFF;
-    padding: 75px 30px;
-    margin: 60px 0;
-    text-align: center;
-}
-
-.contenido_asistente {
-    max-width: 750px;
-    margin: auto;
-}
-
-.etiqueta_asistente {
-    color: #F5DA4F;
-    font-size: 13px;
-    letter-spacing: 2px;
-    font-weight: bold;
-}
-
-.contenido_asistente h2 {
-    font-size: 34px;
-    margin: 18px 0;
-}
-
-.contenido_asistente p {
-    color: #E0E5EA;
-    line-height: 1.7;
-    margin-bottom: 28px;
-}
-
-#abrir_asistente_seccion {
-    background: #F5DA4F;
-    color: #0E1F31;
-    border: none;
-    padding: 14px 28px;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#abrir_asistente_seccion:hover {
-    background: #FFFFFF;
-    transform: translateY(-3px);
-}
-
-
-/* =========================================
-   BOTÓN FLOTANTE
-========================================= */
-
-#boton_asistente {
-    position: fixed;
-    right: 25px;
-    bottom: 25px;
-    z-index: 1000;
-
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    background: #0E1F31;
-    color: #FFFFFF;
-
-    border: 2px solid #F5DA4F;
-    border-radius: 35px;
-
-    padding: 14px 20px;
-
-    font-size: 14px;
-    font-weight: bold;
-
-    cursor: pointer;
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.25);
-    transition: 0.3s;
-}
-
-#boton_asistente span:first-child {
-    color: #F5DA4F;
-    font-size: 21px;
-}
-
-#boton_asistente:hover {
-    transform: translateY(-4px);
-    background: #18334D;
-}
-
-
-/* =========================================
-   VENTANA DEL CHATBOT
-========================================= */
-
-.ventana_asistente {
-    position: fixed;
-    right: 25px;
-    bottom: 95px;
-    z-index: 1001;
-
-    width: 360px;
-    max-width: calc(100vw - 30px);
-    height: 500px;
-    max-height: calc(100vh - 120px);
-
-    background: #FFFFFF;
-    border-radius: 14px;
-    overflow: hidden;
-
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-
-    display: flex;
-    flex-direction: column;
-}
-
-.ventana_asistente[hidden] {
-    display: none;
-}
-
-
-/* =========================================
-   ENCABEZADO DEL CHAT
-========================================= */
-
-.encabezado_asistente {
-    background: #0E1F31;
-    color: #FFFFFF;
-
-    padding: 18px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.encabezado_asistente h3 {
-    margin: 0 0 5px;
-    color: #F5DA4F;
-}
-
-.encabezado_asistente p {
-    margin: 0;
-    font-size: 12px;
-    color: #E0E5EA;
-}
-
-#cerrar_asistente {
-    background: transparent;
-    color: #FFFFFF;
-    border: none;
-    font-size: 28px;
-    cursor: pointer;
-}
-
-
-/* =========================================
-   MENSAJES
-========================================= */
-
-.mensajes_asistente {
-    flex: 1;
-    overflow-y: auto;
-
-    padding: 18px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-    background: #F5F6F7;
-}
-
-.mensaje_asistente {
-    max-width: 85%;
-    padding: 12px 14px;
-    border-radius: 12px;
-
-    font-size: 14px;
-    line-height: 1.5;
-    overflow-wrap: anywhere;
-}
-
-.mensaje_bot {
-    background: #FFFFFF;
-    color: #0E1F31;
-    align-self: flex-start;
-    border: 1px solid #E1E5E9;
-}
-
-.mensaje_usuario {
-    background: #0E1F31;
-    color: #FFFFFF;
-    align-self: flex-end;
-}
-
-
-/* =========================================
-   OPCIONES DE RESPUESTA
-========================================= */
-
-.opciones_asistente {
-    padding: 14px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    background: #FFFFFF;
-    border-top: 1px solid #E5E5E5;
-}
-
-.opciones_asistente button {
-    background: #FFFFFF;
-    color: #0E1F31;
-
-    border: 1px solid #8F6614;
-    border-radius: 20px;
-
-    padding: 9px 13px;
-
-    font-size: 12px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.opciones_asistente button:hover {
-    background: #F5DA4F;
-    border-color: #F5DA4F;
-}
-
-
-/* =========================================
-   RESPONSIVE
-========================================= */
-
-@media (max-width: 480px) {
+    /* Chatbot */
 
     #asistente_recomendaciones {
         padding: 55px 20px;
@@ -2427,97 +2431,34 @@ main section > p {
     .ventana_asistente {
         right: 15px;
         bottom: 80px;
+
         width: calc(100vw - 30px);
         height: 460px;
     }
-
 }
 
-/* =========================================
-   TARJETAS DE RECOMENDACIONES
-   SIN IMÁGENES
-========================================= */
 
-.tarjeta_recomendacion {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 18px;
-    margin: 8px 0;
+/* =====================================================
+   22. RESPONSIVE: PANTALLAS MUY PEQUEÑAS
+===================================================== */
 
-    background-color: #FFFFFF;
-    border: 1px solid #E1E5E9;
-    border-left: 4px solid #F5DA4F;
-    border-radius: 10px;
+@media (max-width: 380px) {
 
-    color: #0E1F31;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
-}
+    .menu ul > li > a {
+        padding: 7px 9px;
+        font-size: 11px;
+    }
 
-/* Ocultar completamente las imágenes */
+    .contenido_asistente h2 {
+        font-size: 23px;
+    }
 
-.tarjeta_recomendacion img {
-    display: none !important;
-}
+    #boton_asistente {
+        font-size: 12px;
+        padding: 10px 13px;
+    }
 
-/* Contenido de la recomendación */
-
-.contenido_recomendacion {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 0;
-}
-
-/* Categoría */
-
-.categoria_recomendacion {
-    display: inline-block;
-    color: #8F6614;
-    font-size: 11px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-}
-
-/* Nombre de la experiencia */
-
-.contenido_recomendacion h4 {
-    color: #0E1F31;
-    font-size: 16px;
-    margin: 0;
-}
-
-/* Descripción */
-
-.contenido_recomendacion p {
-    color: #5D6670;
-    font-size: 13px;
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* Botón */
-
-.contenido_recomendacion a {
-    display: inline-block;
-    align-self: flex-start;
-
-    margin-top: 8px;
-    padding: 9px 15px;
-
-    background-color: #F5DA4F;
-    color: #0E1F31;
-
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
-    text-decoration: none;
-
-    transition: 0.3s ease;
-}
-
-.contenido_recomendacion a:hover {
-    background-color: #0E1F31;
-    color: #FFFFFF;
+    .tarjeta_recomendacion {
+        padding: 13px;
+    }
 }
