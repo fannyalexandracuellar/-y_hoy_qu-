@@ -1,7 +1,5 @@
 
-/* =====================================================
-   1. VARIABLES Y CONFIGURACIÓN GENERAL
-===================================================== */
+
 
 :root {
     --azul: #0E1F31;
@@ -71,9 +69,7 @@ main {
     width: 100%;
 }
 
-/* =====================================================
-   2. ENCABEZADOS Y NAVEGACIÓN
-===================================================== */
+
 
 .header {
     width: 100%;
@@ -170,9 +166,7 @@ main {
     font-size: 13px;
 }
 
-/* =====================================================
-   3. MENÚ DE PERFIL
-===================================================== */
+
 
 .menu_usuario {
     position: relative;
@@ -244,9 +238,7 @@ main {
     color: var(--azul);
 }
 
-/* =====================================================
-   4. PORTADAS Y HERO
-===================================================== */
+
 
 .hero,
 .hero_inicio,
@@ -335,11 +327,7 @@ main {
     font-size: 18px;
 }
 
-/* =====================================================
-   5. BOTONES Y ENLACES
-===================================================== */
 
-/* Botones reales */
 
 .boton,
 .btn,
@@ -372,7 +360,6 @@ input[type="submit"]:hover {
     color: var(--blanco);
 }
 
-/* Enlaces de llamadas a la acción */
 
 .hero a[href],
 .hero_inicio a[href],
@@ -397,7 +384,7 @@ input[type="submit"]:hover {
     transition: 0.25s ease;
 }
 
-/* Enlaces de tarjetas */
+
 
 .tarjeta a,
 .tarjeta_experiencia a,
@@ -418,7 +405,7 @@ input[type="submit"]:hover {
     font-weight: bold;
 }
 
-/* Enlaces en bloques destacados */
+
 
 .seccion_destacada a,
 .bloque_destacado a,
@@ -448,9 +435,7 @@ button:focus-visible {
     outline-offset: 4px;
 }
 
-/* =====================================================
-   6. TÍTULOS Y SECCIONES
-===================================================== */
+
 
 .titulo_seccion,
 .encabezado_seccion {
@@ -628,9 +613,6 @@ main section:nth-of-type(even) {
     border-radius: 12px;
 }
 
-/* =====================================================
-   8. TARJETAS Y EXPERIENCIAS
-===================================================== */
 
 .contenedor_tarjetas,
 .contenedor_categorias,

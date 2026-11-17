@@ -26,9 +26,7 @@ const MOTIVOS_CONTACTO = {
 };
 
 
-// ==========================================
-// INICIAR PANEL
-// ==========================================
+
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -84,9 +82,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 
-// ==========================================
-// FUNCIÓN GENERAL PARA CONSULTAR LA API
-// ==========================================
+
 
 async function consultarAPI(ruta, token, opciones = {}) {
 
@@ -108,9 +104,7 @@ async function consultarAPI(ruta, token, opciones = {}) {
 }
 
 
-// ==========================================
-// CARGAR ESTADÍSTICAS
-// ==========================================
+
 
 async function cargarEstadisticas(token) {
 
@@ -130,9 +124,7 @@ async function cargarEstadisticas(token) {
 }
 
 
-// ==========================================
-// CARGAR SOLICITUDES
-// ==========================================
+
 
 async function cargarSolicitudes(token) {
 
@@ -226,9 +218,7 @@ async function cargarSolicitudes(token) {
 }
 
 
-// ==========================================
-// ACTUALIZAR ESTADO DE SOLICITUD
-// ==========================================
+
 
 async function cambiarEstadoSolicitud(id, nuevoEstado, token) {
 
@@ -264,9 +254,7 @@ async function cambiarEstadoSolicitud(id, nuevoEstado, token) {
 }
 
 
-// ==========================================
-// CARGAR PEDIDOS
-// ==========================================
+
 
 async function cargarPedidos(token) {
 
@@ -327,9 +315,7 @@ async function cargarPedidos(token) {
 }
 
 
-// ==========================================
-// CARGAR CLIENTES
-// ==========================================
+
 
 async function cargarClientes(token) {
 
@@ -383,9 +369,6 @@ async function cargarClientes(token) {
 }
 
 
-// ==========================================
-// CARGAR MENSAJES DE CONTACTO
-// ==========================================
 
 async function cargarMensajesContacto(token) {
 
@@ -497,9 +480,7 @@ async function cargarMensajesContacto(token) {
 }
 
 
-// ==========================================
-// ACTUALIZAR ESTADO DE MENSAJE DE CONTACTO
-// ==========================================
+
 
 async function cambiarEstadoContacto(id, nuevoEstado, token) {
 
@@ -533,9 +514,7 @@ async function cambiarEstadoContacto(id, nuevoEstado, token) {
 }
 
 
-// ==========================================
-// EVITAR INSERTAR TEXTO HTML NO CONFIABLE
-// ==========================================
+
 
 function escaparHTML(texto) {
 

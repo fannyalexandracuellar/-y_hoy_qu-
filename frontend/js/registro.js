@@ -1,7 +1,7 @@
 
 const formulario = document.getElementById("formulario_registro");
 
-// Espacio para mostrar mensajes al usuario
+
 const mensaje = document.createElement("p");
 mensaje.id = "mensaje_registro";
 mensaje.setAttribute("aria-live", "polite");
@@ -16,7 +16,7 @@ formulario.addEventListener("submit", async (evento) => {
     const contrasena = document.getElementById("contrasena_registro").value;
     const confirmarContrasena = document.getElementById("confirmar_contrasena").value;
 
-    // Comprobar que las contraseñas coincidan
+   
     if (contrasena !== confirmarContrasena) {
         mensaje.textContent = "Las contraseñas no coinciden.";
         return;

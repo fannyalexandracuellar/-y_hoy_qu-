@@ -12,7 +12,7 @@ const {
     verificarAdmin
 } = require("../middleware/authMiddleware");
 
-// Consultar estadísticas (Solo administrador)
+
 router.get(
     "/estadisticas",
     verificarToken,
@@ -20,7 +20,7 @@ router.get(
     obtenerEstadisticas
 );
 
-// Consultar clientes (Solo administrador)
+
 router.get(
     "/clientes",
     verificarToken,

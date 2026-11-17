@@ -3,13 +3,13 @@ const path = require("path");
 const fs = require("fs");
 const { randomUUID } = require("crypto");
 
-// Carpeta donde se guardarán las fotografías
+
 const carpetaUploads = path.join(__dirname, "../uploads");
 
-// Crear la carpeta si todavía no existe
+
 fs.mkdirSync(carpetaUploads, { recursive: true });
 
-// Configuración del almacenamiento
+
 const almacenamiento = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, carpetaUploads);
@@ -23,7 +23,7 @@ const almacenamiento = multer.diskStorage({
     }
 });
 
-// Aceptar únicamente archivos de imagen
+
 const filtroArchivos = (req, file, cb) => {
     if (file.mimetype.startsWith("image/")) {
         cb(null, true);
@@ -32,7 +32,7 @@ const filtroArchivos = (req, file, cb) => {
     }
 };
 
-// Configuración final de Multer
+
 const upload = multer({
     storage: almacenamiento,
     fileFilter: filtroArchivos,

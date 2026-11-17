@@ -1,9 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // =========================================
-    // ELEMENTOS DEL FORMULARIO
-    // =========================================
 
     const formulario = document.getElementById("formulario_experiencia");
 
@@ -17,9 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const campoPresupuesto = document.getElementById("presupuesto");
     const campoDetalles = document.getElementById("detalles");
 
-    // =========================================
-    // ESPACIO PARA MOSTRAR MENSAJES
-    // =========================================
+   
 
     const mensaje = document.createElement("p");
 
@@ -28,9 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     formulario.appendChild(mensaje);
 
-    // =========================================
-    // LEER RESPUESTAS DEL CHATBOT
-    // =========================================
+    
 
     const parametros = new URLSearchParams(window.location.search);
 
@@ -42,9 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let respuestasRecibidas = false;
 
-    // =========================================
-    // CONVERTIR DESTINATARIO
-    // =========================================
+    
 
     const equivalenciasDestinatario = {
         mi: "personal",
@@ -65,9 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // =========================================
-    // CONVERTIR TIPO DE EXPERIENCIA
-    // =========================================
 
     const equivalenciasTipo = {
         interiores: "interior_casa",
@@ -96,9 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // =========================================
-    // CONVERTIR OCASIÓN
-    // =========================================
+
 
     const equivalenciasOcasion = {
         cumpleanos: "cumpleanos",
@@ -118,9 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // =========================================
-    // CONVERTIR PRESUPUESTO
-    // =========================================
+ 
 
     const equivalenciasPresupuesto = {
         bajo: "esencial",
@@ -140,9 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // =========================================
-    // AGREGAR EXPERIENCIA RECOMENDADA
-    // =========================================
+  
 
     if (experienciaChat && campoDetalles) {
 
@@ -158,9 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // =========================================
-    // AVISAR QUE SE RECUPERARON LAS RESPUESTAS
-    // =========================================
+  
 
     if (respuestasRecibidas) {
 
@@ -177,15 +157,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // =========================================
-    // ENVIAR SOLICITUD AL BACKEND
-    // =========================================
+   
 
     formulario.addEventListener("submit", async (evento) => {
 
         evento.preventDefault();
 
-        // Comprobar sesión
+        
         const token = sessionStorage.getItem("token");
 
         if (!token) {
@@ -199,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-        // Comprobar tamaño de fotografía
+       
         const campoFotografia = document.getElementById("fotografia");
 
         if (
@@ -217,10 +195,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
-        // Recoger los datos del formulario
+        
         const datosFormulario = new FormData(formulario);
 
-        // Evitar envíos repetidos
+      
         const botonEnviar = formulario.querySelector(
             'button[type="submit"], input[type="submit"]'
         );
@@ -267,17 +245,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
             mensaje.style.color = "green";
 
-            // Limpiar el formulario
+            
             formulario.reset();
 
-            // Eliminar el aviso del chatbot
+            
             const aviso = document.getElementById("aviso_chatbot");
 
             if (aviso) {
                 aviso.remove();
             }
 
-            // Limpiar los parámetros de la URL
+            
             window.history.replaceState(
                 {},
                 document.title,

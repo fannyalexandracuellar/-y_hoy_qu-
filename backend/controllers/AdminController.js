@@ -2,7 +2,6 @@
 const Usuario = require("../models/Usuario");
 const Solicitud = require("../models/Solicitud");
 
-// Obtener estadísticas generales del panel
 const obtenerEstadisticas = async (req, res) => {
     try {
         const [
@@ -37,7 +36,6 @@ const obtenerEstadisticas = async (req, res) => {
     }
 };
 
-// Obtener clientes registrados
 const obtenerClientes = async (req, res) => {
     try {
         const clientes = await Usuario.find({

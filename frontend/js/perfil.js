@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         mensaje.textContent = error.message;
         mensaje.style.color = "red";
 
-        // Si la sesión expiró, regresar al inicio de sesión
+        
         if (
             error.message.includes("Sesión inválida") ||
             error.message.includes("Acceso denegado")

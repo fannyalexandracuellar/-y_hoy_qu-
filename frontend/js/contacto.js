@@ -1,9 +1,6 @@
 
 const formulario = document.getElementById("formulario_mensaje");
 
-// ==========================================
-// ENVIAR MENSAJE DE CONTACTO
-// ==========================================
 
 formulario.addEventListener("submit", async (event) => {
 

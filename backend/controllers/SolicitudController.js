@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 const Solicitud = require("../models/Solicitud");
 
-// Crear una nueva solicitud
+
 const crearSolicitud = async (req, res) => {
     try {
         const {
@@ -72,7 +72,7 @@ const crearSolicitud = async (req, res) => {
     }
 };
 
-// Consultar solicitudes del usuario autenticado
+
 const obtenerMisSolicitudes = async (req, res) => {
     try {
         const solicitudes = await Solicitud.find({
@@ -93,7 +93,7 @@ const obtenerMisSolicitudes = async (req, res) => {
     }
 };
 
-// Consultar todas las solicitudes (Administrador)
+
 const obtenerTodasLasSolicitudes = async (req, res) => {
     try {
         const solicitudes = await Solicitud.find()
@@ -114,7 +114,8 @@ const obtenerTodasLasSolicitudes = async (req, res) => {
     }
 };
 
-// Actualizar estado de una solicitud (Administrador)
+
+
 const actualizarEstadoSolicitud = async (req, res) => {
     try {
         const { id } = req.params;

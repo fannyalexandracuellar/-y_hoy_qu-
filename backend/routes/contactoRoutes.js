@@ -13,10 +13,10 @@ const {
     verificarAdmin
 } = require("../middleware/authMiddleware");
 
-// Enviar mensaje (público, no requiere iniciar sesión)
+
 router.post("/", crearMensaje);
 
-// Consultar mensajes (solo administrador)
+
 router.get(
     "/",
     verificarToken,
@@ -24,7 +24,7 @@ router.get(
     obtenerMensajes
 );
 
-// Actualizar estado (solo administrador)
+
 router.patch(
     "/:id/estado",
     verificarToken,

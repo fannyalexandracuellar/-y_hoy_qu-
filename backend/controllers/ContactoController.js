@@ -1,10 +1,6 @@
 
 const Contacto = require("../models/Contacto");
 
-// ==========================================
-// REGISTRAR UN MENSAJE DE CONTACTO
-// ==========================================
-
 const crearMensaje = async (req, res) => {
 
     try {
@@ -17,14 +13,14 @@ const crearMensaje = async (req, res) => {
             mensaje
         } = req.body;
 
-        // Comprobar que los campos obligatorios estén completos
+    
         if (!nombre || !correo || !motivo || !mensaje) {
             return res.status(400).json({
                 mensaje: "Completa todos los campos obligatorios."
             });
         }
 
-        // Crear y guardar el mensaje en MongoDB
+      
         const nuevoMensaje = new Contacto({
             nombre,
             correo,
@@ -51,9 +47,7 @@ const crearMensaje = async (req, res) => {
 };
 
 
-// ==========================================
-// CONSULTAR TODOS LOS MENSAJES (ADMIN)
-// ==========================================
+
 
 const obtenerMensajes = async (req, res) => {
 
@@ -78,9 +72,7 @@ const obtenerMensajes = async (req, res) => {
 };
 
 
-// ==========================================
-// ACTUALIZAR ESTADO DE UN MENSAJE (ADMIN)
-// ==========================================
+
 
 const actualizarEstadoMensaje = async (req, res) => {
 

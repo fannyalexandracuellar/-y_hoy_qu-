@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const solicitudes = resultado.solicitudes || [];
 
-        // Actualizar los contadores.
+      
         totalSolicitudes.textContent = solicitudes.length;
 
         solicitudesRevision.textContent = solicitudes.filter(
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         lista.innerHTML = "";
 
-        // Mostrar mensaje cuando no existen solicitudes.
+        
         if (solicitudes.length === 0) {
 
             mensaje.textContent =
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         mensaje.textContent = "";
 
-        // Traducción de los estados.
+       
         const estados = {
             pendiente: "Pendiente",
             en_revision: "En revisión",
@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             rechazada: "Rechazada"
         };
 
-        // Traducción de los tipos de experiencia.
+        
         const tiposExperiencia = {
             interior_casa: "Interior de una casa",
             interior_establecimiento: "Interior de un establecimiento",
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             indiferente: "Sin preferencia"
         };
 
-        // Traducción de los presupuestos.
+       
         const presupuestos = {
             esencial: "Esencial",
             especial: "Especial",
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             por_definir: "Por definir"
         };
 
-        // Crear una tarjeta por solicitud.
+       
         solicitudes.forEach(solicitud => {
 
             const tarjeta = document.createElement("article");
@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 
-// Evitar que los datos recibidos se interpreten como código HTML.
+
 function escaparHTML(valor) {
 
     return String(valor).replace(/[&<>"']/g, caracter => {

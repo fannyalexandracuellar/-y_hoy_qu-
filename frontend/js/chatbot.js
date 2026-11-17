@@ -1,9 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // =========================================
-    // ELEMENTOS DEL CHATBOT
-    // =========================================
+    
 
     const botonFlotante = document.getElementById("boton_asistente");
     const botonSeccion = document.getElementById("abrir_asistente_seccion");
@@ -24,9 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // =========================================
-    // EXPERIENCIAS DEL CATÁLOGO
-    // =========================================
+    
 
     const experiencias = [
 
@@ -96,9 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     ];
 
-    // =========================================
-    // RESPUESTAS DEL USUARIO
-    // =========================================
+  
 
     let respuestas = {
         destinatario: "",
@@ -109,9 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let chatIniciado = false;
 
-    // =========================================
-    // CREAR URL DE PERSONALIZACIÓN
-    // =========================================
+  
 
     function crearUrlPersonalizacion(experiencia = "") {
 
@@ -130,9 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // =========================================
-    // ABRIR Y CERRAR CHAT
-    // =========================================
+ 
 
     function abrirChat() {
 
@@ -156,9 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
     botonSeccion.addEventListener("click", abrirChat);
     botonCerrar.addEventListener("click", cerrarChat);
 
-    // =========================================
-    // MOSTRAR MENSAJES
-    // =========================================
 
     function agregarMensaje(texto, tipo) {
 
@@ -177,9 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // =========================================
-    // MOSTRAR OPCIONES
-    // =========================================
+
 
     function mostrarOpciones(lista) {
 
@@ -208,9 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // =========================================
-    // INICIAR CONVERSACIÓN
-    // =========================================
+  
 
     function iniciarChat() {
 
@@ -240,9 +223,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // =========================================
-    // PREGUNTA 1: DESTINATARIO
-    // =========================================
+   
 
     function preguntarDestinatario() {
 
@@ -349,9 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // =========================================
-    // PREGUNTA 3: OCASIÓN
-    // =========================================
+
 
     function preguntarOcasion() {
 
@@ -398,9 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // =========================================
-    // PREGUNTA 4: PRESUPUESTO
-    // =========================================
+ 
 
     function preguntarPresupuesto() {
 
@@ -447,9 +424,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // =========================================
-    // GENERAR RECOMENDACIONES
-    // =========================================
+
 
     function recomendarExperiencias() {
 
@@ -499,9 +474,8 @@ document.addEventListener("DOMContentLoaded", () => {
             .sort((a, b) => b.puntuacion - a.puntuacion)
             .slice(0, 3);
 
-        // =========================================
-        // SI NO HAY RESULTADOS
-        // =========================================
+    
+
 
         if (resultados.length === 0) {
 
@@ -535,9 +509,8 @@ document.addEventListener("DOMContentLoaded", () => {
             "bot"
         );
 
-        // =========================================
-        // CREAR TARJETAS DE TEXTO
-        // =========================================
+     
+
 
         resultados.forEach(experiencia => {
 
@@ -562,24 +535,23 @@ document.addEventListener("DOMContentLoaded", () => {
                         ? "Experiencia al aire libre"
                         : "Caja sorpresa";
 
-            // Título
+           
             const titulo = document.createElement("h4");
 
             titulo.textContent = experiencia.nombre;
 
-            // Descripción
+           
             const descripcion = document.createElement("p");
 
             descripcion.textContent = experiencia.descripcion;
 
-            // Enlace de personalización
             const enlace = document.createElement("a");
 
             enlace.href = crearUrlPersonalizacion(experiencia.nombre);
 
             enlace.textContent = "Personalizar esta experiencia";
 
-            // Construir tarjeta
+            
             contenido.appendChild(categoria);
             contenido.appendChild(titulo);
             contenido.appendChild(descripcion);
@@ -596,9 +568,6 @@ document.addEventListener("DOMContentLoaded", () => {
             "bot"
         );
 
-        // =========================================
-        // OPCIONES FINALES
-        // =========================================
 
         mostrarOpciones([
 

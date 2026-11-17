@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const botonCerrarSesion = document.getElementById("cerrar_sesion");
     const enlaceSolicitudes = document.getElementById("enlace_solicitudes");
 
-    // Si la página no tiene menú de usuario, no hacemos nada.
+ 
     if (!enlaceLogin || !menuUsuario) return;
 
     let usuario = null;
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const token = sessionStorage.getItem("token");
 
-    // Comprobar si existe una sesión iniciada.
+   
     if (usuario && token) {
 
         enlaceLogin.style.display = "none";
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // Abrir y cerrar el menú de perfil.
+    
     if (botonPerfil && opcionesPerfil) {
 
         botonPerfil.addEventListener("click", () => {
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // Cerrar sesión.
+  
     if (botonCerrarSesion) {
 
         botonCerrarSesion.addEventListener("click", () => {

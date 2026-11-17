@@ -7,42 +7,31 @@ require("dotenv").config();
 
 const app = express();
 
-// ==========================================
-// IMPORTAR RUTAS
-// ==========================================
 
 const solicitudRoutes = require("./routes/solicitudRoutes");
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const contactoRoutes = require("./routes/contactoRoutes");
 
-// ==========================================
-// CONFIGURACIÓN GENERAL
-// ==========================================
+
 
 app.use(cors());
 app.use(express.json());
 
-// ==========================================
-// RUTA PRINCIPAL
-// ==========================================
+
 
 app.get("/", (req, res) => {
     res.send("¡Bienvenido al servidor de ¿Y hoy qué?!");
 });
 
-// ==========================================
-// CONECTAR RUTAS
-// ==========================================
+
 
 app.use("/api/solicitudes", solicitudRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/contacto", contactoRoutes);
 
-// ==========================================
-// CONEXIÓN CON MONGODB
-// ==========================================
+
 
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {

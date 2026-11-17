@@ -3,7 +3,7 @@ const Usuario = require("../models/Usuario");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-// Registrar un usuario
+
 const registrarUsuario = async (req, res) => {
     try {
         const { nombre, correo, telefono, contrasena } = req.body;
@@ -72,7 +72,7 @@ const registrarUsuario = async (req, res) => {
     }
 };
 
-// Iniciar sesión
+
 const iniciarSesion = async (req, res) => {
     try {
         const { correo, contrasena } = req.body;
@@ -136,7 +136,7 @@ const iniciarSesion = async (req, res) => {
     }
 };
 
-// Consultar el perfil del usuario autenticado
+
 const obtenerPerfil = async (req, res) => {
     try {
         const usuario = await Usuario.findById(req.usuario.id)

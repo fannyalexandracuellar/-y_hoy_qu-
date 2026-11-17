@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // Guardar los datos de la sesión
+            
             sessionStorage.setItem("token", datos.token);
 
             sessionStorage.setItem(

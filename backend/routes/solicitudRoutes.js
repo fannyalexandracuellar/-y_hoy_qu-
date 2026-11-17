@@ -16,7 +16,7 @@ const {
     verificarAdmin
 } = require("../middleware/authMiddleware");
 
-// Consultar todas las solicitudes (Solo administrador)
+
 router.get(
     "/",
     verificarToken,
@@ -24,14 +24,14 @@ router.get(
     obtenerTodasLasSolicitudes
 );
 
-// Consultar solicitudes propias (Cliente autenticado)
+
 router.get(
     "/mis-solicitudes",
     verificarToken,
     obtenerMisSolicitudes
 );
 
-// Crear solicitud (Cliente autenticado)
+
 router.post(
     "/",
     verificarToken,
@@ -39,7 +39,7 @@ router.post(
     crearSolicitud
 );
 
-// Actualizar estado (Solo administrador)
+
 router.patch(
     "/:id/estado",
     verificarToken,
