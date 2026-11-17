@@ -83,9 +83,15 @@ const iniciarSesion = async (req, res) => {
             });
         }
 
+        const correoNormalizado = correo.trim().toLowerCase();
+
         const usuario = await Usuario.findOne({
-            correo: correo.trim().toLowerCase()
+            correo: correoNormalizado
         });
+
+        // Diagnóstico temporal para revisar el inicio de sesión
+        console.log("Correo recibido:", correoNormalizado);
+        console.log("Usuario encontrado:", !!usuario);
 
         if (!usuario) {
             return res.status(401).json({
@@ -161,6 +167,7 @@ const obtenerPerfil = async (req, res) => {
         });
     }
 };
+
 
 module.exports = {
     registrarUsuario,
