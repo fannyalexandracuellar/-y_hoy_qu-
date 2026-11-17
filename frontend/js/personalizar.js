@@ -1,7 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-
     const formulario = document.getElementById("formulario_experiencia");
 
     if (!formulario) {
@@ -14,8 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const campoPresupuesto = document.getElementById("presupuesto");
     const campoDetalles = document.getElementById("detalles");
 
-   
-
     const mensaje = document.createElement("p");
 
     mensaje.id = "mensaje_formulario";
@@ -23,8 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     formulario.appendChild(mensaje);
 
-    
-
+   
     const parametros = new URLSearchParams(window.location.search);
 
     const destinatarioChat = parametros.get("destinatario");
@@ -35,8 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let respuestasRecibidas = false;
 
-    
-
+    // Equivalencias del destinatario
     const equivalenciasDestinatario = {
         mi: "personal",
         pareja: "pareja",
@@ -46,17 +41,15 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     if (destinatarioChat && campoDestinatario) {
-
         const valor = equivalenciasDestinatario[destinatarioChat];
 
         if (valor) {
             campoDestinatario.value = valor;
             respuestasRecibidas = true;
         }
-
     }
 
-
+    
     const equivalenciasTipo = {
         interiores: "interior_casa",
         exteriores: "exterior",
@@ -66,11 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     if (tipoChat) {
-
         const valor = equivalenciasTipo[tipoChat];
 
         if (valor) {
-
             const opcion = formulario.querySelector(
                 `input[name="tipo_experiencia"][value="${valor}"]`
             );
@@ -79,13 +70,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 opcion.checked = true;
                 respuestasRecibidas = true;
             }
-
         }
-
     }
 
-
-
+    // Equivalencias de la ocasión
     const equivalenciasOcasion = {
         cumpleanos: "cumpleanos",
         aniversario: "aniversario",
@@ -94,18 +82,15 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     if (ocasionChat && campoOcasion) {
-
         const valor = equivalenciasOcasion[ocasionChat];
 
         if (valor) {
             campoOcasion.value = valor;
             respuestasRecibidas = true;
         }
-
     }
 
- 
-
+    // Equivalencias del presupuesto
     const equivalenciasPresupuesto = {
         bajo: "esencial",
         medio: "especial",
@@ -114,20 +99,16 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     if (presupuestoChat && campoPresupuesto) {
-
         const valor = equivalenciasPresupuesto[presupuestoChat];
 
         if (valor) {
             campoPresupuesto.value = valor;
             respuestasRecibidas = true;
         }
-
     }
 
-  
-
+    // Agregar la experiencia recomendada
     if (experienciaChat && campoDetalles) {
-
         const textoRecomendacion =
             "Experiencia recomendada por el chatbot: " +
             experienciaChat;
@@ -137,13 +118,10 @@ document.addEventListener("DOMContentLoaded", () => {
             : textoRecomendacion;
 
         respuestasRecibidas = true;
-
     }
 
-  
-
+    // Aviso de respuestas completadas por el chatbot
     if (respuestasRecibidas) {
-
         const aviso = document.createElement("div");
 
         aviso.id = "aviso_chatbot";
@@ -154,30 +132,24 @@ document.addEventListener("DOMContentLoaded", () => {
         aviso.setAttribute("role", "status");
 
         formulario.insertBefore(aviso, formulario.firstChild);
-
     }
 
-   
-
+    // Enviar formulario
     formulario.addEventListener("submit", async (evento) => {
 
         evento.preventDefault();
 
-        
         const token = sessionStorage.getItem("token");
 
         if (!token) {
-
             mensaje.textContent =
                 "Debes iniciar sesión para enviar una solicitud.";
 
             mensaje.style.color = "red";
-
             return;
-
         }
 
-       
+        // Validar fotografía
         const campoFotografia = document.getElementById("fotografia");
 
         if (
@@ -185,20 +157,15 @@ document.addEventListener("DOMContentLoaded", () => {
             campoFotografia.files.length > 0 &&
             campoFotografia.files[0].size > 5 * 1024 * 1024
         ) {
-
             mensaje.textContent =
                 "La fotografía no puede superar los 5 MB.";
 
             mensaje.style.color = "red";
-
             return;
-
         }
 
-        
         const datosFormulario = new FormData(formulario);
 
-      
         const botonEnviar = formulario.querySelector(
             'button[type="submit"], input[type="submit"]'
         );
@@ -213,19 +180,28 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
 
             const respuesta = await fetch(
-                "https://y-hoy-qu.onrender.com/api/solicitudes/personalizar",
+                "https://y-hoy-qu.onrender.com/api/solicitudes/",
                 {
                     method: "POST",
-
                     headers: {
                         "Authorization": `Bearer ${token}`
                     },
-
                     body: datosFormulario
                 }
             );
 
-            const resultado = await respuesta.json();
+           
+            const textoRespuesta = await respuesta.text();
+
+            let resultado;
+
+            try {
+                resultado = JSON.parse(textoRespuesta);
+            } catch {
+                throw new Error(
+                    `El servidor respondió de forma inesperada (HTTP ${respuesta.status}).`
+                );
+            }
 
             if (!respuesta.ok) {
 
@@ -237,7 +213,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         ? errorServidor
                         : "No fue posible enviar la solicitud."
                 );
-
             }
 
             mensaje.textContent =
@@ -245,17 +220,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             mensaje.style.color = "green";
 
-            
             formulario.reset();
 
-            
             const aviso = document.getElementById("aviso_chatbot");
 
             if (aviso) {
                 aviso.remove();
             }
 
-            
             window.history.replaceState(
                 {},
                 document.title,
