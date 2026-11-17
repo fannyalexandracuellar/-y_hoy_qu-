@@ -4,25 +4,47 @@ const router = express.Router();
 
 const {
     crearSolicitud,
-    obtenerMisSolicitudes
+    obtenerMisSolicitudes,
+    obtenerTodasLasSolicitudes,
+    actualizarEstadoSolicitud
 } = require("../controllers/SolicitudController");
 
 const upload = require("../middleware/upload");
-const { verificarToken } = require("../middleware/authMiddleware");
 
-// Consultar las solicitudes del usuario autenticado
+const {
+    verificarToken,
+    verificarAdmin
+} = require("../middleware/authMiddleware");
+
+// Consultar todas las solicitudes (Solo administrador)
+router.get(
+    "/",
+    verificarToken,
+    verificarAdmin,
+    obtenerTodasLasSolicitudes
+);
+
+// Consultar solicitudes propias (Cliente autenticado)
 router.get(
     "/mis-solicitudes",
     verificarToken,
     obtenerMisSolicitudes
 );
 
-// Crear una nueva solicitud
+// Crear solicitud (Cliente autenticado)
 router.post(
     "/",
     verificarToken,
     upload.single("fotografia"),
     crearSolicitud
+);
+
+// Actualizar estado (Solo administrador)
+router.patch(
+    "/:id/estado",
+    verificarToken,
+    verificarAdmin,
+    actualizarEstadoSolicitud
 );
 
 module.exports = router;

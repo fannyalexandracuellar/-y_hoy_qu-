@@ -7,8 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const nombreUsuario = document.getElementById("nombre_usuario");
     const opcionesPerfil = document.getElementById("opciones_perfil");
     const botonCerrarSesion = document.getElementById("cerrar_sesion");
+    const enlaceSolicitudes = document.getElementById("enlace_solicitudes");
 
-    // Si esta página no tiene el menú de usuario, no hacemos nada.
+    // Si la página no tiene menú de usuario, no hacemos nada.
     if (!enlaceLogin || !menuUsuario) return;
 
     let usuario = null;
@@ -20,39 +21,65 @@ document.addEventListener("DOMContentLoaded", () => {
         sessionStorage.removeItem("token");
     }
 
-    // Mostrar el menú correspondiente según la sesión.
-    if (usuario && sessionStorage.getItem("token")) {
+    const token = sessionStorage.getItem("token");
+
+    // Comprobar si existe una sesión iniciada.
+    if (usuario && token) {
+
         enlaceLogin.style.display = "none";
         menuUsuario.style.display = "block";
-        nombreUsuario.textContent = usuario.nombre;
+
+        nombreUsuario.textContent = usuario.nombre || "Mi cuenta";
+
+        // Cambiar las opciones según el rol.
+        if (usuario.rol === "administrador" && enlaceSolicitudes) {
+
+            enlaceSolicitudes.textContent = "Perfil administrador";
+            enlaceSolicitudes.href = "admin.html";
+
+        } else if (enlaceSolicitudes) {
+
+            enlaceSolicitudes.textContent = "Mis solicitudes";
+            enlaceSolicitudes.href = "mis-solicitudes.html";
+
+        }
+
     } else {
+
         enlaceLogin.style.display = "list-item";
         menuUsuario.style.display = "none";
+
     }
 
     // Abrir y cerrar el menú de perfil.
     if (botonPerfil && opcionesPerfil) {
+
         botonPerfil.addEventListener("click", () => {
             opcionesPerfil.classList.toggle("activo");
         });
 
         document.addEventListener("click", (evento) => {
-            if (
-                !menuUsuario.contains(evento.target)
-            ) {
+
+            if (!menuUsuario.contains(evento.target)) {
                 opcionesPerfil.classList.remove("activo");
             }
+
         });
+
     }
 
     // Cerrar sesión.
     if (botonCerrarSesion) {
+
         botonCerrarSesion.addEventListener("click", () => {
+
             sessionStorage.removeItem("token");
             sessionStorage.removeItem("usuario");
 
             window.location.href = "index.html";
+
         });
+
     }
 
 });

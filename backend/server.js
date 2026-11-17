@@ -7,32 +7,49 @@ require("dotenv").config();
 
 const app = express();
 
-// Importar rutas
-// Importar rutas
+// ==========================================
+// IMPORTAR RUTAS
+// ==========================================
+
 const solicitudRoutes = require("./routes/solicitudRoutes");
 const authRoutes = require("./routes/authRoutes");
-// Configuración general
+const adminRoutes = require("./routes/adminRoutes");
+const contactoRoutes = require("./routes/contactoRoutes");
+
+// ==========================================
+// CONFIGURACIÓN GENERAL
+// ==========================================
+
 app.use(cors());
 app.use(express.json());
 
-// Ruta principal
+// ==========================================
+// RUTA PRINCIPAL
+// ==========================================
+
 app.get("/", (req, res) => {
     res.send("¡Bienvenido al servidor de ¿Y hoy qué?!");
 });
 
-// Rutas de solicitudes
+// ==========================================
+// CONECTAR RUTAS
+// ==========================================
+
 app.use("/api/solicitudes", solicitudRoutes);
-
-// Rutas de autenticación
 app.use("/api/auth", authRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/contacto", contactoRoutes);
 
-// Conexión con MongoDB
+// ==========================================
+// CONEXIÓN CON MONGODB
+// ==========================================
+
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
 
         console.log("MongoDB conectado correctamente");
 
-        const PORT = process.env.PORT || 3000;
+        const PORT = process.env.PORT || 3001;
 
         app.listen(PORT, () => {
             console.log(

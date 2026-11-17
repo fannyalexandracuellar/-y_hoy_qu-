@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const solicitudesRevision = document.getElementById("solicitudes_revision");
     const solicitudesAprobadas = document.getElementById("solicitudes_aprobadas");
 
-    // Verificar que exista una sesión
     if (!token) {
         window.location.href = "login.html";
         return;
@@ -40,70 +39,142 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const solicitudes = resultado.solicitudes || [];
 
-        // Actualizar el resumen
+        // Actualizar los contadores.
         totalSolicitudes.textContent = solicitudes.length;
 
         solicitudesRevision.textContent = solicitudes.filter(
-            solicitud => solicitud.estado === "en_revision"
+            solicitud =>
+                solicitud.estado === "pendiente" ||
+                solicitud.estado === "en_revision"
         ).length;
 
         solicitudesAprobadas.textContent = solicitudes.filter(
-            solicitud => solicitud.estado === "aprobada"
+            solicitud =>
+                solicitud.estado === "confirmada" ||
+                solicitud.estado === "lista"
         ).length;
 
-        // Comprobar si existen solicitudes
+        lista.innerHTML = "";
+
+        // Mostrar mensaje cuando no existen solicitudes.
         if (solicitudes.length === 0) {
 
             mensaje.textContent =
-                "Todavía no has enviado solicitudes. ¡Anímate a crear tu primera experiencia!";
+                "Todavía no tienes experiencias solicitadas. ¡Anímate a crear la primera!";
 
             return;
         }
 
         mensaje.textContent = "";
 
-        // Mostrar cada solicitud
+        // Traducción de los estados.
+        const estados = {
+            pendiente: "Pendiente",
+            en_revision: "En revisión",
+            confirmada: "Confirmada",
+            lista: "Lista para disfrutar",
+            rechazada: "Rechazada"
+        };
+
+        // Traducción de los tipos de experiencia.
+        const tiposExperiencia = {
+            interior_casa: "Interior de una casa",
+            interior_establecimiento: "Interior de un establecimiento",
+            exterior: "Al aire libre",
+            indiferente: "Sin preferencia"
+        };
+
+        // Traducción de los presupuestos.
+        const presupuestos = {
+            esencial: "Esencial",
+            especial: "Especial",
+            premium: "Premium",
+            por_definir: "Por definir"
+        };
+
+        // Crear una tarjeta por solicitud.
         solicitudes.forEach(solicitud => {
 
             const tarjeta = document.createElement("article");
             tarjeta.classList.add("tarjeta_solicitud");
 
             const fecha = solicitud.createdAt
-                ? new Date(solicitud.createdAt).toLocaleDateString("es-CO")
+                ? new Date(solicitud.createdAt).toLocaleDateString("es-CO", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric"
+                })
                 : "Fecha no disponible";
 
-            const estado = solicitud.estado || "pendiente";
+            const estado = estados[solicitud.estado] || "Sin estado";
 
-            const estados = {
-                pendiente: "Pendiente",
-                en_revision: "En revisión",
-                aprobada: "Aprobada",
-                rechazada: "Rechazada"
-            };
+            const tipo = tiposExperiencia[solicitud.tipo_experiencia]
+                || "No especificado";
 
-            const estadoTexto = estados[estado] || estado;
+            const presupuesto = presupuestos[solicitud.presupuesto]
+                || "No especificado";
+
+            const intereses = Array.isArray(solicitud.intereses)
+                && solicitud.intereses.length > 0
+                ? solicitud.intereses.map(escaparHTML).join(", ")
+                : "No especificados";
 
             tarjeta.innerHTML = `
                 <div class="cabecera_solicitud">
-                    <div>
-                        <span class="fecha_solicitud">${fecha}</span>
-                        <h3>${escaparHTML(solicitud.ocasion || "Experiencia personalizada")}</h3>
+
+                    <div class="titulo_solicitud">
+                        <span class="fecha_solicitud">
+                            ${escaparHTML(fecha)}
+                        </span>
+
+                        <h3>
+                            ${escaparHTML(solicitud.ocasion || "Experiencia personalizada")}
+                        </h3>
+
+                        <p class="destinatario_solicitud">
+                            Para: ${escaparHTML(solicitud.destinatario || "No especificado")}
+                        </p>
                     </div>
 
-                    <span class="estado_solicitud estado_${escaparHTML(estado)}">
-                        ${escaparHTML(estadoTexto)}
+                    <span class="estado_solicitud estado_${escaparHTML(solicitud.estado || "pendiente")}">
+                        ${escaparHTML(estado)}
                     </span>
+
+                </div>
+
+                <div class="resumen_datos_solicitud">
+
+                    <div>
+                        <span>PERSONAS</span>
+                        <strong>
+                            ${escaparHTML(String(solicitud.cantidad_personas ?? "No especificado"))}
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>PRESUPUESTO</span>
+                        <strong>${escaparHTML(presupuesto)}</strong>
+                    </div>
+
+                    <div>
+                        <span>TIPO</span>
+                        <strong>${escaparHTML(tipo)}</strong>
+                    </div>
+
                 </div>
 
                 <div class="detalles_solicitud">
+
+                    <h4>Detalles de tu experiencia</h4>
+
                     <p>
-                        <strong>Destinatario:</strong>
-                        ${escaparHTML(solicitud.destinatario || "No especificado")}
+                        <strong>Ocasión:</strong>
+                        ${escaparHTML(solicitud.ocasion_detalle || "No especificada")}
                     </p>
 
                     <p>
-                        <strong>Tipo de experiencia:</strong>
-                        ${escaparHTML(solicitud.tipo_experiencia || "No especificado")}
+                        <strong>Intereses:</strong>
+                        ${intereses}
                     </p>
 
                     <p>
@@ -112,9 +183,15 @@ document.addEventListener("DOMContentLoaded", async () => {
                     </p>
 
                     <p>
-                        <strong>Personas:</strong>
-                        ${escaparHTML(String(solicitud.cantidad_personas || "No especificado"))}
+                        <strong>Ubicación:</strong>
+                        ${escaparHTML(solicitud.ubicacion || "No especificada")}
                     </p>
+
+                    <p>
+                        <strong>Detalles adicionales:</strong>
+                        ${escaparHTML(solicitud.detalles || "Sin detalles adicionales")}
+                    </p>
+
                 </div>
             `;
 
@@ -127,7 +204,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Error al consultar solicitudes:", error);
 
         mensaje.textContent = error.message;
-        mensaje.style.color = "red";
+        mensaje.classList.add("error_solicitudes");
 
         if (
             error.message.includes("Sesión inválida") ||
@@ -144,7 +221,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 
-// Evitar que los datos recibidos se interpreten como HTML
+// Evitar que los datos recibidos se interpreten como código HTML.
 function escaparHTML(valor) {
 
     return String(valor).replace(/[&<>"']/g, caracter => {

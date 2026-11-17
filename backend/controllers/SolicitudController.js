@@ -1,11 +1,10 @@
 
+const mongoose = require("mongoose");
 const Solicitud = require("../models/Solicitud");
 
 // Crear una nueva solicitud
 const crearSolicitud = async (req, res) => {
     try {
-
-        // Obtener los datos enviados por el formulario
         const {
             nombre,
             correo,
@@ -21,17 +20,19 @@ const crearSolicitud = async (req, res) => {
             detalles
         } = req.body;
 
-        // Procesar los intereses seleccionados
-        let intereses = req.body["intereses[]"] || req.body.intereses || [];
+        let intereses =
+            req.body["intereses[]"] ||
+            req.body.intereses ||
+            [];
 
         if (!Array.isArray(intereses)) {
             intereses = [intereses];
         }
 
-        // Obtener el nombre de la fotografía
-        const fotografia = req.file ? req.file.filename : null;
+        const fotografia = req.file
+            ? req.file.filename
+            : null;
 
-        // Crear el documento en MongoDB
         const nuevaSolicitud = await Solicitud.create({
             nombre,
             correo,
@@ -47,8 +48,6 @@ const crearSolicitud = async (req, res) => {
             ubicacion,
             fotografia,
             detalles,
-
-            // Asociar la solicitud al usuario autenticado
             usuario: req.usuario.id
         });
 
@@ -58,7 +57,6 @@ const crearSolicitud = async (req, res) => {
         });
 
     } catch (error) {
-
         console.error("Error al crear solicitud:", error.message);
 
         if (error.name === "ValidationError") {
@@ -74,15 +72,12 @@ const crearSolicitud = async (req, res) => {
     }
 };
 
-// Consultar las solicitudes del usuario autenticado
+// Consultar solicitudes del usuario autenticado
 const obtenerMisSolicitudes = async (req, res) => {
     try {
-
         const solicitudes = await Solicitud.find({
             usuario: req.usuario.id
-        }).sort({
-            createdAt: -1
-        });
+        }).sort({ createdAt: -1 });
 
         res.status(200).json({
             mensaje: "Solicitudes consultadas correctamente",
@@ -90,7 +85,6 @@ const obtenerMisSolicitudes = async (req, res) => {
         });
 
     } catch (error) {
-
         console.error("Error al consultar solicitudes:", error.message);
 
         res.status(500).json({
@@ -99,7 +93,85 @@ const obtenerMisSolicitudes = async (req, res) => {
     }
 };
 
+// Consultar todas las solicitudes (Administrador)
+const obtenerTodasLasSolicitudes = async (req, res) => {
+    try {
+        const solicitudes = await Solicitud.find()
+            .populate("usuario", "nombre correo telefono")
+            .sort({ createdAt: -1 });
+
+        res.status(200).json({
+            mensaje: "Todas las solicitudes consultadas correctamente",
+            solicitudes
+        });
+
+    } catch (error) {
+        console.error("Error al consultar todas las solicitudes:", error.message);
+
+        res.status(500).json({
+            mensaje: "Error al consultar las solicitudes"
+        });
+    }
+};
+
+// Actualizar estado de una solicitud (Administrador)
+const actualizarEstadoSolicitud = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { estado } = req.body;
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({
+                mensaje: "El identificador de la solicitud no es válido."
+            });
+        }
+
+        const estadosPermitidos = [
+            "pendiente",
+            "en_revision",
+            "confirmada",
+            "lista",
+            "rechazada"
+        ];
+
+        if (!estadosPermitidos.includes(estado)) {
+            return res.status(400).json({
+                mensaje: "El estado enviado no es válido."
+            });
+        }
+
+        const solicitud = await Solicitud.findByIdAndUpdate(
+            id,
+            { $set: { estado: estado } },
+            {
+                new: true,
+                runValidators: false
+            }
+        );
+
+        if (!solicitud) {
+            return res.status(404).json({
+                mensaje: "Solicitud no encontrada."
+            });
+        }
+
+        res.status(200).json({
+            mensaje: "Estado actualizado correctamente.",
+            solicitud
+        });
+
+    } catch (error) {
+        console.error("Error al actualizar estado:", error);
+
+        res.status(500).json({
+            mensaje: "Error al actualizar el estado de la solicitud."
+        });
+    }
+};
+
 module.exports = {
     crearSolicitud,
-    obtenerMisSolicitudes
+    obtenerMisSolicitudes,
+    obtenerTodasLasSolicitudes,
+    actualizarEstadoSolicitud
 };

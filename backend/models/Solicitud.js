@@ -91,10 +91,16 @@ const solicitudSchema = new mongoose.Schema({
         required: true
     },
 
-    // Estado de la solicitud
+   // Estado de la solicitud o pedido
     estado: {
         type: String,
-        enum: ["pendiente", "en_revision", "aprobada", "rechazada"],
+        enum: [
+            "pendiente",
+            "en_revision",
+            "confirmada",
+            "lista",
+            "rechazada"
+        ],
         default: "pendiente"
     }
 
